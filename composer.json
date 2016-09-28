@@ -1,0 +1,18 @@
+{
+    "name": "fastest/fastest",
+    "authors": [
+        {
+            "name": "Edik Bulikyan",
+            "email": "ed.proff@gmail.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "apps/vendor"
+    },
+    "require": {
+        "corneltek/pux": "^1.6",
+        "nikic/fast-route": "^1.0",
+        "samdark/sitemap": "^2.0",
+        "robmorgan/phinx": "^0.5.3"
+    }
+}
