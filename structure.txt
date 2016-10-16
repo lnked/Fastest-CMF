@@ -1,0 +1,19 @@
+Схема работы движка - http://take.ms/JmMhW
+
+Пароли blow fish + salt или sha512
+http://php.net/manual/ru/function.password-hash.php
+
+apps
+    app/config
+    app/classes
+    app/events
+    app/hooks
+    app/controllers
+    app/models
+    app/views
+    app/widgets
+    app/packages/.gitkeep
+public_html
+    public_html/images
+    public_html/css
+    public_html/js

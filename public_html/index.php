@@ -1,3 +1,3 @@
 <?php
 
-exit("fastest");
+require_once __DIR__ . "/../apps/bootstrap/app.php";
