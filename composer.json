@@ -1,6 +1,8 @@
 {
     "name": "fastest/fastest",
     "description": "Fast PHP CMS",
+    "license": "MIT",
+    "type": "project",
     "authors": [
         {
             "name": "Edik Bulikyan",
@@ -24,6 +26,7 @@
         "imagine/imagine": "^0.6.3",
         "machuga/authority": "^2.2",
         "swiftmailer/swiftmailer": "^5.4",
-        "monolog/monolog": "^1.21"
+        "monolog/monolog": "^1.21",
+        "silex/silex": "~2.0"
     }
 }
