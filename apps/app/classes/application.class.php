@@ -1,20 +1,22 @@
-<?php
+<?php declare(strict_types = 1);
 
-final class Application {
+final class Application // extends Initialize
+{
 
-    public function __construct() {
-
-    }
+    public function __construct() {}
 
     public function compile($path = '')
     {
+        $argv = [];
+
         if ($argv) {
-            parse_str(implode('&', array_slice($argv, 1)), $_GET);
+            $argv = parse_str(implode('&', array_slice($argv, 1)), $_GET);
         }
+
+        // echo '<pre>';
+        // exit(print_r($_SERVER));
 
         echo $path;
     }
 
 }
-
-// composer create-project --prefer-dist laravel/lumen app
