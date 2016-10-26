@@ -27,6 +27,7 @@
         "machuga/authority": "^2.2",
         "swiftmailer/swiftmailer": "^5.4",
         "monolog/monolog": "^1.21",
-        "silex/silex": "~2.0"
+        "silex/silex": "~2.0",
+        "twig/twig": "^1.27"
     }
 }
