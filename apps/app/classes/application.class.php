@@ -1,16 +1,19 @@
 <?php declare(strict_types = 1);
 
-final class Application // extends Initialize
+final class Application extends Initialize
 {
-
-    public function __construct() {}
+    public function __construct() {
+        // $this->template_driver = TEMPLATING;
+        // $this->template_dir = 'themes/base/#/';
+        parent::__construct();
+    }
 
     public function register() {
 
     }
 
-    public function handle($uri = '') {
-        __($uri, $_SERVER);
+    public function handle() {
+        __($this);
     }
 
 }

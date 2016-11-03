@@ -1,33 +1,29 @@
 <?php
 
 require __DIR__.'/../vendor/autoload.php';
-require __DIR__.'/../app/functions/fn.helpers.php';
 
-// $fn_list = array(
-//     'fn.database.php',
-//     'fn.users.php',
-//     'fn.catalog.php',
-//     'fn.cms.php',
-//     'fn.cart.php',
-//     'fn.locations.php',
-//     'fn.common.php',
-//     'fn.fs.php',
-//     'fn.images.php',
-//     'fn.init.php',
-//     'fn.control.php',
-//     'fn.search.php',
-//     'fn.promotions.php',
-//     'fn.log.php',
-//     'fn.companies.php',
-//     'fn.addons.php'
-// );
+# Functions
+#
+$fn_list = [
+    'fn.helpers.php',
+    'fn.common.php',
+    'fn.init.php'
+];
 
-// $fn_list[] = 'fn.' . strtolower(PRODUCT_EDITION) . '.php';
+foreach ($fn_list as $file) {
+    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'functions'.DS.$file)) {
+        require(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'functions'.DS.$file);
+    }
+}
 
-// foreach ($fn_list as $file) {
-//     require($config['dir']['functions'] . $file);
-// }
+# Config
+#
+fn_init_config(
+    require(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'config'.DS.'app.php')
+);
 
+# Autoload
+#
 spl_autoload_register(function($_class) {
     $_class = strtolower($_class);
 

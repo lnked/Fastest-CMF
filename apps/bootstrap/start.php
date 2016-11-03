@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /**
  * define shorthand directory separator constant
  */
@@ -17,12 +19,9 @@ if (!defined('FASTEST_ROOT')) {
 /**
  * Apps root
  */
-define('APPS_ROOT', 'apps');
-
-/**
- * Public root
- */
-define('PUBLIC_ROOT', 'public_html');
+if (!defined('APPS_ROOT')) {
+    define('APPS_ROOT', 'apps');
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +42,4 @@ $app = require_once FASTEST_ROOT.APPS_ROOT.DS.'bootstrap'.DS.'app.php';
 | Run The Application
 |--------------------------------------------------------------------------
 */
-$app->handle($_SERVER['REQUEST_URI']);
+$app->handle();

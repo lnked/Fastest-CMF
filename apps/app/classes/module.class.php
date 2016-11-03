@@ -1,6 +1,6 @@
 <?php
 
-class Module //extends Initialize
+class Module extends Initialize
 {
 	use Tools, Singleton;
 
@@ -9,10 +9,10 @@ class Module //extends Initialize
 	public $csrf_token 	= 	null;
 	public $csrf_param 	= 	null;
 	public $module_root = 	null;
-	public $module		= 	array();
-	public $arguments 	= 	array();
-	public $words		= 	array( 'a', 'b', 'c', 'd', 'e', 'f', 'k', 'u', 'i' );
-	public $errorPage	= 	array( 'page' => array( 'id' => 0 ) );
+	public $module		= 	[];
+	public $arguments 	= 	[];
+	public $words		= 	[ 'a', 'b', 'c', 'd', 'e', 'f', 'k', 'u', 'i' ];
+	public $errorPage	= 	[ 'page' => [ 'id' => 0 ] ];
 	
 	public function __construct()
 	{
@@ -24,12 +24,12 @@ class Module //extends Initialize
 		$this->module_root = $_value;
 	}
 
-	public function setArguments($_value = array())
+	public function setArguments($_value = [])
 	{
 		$this->arguments = $_value;
 	}
 
-	public function setModule($_value = array())
+	public function setModule($_value = [])
 	{
 		$this->module = $_value;
 	}
@@ -65,7 +65,7 @@ class Module //extends Initialize
 		$this->csrf_param = $param;
 	}
 
-	protected function checkCSRF($post = array())
+	protected function checkCSRF($post = [])
 	{
 		if (!defined('CSRF_PROTECTION') || !CSRF_PROTECTION)
 		{
@@ -89,9 +89,9 @@ class Module //extends Initialize
 		return false;
 	}
 
-	public function listAction($fields = array(), $where = array(), $group = array(), $order = array(), $limit = array(0, 10))
+	public function listAction($fields = [], $where = [], $group = [], $order = [], $limit = [0, 10])
 	{
-		$result = array();
+		$result = [];
 
 		$hash = '_module_' . strtolower(get_class($this)) . $this->mcache_path;
 
@@ -102,14 +102,14 @@ class Module //extends Initialize
 				$_sql = '';
 				$_inc = '';
 				
-				$_join = array();
+				$_join = [];
 
 				$_files = '#__sys_files';
 				$_table = '#_mdd_' . $this->module['func_name'];
 
 				$_buf[$_table] = array_shift($this->words);
 				$_buf[$_files] = array_shift($this->words);
-				$_grp[$_table] = array();
+				$_grp[$_table] = [];
 
 				foreach ($fields as $_field)
 				{
@@ -121,7 +121,7 @@ class Module //extends Initialize
 					 //    [from] => #__sys_files
 					 //    [as] => alt
 
-						if (isset($_t[1]) && in_array(strtolower($_t[1]), array( 'date_format', 'empty', 'file', 'photo_title' )))
+						if (isset($_t[1]) && in_array(strtolower($_t[1]), [ 'date_format', 'empty', 'file', 'photo_title' ]))
 						{
 
 						}
@@ -135,7 +135,7 @@ class Module //extends Initialize
 						
 						__debug($_t);
 
-						if (isset($_t[1]) && in_array(strtolower($_t[1]), array( 'date_format', 'empty', 'file', 'photo_title' )))
+						if (isset($_t[1]) && in_array(strtolower($_t[1]), [ 'date_format', 'empty', 'file', 'photo_title' ]))
 						{
 							$_inc .= "\n\t";
 
@@ -157,11 +157,11 @@ class Module //extends Initialize
 									
 									$_inc .= "`" . $_buf[$_files] . "`.`file` AS `" . $_t[2] . "`";
 
-									$_join[$_buf[$_files]] = array(
+									$_join[$_buf[$_files]] = [
 										'db'	=>	$_files,
 										'field'	=>	'gid',
 										'file'	=>	$_t[0]
-									);
+									];
 
 								break;
 
@@ -169,11 +169,11 @@ class Module //extends Initialize
 									
 									$_inc .= "`" . $_buf[$_files] . "`.`alt` AS `" . $_t[2] . "`";
 
-									$_join[$_buf[$_files]] = array(
+									$_join[$_buf[$_files]] = [
 										'db'	=>	$_files,
 										'field'	=>	'gid',
 										'file'	=>	$_t[0]
-									);
+									];
 
 								break;
 							}
@@ -257,14 +257,14 @@ class Module //extends Initialize
 
 	public function itemAction()
 	{
-		$news = array();
+		$news = [];
 		
 		if (empty($news)) 
 		{
 			return $this->errorPage;
 		}
 
-		return array();
+		return [];
 	}
 
 	public function pager($pages = 0, $limit = 10, $hashcat = '#content')
@@ -280,14 +280,14 @@ class Module //extends Initialize
 
 		$count = ceil($pages / $limit);
 		
-		$pager = array(
+		$pager = [
 			'limit'		=> $limit,
 			'start'		=> $start,
 			'page'		=> $page,
 			'count'		=> $count,
 			'total'		=> $pages,
 			'hash'		=> $hashcat
-		);
+		];
 
 		if ($page > 1)
 		{
@@ -302,10 +302,10 @@ class Module //extends Initialize
 		return $pager;
 	}
 
-	public function metaData(&$item = array())
+	public function metaData(&$item = [])
 	{
-		$meta = array();
-		$keys = array('meta_title', 'meta_robots', 'meta_keywords', 'meta_description');
+		$meta = [];
+		$keys = ['meta_title', 'meta_robots', 'meta_keywords', 'meta_description'];
 
 		foreach ($keys as $key)
 		{
@@ -321,6 +321,6 @@ class Module //extends Initialize
 
 	public function breadcrumbsAction()
 	{
-		return array();
+		return [];
 	}
 }
