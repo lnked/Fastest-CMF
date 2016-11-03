@@ -5,18 +5,9 @@ final class Application // extends Initialize
 
     public function __construct() {}
 
-    public function compile($path = '')
+    public function handle($uri = '')
     {
-        $argv = [];
-
-        if ($argv) {
-            $argv = parse_str(implode('&', array_slice($argv, 1)), $_GET);
-        }
-
-        // echo '<pre>';
-        // exit(print_r($_SERVER));
-
-        echo $path;
+        __($uri, $_SERVER);
     }
 
 }

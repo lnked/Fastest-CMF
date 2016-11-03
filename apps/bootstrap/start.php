@@ -38,17 +38,9 @@ require FASTEST_ROOT.APPS_ROOT.DS.'bootstrap'.DS.'autoload.php';
 */
 $app = require_once FASTEST_ROOT.APPS_ROOT.DS.'bootstrap'.DS.'app.php';
 
-// $app = new Silex\Application();
-
-// $app->get('/hello/{name}', function($name) use($app) { 
-//     return 'Hello '.$app->escape($name); 
-// }); 
-
-// $app->run();
-
 /*
 |--------------------------------------------------------------------------
 | Run The Application
 |--------------------------------------------------------------------------
 */
-$app->compile($_SERVER['REQUEST_URI']);
+$app->handle($_SERVER['REQUEST_URI']);
