@@ -28,12 +28,12 @@ class Initialize // extends Viewer
         $this->query    =   $_SERVER['QUERY_STRING'];
         $this->request  =   urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         $this->path     =   preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
-        $this->locale   =   $this->getLocale($this->request);
-
-        if (isset($this->path[0]) && $this->path[0] == $this->locale)
-        {
-            array_shift($this->path);
-        }
+        $this->locale   =   $this->getLocale($this->request, $this->path);
+    
+        // if (isset($this->path[0]) && $this->path[0] == $this->locale)
+        // {
+        //     array_shift($this->path);
+        // }
 
         # CSRF
         #

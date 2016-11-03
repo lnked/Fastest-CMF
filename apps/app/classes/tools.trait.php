@@ -311,18 +311,25 @@ trait Tools {
 	    return $new_array;
 	}
 
-	public static function getLocale($url = '')
+	public static function getLocale($url = '', &$path = [])
 	{
+		$locale = 'ru';
+
 	    if ($url != '')
 	    {
 	        if (strstr($url, '/')) {
 	            $path = preg_split('/\/+/', $url, -1, PREG_SPLIT_NO_EMPTY);
 	    
-	            return isset($path[0]) && in_array($path[0], array('ru', 'en', 'fr', 'sp', 'de')) ? $path[0] : 'ru' ;
+	            $locale = isset($path[0]) && in_array($path[0], array('ru', 'en', 'fr', 'sp', 'de')) ? $path[0] : 'ru' ;
 	        }
 	    }
 
-	    return 'ru';
+        if (isset($path[0]) && $path[0] == $locale)
+        {
+            array_shift($path);
+        }
+
+	    return $locale;
 	}
 
 	/**
