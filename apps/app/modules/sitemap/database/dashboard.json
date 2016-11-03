@@ -1,0 +1,28 @@
+{
+    "#__db_dashboard": {
+        "engine": "InnoDB",
+        "charset": "utf8",
+        "fields": [
+            {
+                "name": "name",
+                "type": "varchar(255)",
+                "collation": "",
+                "attributes": "DEFAULT",
+                "null": "NULL",
+                "default": "",
+                "comments": "COMMENT",
+                "extra": "PRIMARY KEY (`code`)",
+            },
+            {
+                "name": "code",
+                "type": "char(2)",
+                "collation": "",
+                "attributes": "",
+                "null": "NOT NULL",
+                "default": "",
+                "comments": "COMMENT",
+                "extra": "",
+            }
+        ]
+    }
+}

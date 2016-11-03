@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "dashboard",
+    "author": "Fastest",
+    "version": "0.0.1",
+    "displayName": "CMS dashboard",
+    "description": "Dashboard",
+    "tab": "dashboard"
+  }
+}
