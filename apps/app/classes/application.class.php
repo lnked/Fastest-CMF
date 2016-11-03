@@ -5,8 +5,11 @@ final class Application // extends Initialize
 
     public function __construct() {}
 
-    public function handle($uri = '')
-    {
+    public function register() {
+
+    }
+
+    public function handle($uri = '') {
         __($uri, $_SERVER);
     }
 
