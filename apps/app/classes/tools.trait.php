@@ -313,14 +313,14 @@ trait Tools {
 
 	public static function getLocale($url = '', &$path = [])
 	{
-		$locale = 'ru';
+		$locale = LOCALE;
 
 	    if ($url != '')
 	    {
-	        if (strstr($url, '/')) {
+	        if (strstr($url, '/'))
+	        {
 	            $path = preg_split('/\/+/', $url, -1, PREG_SPLIT_NO_EMPTY);
-	    
-	            $locale = isset($path[0]) && in_array($path[0], array('ru', 'en', 'fr', 'sp', 'de')) ? $path[0] : 'ru' ;
+	            $locale = isset($path[0]) && in_array($path[0], ['ru', 'en', 'fr', 'sp', 'de']) ? $path[0] : 'ru' ;
 	        }
 	    }
 

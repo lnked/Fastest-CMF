@@ -10,7 +10,7 @@ return [
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     */
-    'name' => 'Fastest CMS',
+    'NAME' => 'Fastest CMS',
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-    'debug' => true,
+    'DEBUG' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -50,5 +50,5 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-    'locale' => 'ru'
+    'LOCALE' => 'en'
 ];
