@@ -145,28 +145,6 @@ trait Tools {
 		return $header;
 	}
 
-	public static function convertToObject($a = [])
-	{
-		if (is_array($a) && !empty($a))
-		{
-		    $object = new stdClass();
-
-		    foreach ($a as $k => $v)
-		    {
-		        if (is_array($v))
-		        {
-		            $v = self::convertToObject($v);
-		        }
-
-		        $object->$k = $v;
-		    }
-		    
-		    $a = $object;
-		}
-
-		return $a;
-	}
-
 	public static function rrmdir($dir = '')
 	{
 		if (is_dir($dir))
