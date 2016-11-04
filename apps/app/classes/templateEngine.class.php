@@ -1,21 +1,23 @@
 <?php declare(strict_types = 1);
 
-class templateEngine //extends Data
+# extends Data
+
+class templateEngine
 {
     protected $template = null;
 
-    public static function __construct($driver = 'smarty', $dir = '', $caching = null)
+    public function __construct($driver = 'smarty', $dir = '', $caching = null)
     {
         if (is_null($caching))
         {
             $caching = $this->enabled_caching;
         }
-        
-        if (file_exists(PATH_EXTENSIONS.DS.$driver.'templateEngine.php'))
+
+        if (file_exists(PATH_DRIVERS.DS.$driver.'.templateEngine.php'))
         {
             if (!class_exists('templateRender'))
             {
-                include PATH_EXTENSIONS.DS.$driver.'templateEngine.php';
+                include PATH_DRIVERS.DS.$driver.'.templateEngine.php';
 
                 $this->template = new templateRender($dir, $caching);
             }

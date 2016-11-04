@@ -8,9 +8,9 @@ class templateRender extends Renderer
 	{
 		$this->template = new Smarty;
 
-		$this->template->setCacheDir(PATH_RUNTIME.DS.'cache'.DS);
-		$this->template->setCompileDir(PATH_RUNTIME.DS.'cache'.DS);
-		$this->template->setTemplateDir(PATH_TPL.DS.$dir);
+		$this->template->setCacheDir(PATH_RUNTIME);
+		$this->template->setCompileDir(PATH_RUNTIME);
+		$this->template->setTemplateDir(PATH_TEMPLATES.DS.$dir);
 		
 		$this->template->setCaching($caching);
 		$this->template->setCacheLifetime(60);
@@ -22,10 +22,11 @@ class templateRender extends Renderer
 		$this->template->force_compile          = false;
 		$this->template->error_reporting        = (defined('SYSTEM_DEBUG') && SYSTEM_DEBUG == 1) ? E_ALL & ~E_NOTICE & ~E_WARNING : E_ALL & ~E_NOTICE;
 
-		$pluginsDir = array(
-			PATH_CORE.DS.'lib'.DS.'templaters'.DS.'smarty'.DS.'plugins'.DS,
-			PATH_CORE.DS.'lib'.DS.'templaters'.DS.'smarty'.DS.'plugins_cms'.DS
-		);
+		$pluginsDir = [
+			FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'functions'.DS.'smarty_plugins',
+			// PATH_CORE.DS.'lib'.DS.'templaters'.DS.'smarty'.DS.'plugins'.DS,
+			// PATH_CORE.DS.'lib'.DS.'templaters'.DS.'smarty'.DS.'plugins_cms'.DS
+		];
 
 		foreach ($pluginsDir as $d)
 		{
@@ -47,7 +48,7 @@ class templateRender extends Renderer
 		{
 			return $this->template->fetch($template . $this->extension);
 		}
-		else if (!strstr(strtolower($template), strtolower(PATH_ROOT)))
+		else if (!strstr(strtolower($template), strtolower(FASTEST_ROOT)))
 		{
 			return $this->template->fetch($template);
 		}
