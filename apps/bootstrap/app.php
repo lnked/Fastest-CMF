@@ -1,5 +1,3 @@
 <?php
 
-$app = new Application();
-
-return $app;
+return new Application();

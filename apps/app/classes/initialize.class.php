@@ -7,9 +7,9 @@ class Initialize // extends Viewer
     protected $request  = null;
     protected $locale   = null;
     
-    // protected $viewer = null;
-    // protected $template_dir = null;
-    // protected $template_driver = null;
+    protected $template_engine = null;
+    protected $template_dir = null;
+    protected $template_driver = null;
 
     protected $csrf_token = null;
     protected $csrf_param = 'authenticity_token';
@@ -30,11 +30,6 @@ class Initialize // extends Viewer
         $this->path     =   preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
         $this->locale   =   $this->getLocale($this->request, $this->path);
     
-        // if (isset($this->path[0]) && $this->path[0] == $this->locale)
-        // {
-        //     array_shift($this->path);
-        // }
-
         # CSRF
         #
         if (defined('CSRF_PROTECTION') && CSRF_PROTECTION)
@@ -58,14 +53,16 @@ class Initialize // extends Viewer
             $this->csrf_token = $_SESSION[$this->csrf_param];
         }
 
-        // $this->template_driver = strtolower($this->template_driver);
+        $this->template_driver = strtolower($this->template_driver);
 
-        // if (strstr($this->template_dir, '#'))
-        // {
-        //     $this->template_dir = str_replace('#', $this->template_driver, $this->template_dir);
-        // }
+        if (strstr($this->template_dir, '#'))
+        {
+            $this->template_dir = str_replace('#', $this->template_driver, $this->template_dir);
+        }
+        
+        exit(__($this));
 
-        // $this->viewer = new Viewer($this->template_driver, $this->template_dir, 0);
+        $this->template_engine = new templateEngine($this->template_driver, $this->template_dir, 0);
     }
 
     public function register()

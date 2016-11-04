@@ -2,9 +2,10 @@
 
 final class Application extends Initialize
 {
-    public function __construct() {
-        // $this->template_driver = TEMPLATING;
-        // $this->template_dir = 'themes/base/#/';
+    public function __construct()
+    {
+        $this->template_driver = TEMPLATING;
+        $this->template_dir = 'apps/app/views/frontend/#/';
         parent::__construct();
     }
 
