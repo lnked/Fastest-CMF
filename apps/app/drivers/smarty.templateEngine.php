@@ -19,7 +19,7 @@ class templateRender extends Renderer
 		$this->template->debugging              = TEMPLATING_DEBUG;
 		$this->template->cache_modified_check   = false;
 		$this->template->compile_check          = false;
-		$this->template->force_compile          = false;
+		$this->template->force_compile          = FORCE_COMPILE;
 		$this->template->error_reporting        = TEMPLATING_DEBUG ? E_ALL & ~E_NOTICE & ~E_WARNING : E_ALL & ~E_NOTICE;
 
 		$pluginsDir = [

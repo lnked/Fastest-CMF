@@ -15,19 +15,15 @@ class templateRender extends Renderer
 			'cache'             =>	PATH_RUNTIME,
 	        'debug'             => 	TEMPLATING_DEBUG,
 	        'autoescape'        => 	true,
-	        'auto_reload'       => 	false,
+	        'auto_reload'       => 	FORCE_COMPILE,
 	        'strict_variables'  => 	false,
-	        'optimizations'     => 	-1,
+	        'optimizations'     => 	true, // -1,
 	        'charset'           => 	$this->charset
 		));
 
-        $escaper = new Twig_Extension_Escaper('html');
-        $this->template->addExtension($escaper);
-
-        $optimizer = new Twig_Extension_Optimizer(Twig_NodeVisitor_Optimizer::OPTIMIZE_FOR);
-        $this->template->addExtension($optimizer);
-
-        // /$this->template->addExtension(new Twig_Extensions_Extension_I18n());
+        $this->template->addExtension(new Twig_Extension_Escaper('html'));
+        $this->template->addExtension(new Twig_Extension_Optimizer(Twig_NodeVisitor_Optimizer::OPTIMIZE_FOR));
+        // $this->template->addExtension(new Twig_Extensions_Extension_I18n());
 
 		$lexer = new Twig_Lexer($this->template, array(
 			'tag_comment'   => array('{#', '#}'),
