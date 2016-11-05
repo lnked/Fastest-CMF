@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/40, created on 2016-11-05 18:13:11
+/* Smarty version 3.1.31-dev/40, created on 2016-11-05 18:14:07
   from "/Users/edik/web/fastest.dev/apps/app/views/frontend/smarty/base.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/40',
-  'unifunc' => 'content_581e21375bc133_34841169',
+  'unifunc' => 'content_581e216fc1ab91_26109787',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '801c69d20174d33f588056964dc87379ed4c846e' => 
     array (
       0 => '/Users/edik/web/fastest.dev/apps/app/views/frontend/smarty/base.tpl',
-      1 => 1478366864,
+      1 => 1478369628,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_581e21375bc133_34841169 (Smarty_Internal_Template $_smarty_tpl) {
+function content_581e216fc1ab91_26109787 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,15 +33,16 @@ function content_581e21375bc133_34841169 (Smarty_Internal_Template $_smarty_tpl)
     <header>
         <h1>Header</h1>
     </header>
-
-    <div>
+    
+    <section>
         <aside>
-            ASIFE
+            ASIDE
         </aside>
-        <section>
-            SECTIOn
-        </section>
-    </div>
+        
+        <article>
+            SECTION
+        </article>
+    </section>
 
     <footer>
         FOOTER
