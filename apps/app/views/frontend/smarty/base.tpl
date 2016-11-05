@@ -9,15 +9,16 @@
     <header>
         <h1>Header</h1>
     </header>
-
-    <div>
+    
+    <section>
         <aside>
-            ASIFE
+            ASIDE
         </aside>
-        <section>
-            SECTIOn
-        </section>
-    </div>
+        
+        <article>
+            SECTION
+        </article>
+    </section>
 
     <footer>
         FOOTER
