@@ -34,28 +34,14 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
         <h1>HEADER 1</h1>
     </header>
     
-    ";
-        // line 41
-        echo "
-    1 ";
-        // line 42
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session", array()), "get", array(0 => "authenticity_token"), "method"), "html", null, true);
-        echo "
-
-    2 ";
-        // line 44
+    <div>";
+        // line 19
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["session"]) ? $context["session"] : null), "authenticity_token", array()), "html", null, true);
+        echo "</div>
+    
+    ";
+        // line 43
         echo "
-
-    <div>3 ";
-        // line 46
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["session"]) ? $context["session"] : null), "get", array(0 => "authenticity_token"), "method"), "html", null, true);
-        echo "</div>
-    <div>4 ";
-        // line 47
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session", array()), "get", array(0 => "authenticity_token"), "method"), "html", null, true);
-        echo "</div>
-
     <ul>
         <li>1</li>
         <li>2</li>
@@ -73,7 +59,7 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
     </footer>
     
     ";
-        // line 103
+        // line 98
         echo "</body>
 </html>";
     }
@@ -90,7 +76,7 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
 
     public function getDebugInfo()
     {
-        return array (  77 => 103,  56 => 47,  52 => 46,  47 => 44,  42 => 42,  39 => 41,  19 => 1,);
+        return array (  63 => 98,  44 => 43,  39 => 19,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
