@@ -16,52 +16,51 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<!DOCTYPE html>
-<html lang=\"en\">
-<head>
-    <meta charset=\"UTF-8\">
-    <title>ADMIN</title>
-
-<!-- 
-    {if \$_csrf_token nocache}
-    <meta content=\"{\$_csrf_param}\" name=\"csrf-param\">
-    <meta content=\"{\$_csrf_token}\" name=\"csrf-token\">
-    {/if} -->
-    
-</head>
-<body>
-    <header>
-        <h1>HEADER 1</h1>
-    </header>
-    ssssdasd
-    <div>";
-        // line 19
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["session"]) ? $context["session"] : null), "authenticity_token", array()), "html", null, true);
-        echo "</div>
-    
-    ";
-        // line 43
+        echo twig_include($this->env, $context, "components/meta.twig", array(), true, false, true);
         echo "
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-    </ul>
-    <footer>
-        xxx asd yy
-    </footer>
-    
-    ";
-        // line 98
-        echo "</body>
-</html>";
+";
+        // line 2
+        echo twig_include($this->env, $context, "components/svgstore.twig", array(), true, false, true);
+        echo "
+
+<div class=\"preload show1 active\">
+    <span class=\"preload__spinner\"></span>
+    <span class=\"preload__label\">
+        Загрузка...
+    </span>
+</div>
+
+";
+        // line 11
+        echo twig_include($this->env, $context, "components/popup.twig", array(), true, false, true);
+        echo "
+";
+        // line 12
+        echo twig_include($this->env, $context, "components/sidebar.twig", array(), true, false, true);
+        echo "
+
+<div class=\"layout-wrapper\">
+
+    <div class=\"layout-content\">
+        
+        ";
+        // line 18
+        echo twig_include($this->env, $context, "components/header.twig", array(), true, false, true);
+        echo "
+        
+        <div class=\"layout-content__wrapper\">
+            
+            content
+
+        </div>
+
+    </div>
+
+</div>
+
+";
+        // line 30
+        echo twig_include($this->env, $context, "components/scripts.twig", array(), true, false, true);
     }
 
     public function getTemplateName()
@@ -76,7 +75,7 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
 
     public function getDebugInfo()
     {
-        return array (  63 => 98,  44 => 43,  39 => 19,  19 => 1,);
+        return array (  63 => 30,  48 => 18,  39 => 12,  35 => 11,  23 => 2,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

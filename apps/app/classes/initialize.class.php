@@ -25,9 +25,9 @@ class Initialize extends templateEngine
         $this->path     =   preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
         $this->locale   =   $this->getLocale($this->request, $this->path);
 
-        $this->initTemplate();
+        $this->csrf();
 
-        $this->csrfProtection();
+        $this->initTemplate();
     }
 
     private function initTemplate()
@@ -49,10 +49,11 @@ class Initialize extends templateEngine
         $this->template = new templateEngine($this->template_driver, $this->template_dir);
     }
 
-    public function csrfProtection()
+    public function csrf()
     {
         if (defined('CSRF_PROTECTION') && CSRF_PROTECTION)
         {
+            unset($_SESSION['csrf_param']);
             unset($_SESSION[$this->csrf_param]);
             
             if (empty($_SESSION[$this->csrf_param]))
@@ -66,6 +67,7 @@ class Initialize extends templateEngine
                     $token = bin2hex(openssl_random_pseudo_bytes(32));
                 }
 
+                $_SESSION['csrf_param'] = $this->csrf_param;
                 $_SESSION[$this->csrf_param] = base64_encode($token);
             }
 

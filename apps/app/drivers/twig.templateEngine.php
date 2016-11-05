@@ -14,10 +14,10 @@ class templateRender extends Renderer
 			'template_dir'		=> 	PATH_TEMPLATES.DS.$dir,
 			'cache'             =>	PATH_RUNTIME,
 	        'debug'             => 	TEMPLATING_DEBUG,
+            'auto_reload'       =>  FORCE_COMPILE,
 	        'autoescape'        => 	true,
-	        'auto_reload'       => 	FORCE_COMPILE,
 	        'strict_variables'  => 	false,
-	        'optimizations'     => 	true, // -1,
+	        'optimizations'     => 	true,
 	        'charset'           => 	$this->charset
 		));
 

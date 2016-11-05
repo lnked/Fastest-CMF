@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{strip}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,3 +27,4 @@
 
 </body>
 </html>
+{/strip}
