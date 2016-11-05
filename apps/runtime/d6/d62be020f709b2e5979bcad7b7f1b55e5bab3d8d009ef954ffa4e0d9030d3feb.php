@@ -50,7 +50,10 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
         
         <div class=\"layout-content__wrapper\">
             
-            content
+            ";
+        // line 22
+        echo twig_include($this->env, $context, "components/content.twig", array(), true, false, true);
+        echo "
 
         </div>
 
@@ -75,7 +78,7 @@ class __TwigTemplate_b0a3902d7dd94944be048cbf8f78e863305d19ca460b3cb4d99db76c897
 
     public function getDebugInfo()
     {
-        return array (  63 => 30,  48 => 18,  39 => 12,  35 => 11,  23 => 2,  19 => 1,);
+        return array (  66 => 30,  55 => 22,  48 => 18,  39 => 12,  35 => 11,  23 => 2,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

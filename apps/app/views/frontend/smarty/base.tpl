@@ -17,7 +17,7 @@
         </aside>
         
         <article>
-            SECTION
+            <a href="/cp">Админка</a>
         </article>
     </section>
 

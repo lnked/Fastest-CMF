@@ -11,6 +11,7 @@ class Initialize extends templateEngine
     protected $template_dir = null;
     protected $template_driver = null;
 
+    protected $is_admin   = false;
     protected $csrf_token = null;
     protected $csrf_param = 'authenticity_token';
 
@@ -26,27 +27,31 @@ class Initialize extends templateEngine
         $this->locale   =   $this->getLocale($this->request, $this->path);
 
         $this->csrf();
+        
+        $this->checkAdmin();
 
         $this->initTemplate();
     }
 
     private function initTemplate()
     {
-        $dir = 'frontend'.DS.'#';
-        
-        if (isset($this->path[0]) && $this->path[0] == ADMIN_DIR)
+        if ($this->is_admin)
         {
-            $dir = 'backend';
+            $this->template_dir = PATH_BACKEND;
             $this->template_driver = TEMPLATING_BACKEND;
         }
         else
         {
+            $this->template_dir = PATH_FRONTEND;
             $this->template_driver = TEMPLATING_FRONTEND;
         }
         
-        $this->template_dir = $dir;
-
         $this->template = new templateEngine($this->template_driver, $this->template_dir);
+
+        if ($this->is_admin)
+        {
+            $this->template->assign('ADMIN_DIR', ADMIN_DIR);
+        }
     }
 
     public function csrf()
@@ -77,8 +82,8 @@ class Initialize extends templateEngine
         // exit(__($_SESSION));
     }
 
-    public function register()
+    public function checkAdmin()
     {
-
+        $this->is_admin = isset($this->path[0]) && $this->path[0] == ADMIN_DIR;
     }
 }
