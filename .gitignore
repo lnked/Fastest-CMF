@@ -2,6 +2,7 @@
 .env
 /.idea
 /apps/vendor
+/apps/runtime
 Homestead.json
 Homestead.yaml
 
