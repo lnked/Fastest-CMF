@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.31-dev/40, created on 2016-11-05 18:14:07
+/* Smarty version 3.1.31-dev/40, created on 2016-11-05 21:25:51
   from "/Users/edik/web/fastest.dev/apps/app/views/frontend/smarty/base.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/40',
-  'unifunc' => 'content_581e216fc1ab91_26109787',
+  'unifunc' => 'content_581e4e5f50add7_35929985',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_581e216fc1ab91_26109787 (Smarty_Internal_Template $_smarty_tpl) {
+function content_581e4e5f50add7_35929985 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">

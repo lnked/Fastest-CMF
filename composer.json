@@ -26,6 +26,7 @@
         "imagine/imagine": "^0.6.3",
         "machuga/authority": "^2.2",
         "swiftmailer/swiftmailer": "^5.4",
-        "monolog/monolog": "^1.21"
+        "monolog/monolog": "^1.21",
+        "twig/twig": "^1.27"
     }
 }

@@ -56,6 +56,7 @@ class templateRender extends Renderer
 
     public function display($template = '')
     {
+        $this->template->addGlobal("session", $_SESSION);
   		$this->template->loadTemplate($template . $this->extension)->display($this->data);
     }
 }
