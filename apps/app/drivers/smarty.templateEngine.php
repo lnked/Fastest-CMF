@@ -4,7 +4,7 @@ class templateRender extends Renderer
 {
 	protected $extension = '.tpl';
 
-	public function __construct($dir = '', $caching = null)
+	public function __construct($dir = '')
 	{
 		$this->template = new Smarty;
 
@@ -12,20 +12,18 @@ class templateRender extends Renderer
 		$this->template->setCompileDir(PATH_RUNTIME);
 		$this->template->setTemplateDir(PATH_TEMPLATES.DS.$dir);
 		
-		$this->template->setCaching($caching);
+		$this->template->setCaching(CACHING);
 		$this->template->setCacheLifetime(60);
 
 		$this->template->use_sub_dirs           = true;
-		$this->template->debugging              = false;
+		$this->template->debugging              = TEMPLATING_DEBUG;
 		$this->template->cache_modified_check   = false;
 		$this->template->compile_check          = false;
 		$this->template->force_compile          = false;
-		$this->template->error_reporting        = (defined('SYSTEM_DEBUG') && SYSTEM_DEBUG == 1) ? E_ALL & ~E_NOTICE & ~E_WARNING : E_ALL & ~E_NOTICE;
+		$this->template->error_reporting        = TEMPLATING_DEBUG ? E_ALL & ~E_NOTICE & ~E_WARNING : E_ALL & ~E_NOTICE;
 
 		$pluginsDir = [
-			FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'functions'.DS.'smarty_plugins',
-			// PATH_CORE.DS.'lib'.DS.'templaters'.DS.'smarty'.DS.'plugins'.DS,
-			// PATH_CORE.DS.'lib'.DS.'templaters'.DS.'smarty'.DS.'plugins_cms'.DS
+			FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'functions'.DS.'smarty_plugins'
 		];
 
 		foreach ($pluginsDir as $d)
@@ -37,9 +35,9 @@ class templateRender extends Renderer
 		}
 	}
 
-	public function assign($key = '', $value = '', $caching = false)
+	public function assign($key = '', $value = '', $cache = false)
 	{
-		$this->template->assign($key, $value, $caching);
+		$this->template->assign($key, $value, $cache);
 	}
 
 	public function fetch($template = '', $cache_id = '', $compile_id = '')

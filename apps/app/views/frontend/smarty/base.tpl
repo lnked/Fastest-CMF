@@ -6,7 +6,22 @@
 </head>
 <body>
     
-    <p>xxx</p>
-    
+    <header>
+        <h1>Header</h1>
+    </header>
+
+    <div>
+        <aside>
+            ASIFE
+        </aside>
+        <section>
+            SECTIOn
+        </section>
+    </div>
+
+    <footer>
+        FOOTER
+    </footer>
+
 </body>
 </html>

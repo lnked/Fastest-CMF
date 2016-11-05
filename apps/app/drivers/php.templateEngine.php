@@ -4,7 +4,7 @@ class templateRender extends Renderer
 {
     protected $extension = '.phtml';
 
-	public function __construct($dir = '', $caching = null)
+	public function __construct($dir = '')
 	{
 		$this->template_dir = $dir;
 	}
@@ -42,7 +42,7 @@ class templateRender extends Renderer
     public function display($template = '')
 	{
 		try {
-		    $file = PATH_TPL . '/' . $this->template_dir . $template . $this->extension;
+		    $file = PATH_TEMPLATES . '/' . $this->template_dir . $template . $this->extension;
 
 		    if (file_exists($file))
 		    {

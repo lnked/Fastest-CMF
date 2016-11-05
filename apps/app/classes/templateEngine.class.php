@@ -6,11 +6,13 @@ class templateEngine
 {
     protected $template = null;
 
-    public function __construct($driver = 'smarty', $dir = '', $caching = null)
+    public function __construct($driver = 'smarty', $dir = '')
     {
-        if (is_null($caching))
+        $driver = strtolower($driver);
+        
+        if (strstr($dir, '#'))
         {
-            $caching = $this->enabled_caching;
+            $dir = str_replace('#', $driver, $dir);
         }
 
         if (file_exists(PATH_DRIVERS.DS.$driver.'.templateEngine.php'))
@@ -19,14 +21,14 @@ class templateEngine
             {
                 include PATH_DRIVERS.DS.$driver.'.templateEngine.php';
 
-                $this->template = new templateRender($dir, $caching);
+                $this->template = new templateRender($dir);
             }
         }
     }
 
-    protected function assign($key = '', $value = '', $caching = false)
+    protected function assign($key = '', $value = '', $cache = false)
     {
-        $this->template->assign($key, $value, $caching);
+        $this->template->assign($key, $value, $cache);
     }
 
     protected function fetch($template = '', $cache_id = '', $compile_id = '')

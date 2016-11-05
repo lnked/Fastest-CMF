@@ -149,7 +149,7 @@ trait Tools {
 	{
 		if (is_dir($dir))
 		{
-			$files = array_diff(scandir($dir), array('.', '..', '.gitkeep', '.gitignore'));
+			$files = array_diff(scandir($dir), ['.', '..', '.gitkeep', '.gitignore']);
 
 			foreach ($files as $file)
 			{
@@ -170,7 +170,7 @@ trait Tools {
 
 	public static function array_chunk_column(array $input, $size)
 	{
-		$data = array_fill(0, $size, array());
+		$data = array_fill(0, $size, []);
 		$size = round(count($input) / $size, PHP_ROUND_HALF_UP);
 		$i = 0;
 		$j = 0;
@@ -197,7 +197,7 @@ trait Tools {
 	{
 		if ($phone)
 		{
-			$phone = str_replace(array('-', ' ', '+', '(', ')'), '', $phone);
+			$phone = str_replace(['-', ' ', '+', '(', ')'], '', $phone);
 		}
 		
 		return $phone;
@@ -233,9 +233,9 @@ trait Tools {
 		return $time;
 	}
 
-	protected function _prepareArray($array = array())
+	protected function _prepareArray($array = [])
 	{
-		$result = array();
+		$result = [];
 
 		if (is_array($array))
 		{
@@ -311,50 +311,6 @@ trait Tools {
 	}
 
 	/**
-	 * Возвращает сумму прописью
-	 * @author runcore
-	 * @usesmorph(...)
-	 */
-	public static function num2str($num) {
-		$nul='ноль';
-		$ten=array(
-			array('','один','два','три','четыре','пять','шесть','семь', 'восемь','девять'),
-			array('','одна','две','три','четыре','пять','шесть','семь', 'восемь','девять'),
-		);
-		$a20=array('десять','одиннадцать','двенадцать','тринадцать','четырнадцать' ,'пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать');
-		$tens=array(2=>'двадцать','тридцать','сорок','пятьдесят','шестьдесят','семьдесят' ,'восемьдесят','девяносто');
-		$hundred=array('','сто','двести','триста','четыреста','пятьсот','шестьсот', 'семьсот','восемьсот','девятьсот');
-		$unit=array( // Units
-			array('копейка' ,'копейки' ,'копеек',	 1),
-			array('рубль'   ,'рубля'   ,'рублей'    ,0),
-			array('тысяча'  ,'тысячи'  ,'тысяч'     ,1),
-			array('миллион' ,'миллиона','миллионов' ,0),
-			array('миллиард','милиарда','миллиардов',0),
-		);
-		//
-		list($rub,$kop) = explode('.',sprintf("%015.2f", floatval($num)));
-		$out = array();
-		if (intval($rub)>0) {
-			foreach(str_split($rub,3) as $uk=>$v) { // by 3 symbols
-				if (!intval($v)) continue;
-				$uk = sizeof($unit)-$uk-1; // unit key
-				$gender = $unit[$uk][3];
-				list($i1,$i2,$i3) = array_map('intval',str_split($v,1));
-				// mega-logic
-				$out[] = $hundred[$i1]; # 1xx-9xx
-				if ($i2>1) $out[]= $tens[$i2].' '.$ten[$gender][$i3]; # 20-99
-				else $out[]= $i2>0 ? $a20[$i3] : $ten[$gender][$i3]; # 10-19 | 1-9
-				// units without rub & kop
-				if ($uk>1) $out[]= $this->morph($v,$unit[$uk][0],$unit[$uk][1],$unit[$uk][2]);
-			} //foreach
-		}
-		else $out[] = $nul;
-		$out[] = $this->morph(intval($rub), $unit[1][0],$unit[1][1],$unit[1][2]); // rub
-		$out[] = $kop.' '.$this->morph($kop,$unit[0][0],$unit[0][1],$unit[0][2]); // kop
-		return trim(preg_replace('/ {2,}/', ' ', join(' ',$out)));
-	}
-
-	/**
 	 * Склоняем словоформу
 	 * @ author runcore
 	 */
@@ -368,27 +324,6 @@ trait Tools {
 		return $f5;
 	}
 
-	public static function validate($data = array(), $type = '')
-	{
-		return true;
-
-		/*
-		address:
-		Array
-		(
-		    [postal_code] => 11
-		    [country] => 11
-		    [region] => 22
-		    [area] => 33
-		    [city] => 
-		    [settlement] => 
-		    [street] => 
-		    [house] => 
-		    [flat] => 
-		)
-		*/
-	}
-
 	public static function getRoot($url)
 	{
 	    if ($url !== '' && strstr($url, '/'))
@@ -397,39 +332,6 @@ trait Tools {
 	    }
 
 	    return '';
-	}
-
-	/**
-	 * Recursively remove directory
-	 *
-	 * @param string $dirname Path to directory
-	 *
-	 * @return bool
-	 */
-	public static function rmdir_recursive($dirname = '')
-	{
-		if (!is_dir($dirname)) {
-			return true;
-		}
-
-		// get_files_list(
-		// 	$dirname,
-		// 	false,
-		// 	'fd',
-		// 	true,
-		// 	true,
-		// 	false,
-		// 	false,
-		// 	true,
-		// 	function ($item) {
-		// 		if (is_dir($item)) {
-		// 			@rmdir($item);
-		// 		} else {
-		// 			@unlink($item);
-		// 		}
-		// 	}
-		// );
-		// return @rmdir($dirname);
 	}
 
 	/**
@@ -451,7 +353,7 @@ trait Tools {
 	 *
 	 * @return string|string[]
 	 */
-	public static function _strtolower ($string)
+	public static function _strtolower($string)
 	{
 		if (is_array($string)) {
 			return array_map('strtolower', $string);
@@ -466,7 +368,7 @@ trait Tools {
 	 *
 	 * @return string|string[]
 	 */
-	public static function _strtoupper ($string) {
+	public static function _strtoupper($string) {
 		if (is_array($string)) {
 			return array_map('strtoupper', $string);
 		}
@@ -480,7 +382,8 @@ trait Tools {
 	 *
 	 * @return bool|string
 	 */
-	public static function _json_encode ($value) {
+	public static function _json_encode($value)
+	{
 		return @json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 	}
 
@@ -492,7 +395,8 @@ trait Tools {
 	 *
 	 * @return bool|mixed
 	 */
-	public static function _json_decode ($in, $depth = 512) {
+	public static function _json_decode($in, $depth = 512)
+	{
 		return @json_decode($in, true, $depth);
 	}
 
@@ -507,7 +411,8 @@ trait Tools {
 	 * 									Works only if <i>$html === true</i>
 	 * @return string|string[]
 	 */
-	public static function xap ($in, $html = 'text', $iframe = false) {
+	public static function xap($in, $html = 'text', $iframe = false)
+	{
 		if (is_array($in)) {
 			foreach ($in as &$item) {
 				$item = xap($item, $html, $iframe);

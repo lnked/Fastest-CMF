@@ -15,8 +15,8 @@ class Initialize extends templateEngine
     protected $csrf_param = 'authenticity_token';
 
     public $domain  = null;
-    public $path    = array();
-    public $page    = array('id' => 0);
+    public $path    = [];
+    public $page    = ['id' => 0];
 
     public function __construct()
     {
@@ -24,15 +24,29 @@ class Initialize extends templateEngine
         $this->request  =   urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         $this->path     =   preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
         $this->locale   =   $this->getLocale($this->request, $this->path);
+
+        $this->initTemplate();
+
+        $this->csrfProtection();
+    }
+
+    private function initTemplate()
+    {
+        $dir = 'frontend'.DS.'#';
         
-        $this->template_driver = strtolower($this->template_driver);
-
-        if (strstr($this->template_dir, '#'))
+        if (isset($this->path[0]) && $this->path[0] == ADMIN_DIR)
         {
-            $this->template_dir = str_replace('#', $this->template_driver, $this->template_dir);
+            $dir = 'backend';
+            $this->template_driver = TEMPLATING_BACKEND;
         }
+        else
+        {
+            $this->template_driver = TEMPLATING_FRONTEND;
+        }
+        
+        $this->template_dir = $dir;
 
-        $this->template = new templateEngine($this->template_driver, $this->template_dir, false);
+        $this->template = new templateEngine($this->template_driver, $this->template_dir);
     }
 
     public function csrfProtection()
@@ -57,6 +71,8 @@ class Initialize extends templateEngine
 
             $this->csrf_token = $_SESSION[$this->csrf_param];
         }
+
+        // exit(__($_SESSION));
     }
 
     public function register()

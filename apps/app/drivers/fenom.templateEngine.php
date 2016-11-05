@@ -34,10 +34,10 @@ class templateRender extends Renderer
 		
 		Fenom::registerAutoload();
 	
-		$this->template = Fenom::factory(PATH_CORE.DS.'lib'.DS.'templaters'.DS.'fenom'.DS.'Fenom', PATH_RUNTIME.DS.'cache');
-		$this->template = new Fenom($provider = new \Fenom\Provider(PATH_TPL.DS.$dir));
+		$this->template = Fenom::factory(PATH_CORE.DS.'lib'.DS.'templaters'.DS.'fenom'.DS.'Fenom', PATH_RUNTIME);
+		$this->template = new Fenom($provider = new \Fenom\Provider(PATH_TEMPLATES.DS.$dir));
 
-		$this->template->setCompileDir(PATH_RUNTIME.DS.'cache');
+		$this->template->setCompileDir(PATH_RUNTIME);
 
 		$this->template->setOptions(Fenom::AUTO_STRIP);
 		$this->template->setOptions(Fenom::FORCE_COMPILE);
@@ -46,7 +46,7 @@ class templateRender extends Renderer
 
 		//$this->template->clearAllCompiles();
 
-        // $this->template = Smarty::factory(PATH_TPL . '/' . $dir, PATH_RUNTIME . '/cache/');
+        // $this->template = Smarty::factory(PATH_TEMPLATES . '/' . $dir, PATH_RUNTIME);
         // $this->template->setSmartySupport();
    	}
 
