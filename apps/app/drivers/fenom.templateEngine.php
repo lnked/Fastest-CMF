@@ -4,61 +4,23 @@ class templateRender extends Renderer
 {
     protected $extension = '.tpl';
 
-	public function __construct($dir = '', $caching = null)
+	public function __construct($dir = '')
 	{
-        // if (!file_exists(FENOM_RESOURCES . '/compile')) {
-        //     mkdir(FENOM_RESOURCES . '/compile', 0777, true);
-        // } else {
-        //     FS::clean(FENOM_RESOURCES . '/compile/');
-        // }
-        // $this->fenom = Fenom::factory(FENOM_RESOURCES . '/' . $this->template_path, FENOM_RESOURCES . '/compile');
-        // $this->fenom->addProvider('persist', new Provider(FENOM_RESOURCES . '/provider'));
-        // $this->fenom->addModifier('dots', __CLASS__ . '::dots');
-        // $this->fenom->addModifier('concat', __CLASS__ . '::concat');
-        // $this->fenom->addModifier('append', __CLASS__ . '::append');
-        // $this->fenom->addFunction('test_function', __CLASS__ . '::inlineFunction');
-        // $this->fenom->addBlockFunction('test_block_function', __CLASS__ . '::blockFunction');
-        // $this->values = $this->getVars();
-
-
-    	// require_once PATH_CORE . "/lib/templaters/fenom/Fenom.php";
-    	
-    	// Fenom::registerAutoload(PATH_CORE . "/lib/templaters/fenom/Fenom/");
-
-        // require_once PATH_CORE . "/lib/templaters/fenom/Fenom/Provider.php";
-        // require_once PATH_CORE . "/lib/templaters/fenom/Fenom/ProviderInterface.php";
-
-        // require_once PATH_CORE . "/lib/templaters/fenom/Fenom/Smarty.php";
-
-		require_once PATH_CORE.DS.'lib'.DS.'templaters'.DS.'fenom'.DS.'Fenom.php';
-		
-		Fenom::registerAutoload();
-	
-		$this->template = Fenom::factory(PATH_CORE.DS.'lib'.DS.'templaters'.DS.'fenom'.DS.'Fenom', PATH_RUNTIME);
-		$this->template = new Fenom($provider = new \Fenom\Provider(PATH_TEMPLATES.DS.$dir));
-
-		$this->template->setCompileDir(PATH_RUNTIME);
-
-		$this->template->setOptions(Fenom::AUTO_STRIP);
-		$this->template->setOptions(Fenom::FORCE_COMPILE);
-
-		// $this->fenom->getProvider()->setClearCachedStats();
-
-		//$this->template->clearAllCompiles();
-
-        // $this->template = Smarty::factory(PATH_TEMPLATES . '/' . $dir, PATH_RUNTIME);
-        // $this->template->setSmartySupport();
+        $this->template = Fenom::factory(PATH_TEMPLATES.DS.$dir, PATH_RUNTIME);
+        $this->template->setCompileDir(PATH_RUNTIME);
+        $this->template->setOptions(Fenom::AUTO_STRIP);
+        $this->template->setOptions(Fenom::FORCE_COMPILE);
    	}
 
-	public function assign($key = '', $value = '', $caching = false)
+	public function assign($key = '', $data = '', $cache = false)
     {
-    	if (is_array($value))
+    	if (is_array($data))
 		{
-		    $this->data[$key] = $value;
+		    $this->data[$key] = $data;
 		}
 		else
 		{
-		    $this->data[$key] = htmlspecialchars($value, ENT_QUOTES, $this->charset);
+		    $this->data[$key] = htmlspecialchars($data, ENT_QUOTES, $this->charset);
 		}
     }
 

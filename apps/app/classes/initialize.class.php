@@ -27,7 +27,7 @@ class Initialize extends templateEngine
         $this->locale   =   $this->getLocale($this->request, $this->path);
 
         $this->csrf();
-        
+
         $this->checkAdmin();
 
         $this->initTemplate();
@@ -54,7 +54,7 @@ class Initialize extends templateEngine
         }
     }
 
-    public function csrf()
+    private function csrf()
     {
         if (defined('CSRF_PROTECTION') && CSRF_PROTECTION)
         {
@@ -78,11 +78,9 @@ class Initialize extends templateEngine
 
             $this->csrf_token = $_SESSION[$this->csrf_param];
         }
-
-        // exit(__($_SESSION));
     }
 
-    public function checkAdmin()
+    private function checkAdmin()
     {
         $this->is_admin = isset($this->path[0]) && $this->path[0] == ADMIN_DIR;
     }

@@ -35,9 +35,9 @@ class templateRender extends Renderer
 		}
 	}
 
-	public function assign($key = '', $value = '', $cache = false)
+	public function assign($key = '', $data = '', $cache = false)
 	{
-		$this->template->assign($key, $value, $cache);
+		$this->template->assign($key, $data, $cache);
 	}
 
 	public function fetch($template = '', $cache_id = '', $compile_id = '')

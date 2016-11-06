@@ -6,44 +6,41 @@ class templateRender extends Renderer
 
 	public function __construct($dir = '')
 	{
-		Twig_Autoloader::register();
-        
-        $loader = new Twig_Loader_Filesystem(PATH_TEMPLATES.DS.$dir);
-        
-        $this->template = new Twig_Environment($loader, array(
-			'template_dir'		=> 	PATH_TEMPLATES.DS.$dir,
-			'cache'             =>	PATH_RUNTIME,
-	        'debug'             => 	TEMPLATING_DEBUG,
+		$loader = new Twig_Loader_Filesystem(PATH_TEMPLATES.DS.$dir);
+
+        $this->template = new Twig_Environment($loader, [
+        	'template_dir'		=> 	PATH_TEMPLATES.DS.$dir,
+        	'cache'             =>	PATH_RUNTIME,
+            'debug'             => 	TEMPLATING_DEBUG,
             'auto_reload'       =>  FORCE_COMPILE,
-	        'autoescape'        => 	true,
-	        'strict_variables'  => 	false,
-	        'optimizations'     => 	true,
-	        'charset'           => 	$this->charset
-		));
+            'autoescape'        => 	true,
+            'strict_variables'  => 	false,
+            'optimizations'     => 	true,
+            'charset'           => 	$this->charset
+        ]);
 
         $this->template->addExtension(new Twig_Extension_Escaper('html'));
         $this->template->addExtension(new Twig_Extension_Optimizer(Twig_NodeVisitor_Optimizer::OPTIMIZE_FOR));
-        // $this->template->addExtension(new Twig_Extensions_Extension_I18n());
+        
+        $lexer = new Twig_Lexer($this->template, [
+        	'tag_comment'   => ['{#', '#}'],
+        	'tag_block'     => ['{%', '%}'],
+        	'tag_variable'  => ['{{', '}}'],
+        	'interpolation' => ['#{', '}'],
+        ]);
 
-		$lexer = new Twig_Lexer($this->template, array(
-			'tag_comment'   => array('{#', '#}'),
-			'tag_block'     => array('{%', '%}'),
-			'tag_variable'  => array('{{', '}}'),
-			'interpolation' => array('#{', '}'),
-		));
-
-		$this->template->setLexer($lexer);
+        $this->template->setLexer($lexer);
 	}
 
-	public function assign($key = '', $value = '', $cache = false)
+	public function assign($key = '', $data = '', $cache = false)
     {
-		if (is_array($value))
+		if (is_array($data))
 		{
-		    $this->data[$key] = $value;
+		    $this->data[$key] = $data;
 		}
 		else
 		{
-		    $this->data[$key] = htmlspecialchars($value, ENT_QUOTES, $this->charset);
+		    $this->data[$key] = htmlspecialchars($data, ENT_QUOTES, $this->charset);
 		}
     }
 
@@ -52,6 +49,7 @@ class templateRender extends Renderer
 
     public function display($template = '')
     {
+        // exit($template . $this->extension);
         $this->template->addGlobal("session", $_SESSION);
   		$this->template->loadTemplate($template . $this->extension)->display($this->data);
     }

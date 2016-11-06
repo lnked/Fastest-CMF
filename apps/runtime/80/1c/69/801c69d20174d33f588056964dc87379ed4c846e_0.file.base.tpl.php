@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.31-dev/40, created on 2016-11-05 23:29:09
+/* Smarty version 3.1.31-dev/40, created on 2016-11-06 01:13:15
   from "/Users/edik/web/fastest.dev/apps/app/views/frontend/smarty/base.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/40',
-  'unifunc' => 'content_581e6b452be7c7_45167111',
+  'unifunc' => 'content_581e83ab375674_96264047',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_581e6b452be7c7_45167111 (Smarty_Internal_Template $_smarty_tpl) {
+function content_581e83ab375674_96264047 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><title>Document</title></head><body><header><h1>Header</h1></header><section><aside>ASIDE</aside><article><a href="/cp">Админка</a></article></section><footer>FOOTER</footer></body></html><?php }

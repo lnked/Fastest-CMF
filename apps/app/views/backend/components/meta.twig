@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<!-- (c) lnk. celebro | http://www.celebro.ru/ -->
+<!-- (c) lnk. CELEBRO Studio | http://celebro.ru -->
 <html lang="ru" class="no-js" itemscope="itemscope" xmlns="http://www.w3.org/1999/xhtml" itemtype="http://schema.org/WebPage">
 <head>
+    <link rel="stylesheet" href="/{{ ADMIN_DIR }}/css/main.min.css">
+
     <meta charset="UTF-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -13,35 +15,33 @@
     <meta content="address=no" name="format-detection">
     <meta content="telephone=no" name="format-detection">
     
-    <link rel="stylesheet" href="/{{ ADMIN_DIR }}/css/main.min.css">
-
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/favicon/favicon-194x194.png" sizes="194x194">
-    <link rel="icon" type="image/png" href="/favicon/android-chrome-192x192.png" sizes="192x192">
-    <link rel="manifest" href="/favicon/manifest.json">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#4169e1">
-    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/{{ ADMIN_DIR }}/favicon/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/{{ ADMIN_DIR }}/favicon/{{ ADMIN_DIR }}/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/{{ ADMIN_DIR }}/favicon/{{ ADMIN_DIR }}/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/{{ ADMIN_DIR }}/favicon/{{ ADMIN_DIR }}/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/{{ ADMIN_DIR }}/favicon/android-chrome-192x192.png" sizes="192x192">
+    <link rel="manifest" href="/{{ ADMIN_DIR }}/favicon/manifest.json">
+    <link rel="mask-icon" href="/{{ ADMIN_DIR }}/favicon/safari-pinned-tab.svg" color="#4169e1">
+    <link rel="shortcut icon" href="/{{ ADMIN_DIR }}/favicon/{{ ADMIN_DIR }}/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png">
-    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="msapplication-TileImage" content="/{{ ADMIN_DIR }}/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="/{{ ADMIN_DIR }}/favicon/browserconfig.xml">
     <meta name="theme-color" content="#4169e1">
 
     <meta content="{{ session.csrf_param }}" name="csrf-param">
     <meta content="{{ session[session.csrf_param] }}" name="csrf-token">
 
     <!--[if lt IE 9]>
-        <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/{{ ADMIN_DIR }}/favicon/{{ ADMIN_DIR }}/favicon-16x16.png" sizes="16x16">
     <![endif]-->
 
     <!--[if IEMobile]>

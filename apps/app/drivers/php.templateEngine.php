@@ -9,15 +9,15 @@ class templateRender extends Renderer
 		$this->template_dir = $dir;
 	}
 
-	public function assign($key = '', $value = '', $caching = false)
+	public function assign($key = '', $data = '', $caching = false)
     {
-    	if (is_array($value))
+    	if (is_array($data))
 		{
-		    $this->data[$key] = $value;
+		    $this->data[$key] = $data;
 		}
 		else
 		{
-		    $this->data[$key] = htmlspecialchars($value, ENT_QUOTES, $this->charset);
+		    $this->data[$key] = htmlspecialchars($data, ENT_QUOTES, $this->charset);
 		}
     }
 

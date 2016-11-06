@@ -7,13 +7,20 @@ final class Application extends Initialize
         parent::__construct();
     }
 
-    public function register() {
+    public function register()
+    {
 
     }
 
-    public function handle() {
+    public function handle()
+    {
+        $app = [
+            'title' => 'Fastest CMS'
+        ];
+    
         // __($this);
 
+        $this->template->assign('app', $app);
         $this->template->display('base');
     }
 
