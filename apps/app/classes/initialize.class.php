@@ -15,22 +15,54 @@ class Initialize extends templateEngine
     protected $csrf_token = null;
     protected $csrf_param = 'authenticity_token';
 
+    protected $controller = null;
+    protected $action = null;
+    protected $params = null;
+
+    # /controller/action/var1/value1/var2/value2
+    # /controller/action/foo/bar/
+    # /controller/action/param1:value1/param2:value2
+
     public $domain  = null;
     public $path    = [];
     public $page    = ['id' => 0];
 
     public function __construct()
     {
-        $this->domain   =   $_SERVER['HTTP_HOST'];
-        $this->request  =   urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        $this->path     =   preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
-        $this->locale   =   $this->getLocale($this->request, $this->path);
+        $this->domain   = $_SERVER['HTTP_HOST'];
+        $this->request  = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        $this->path     = preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
+        $this->locale   = $this->getLocale($this->request, $this->path);
+        $this->tpath    = $this->path;
 
         $this->csrf();
 
         $this->checkAdmin();
 
         $this->initTemplate();
+    }
+
+    protected function initMVC()
+    {
+        if ($this->is_admin)
+        {
+            array_shift($this->tpath);
+        }
+
+        if (isset($this->tpath[0]))
+        {
+            $this->controller = $this->tpath[0];
+        }
+
+        if (isset($this->tpath[1]))
+        {
+            $this->action = $this->tpath[1];
+        }
+
+        if (count($this->tpath) > 2)
+        {
+            $this->params = array_slice($this->tpath, 2, count($this->tpath));
+        }
     }
 
     private function initTemplate()

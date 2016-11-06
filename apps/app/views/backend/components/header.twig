@@ -1,18 +1,14 @@
 <header class="layout-header">
     <div class="layout-header__wrapper">
-        
+
         <nav class="nav" role="navigation">
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/site" class="nav__item__link">Сайт</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/marketing" class="nav__item__link">Маркетинг</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/seo" class="nav__item__link">Поисковая оптимизация</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/users" class="nav__item__link">Пользователи</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/shop" class="nav__item__link">Магазин</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/system" class="nav__item__link _current">Система</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/site" class="nav__item__link{{ app.controller == 'site' ? ' _current' : '' }}">Сайт</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/marketing" class="nav__item__link{{ app.controller == 'marketing' ? ' _current' : '' }}">Маркетинг</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/seo" class="nav__item__link{{ app.controller == 'seo' ? ' _current' : '' }}">Поисковая оптимизация</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/users" class="nav__item__link{{ app.controller == 'users' ? ' _current' : '' }}">Пользователи</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/shop" class="nav__item__link{{ app.controller == 'shop' ? ' _current' : '' }}">Магазин</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/system" class="nav__item__link{{ app.controller == 'system' ? ' _current' : '' }}">Система</a></span>
         </nav>
-        
-        {% if var is defined and foo.method(var) is defined %}
-            
-        {% endif %}
 
         <a class="layout-header__activity is_active">
             <span class="badge badge_small badge_success">1</span>

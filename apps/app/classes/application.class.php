@@ -14,13 +14,17 @@ final class Application extends Initialize
 
     public function handle()
     {
-        $app = [
-            'title' => 'Fastest CMS'
-        ];
-    
-        // __($this);
+        $this->initMVC();
 
+        $app = [
+            'title'         => 'Fastest CMS',
+            'controller'    => $this->controller,
+            'action'        => $this->action,
+            'params'        => $this->params
+        ];
+        
         $this->template->assign('app', $app);
+
         $this->template->display('base');
     }
 

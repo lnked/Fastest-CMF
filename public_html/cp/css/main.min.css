@@ -1273,7 +1273,7 @@ label {
       font-size: 14px;
       font-size: 14px;
       font-size: 1.4rem; }
-      .nav__item__link_current {
+      .nav__item__link._current {
         color: #EFF8C7;
         text-decoration: none; }
 
