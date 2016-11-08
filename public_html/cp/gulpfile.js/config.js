@@ -1,5 +1,5 @@
 const src = './frontend/';
-const app = './';
+const app = './public_html/';
 const markup = 'markup';
 
 module.exports.app  = app;
@@ -58,11 +58,11 @@ module.exports.tasks = {
         src: src + 'favicon/**/*.*',
         app: app + 'favicon'
     },
-    
+
     'svgstore': {
         src: src + 'svgstore/**/*.svg',
-        path: src + 'template/components/',
-        file: src + 'template/components/_svgstore.html'
+        path: src ,
+        file: src + 'svgstore.html'
     },
 
     'sprite': {

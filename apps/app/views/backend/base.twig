@@ -1,5 +1,5 @@
-{{ include('components/meta.twig', sandboxed = true) }}
-{{ include('components/svgstore.twig', sandboxed = true) }}
+{% include 'components/meta.twig' %}
+{% include 'svgstore.html' %}
 
 <div class="preload show1 active">
     <span class="preload__spinner"></span>
@@ -8,18 +8,18 @@
     </span>
 </div>
 
-{{ include('components/popup.twig', sandboxed = true) }}
-{{ include('components/sidebar.twig', sandboxed = true) }}
+{% include 'components/popup.twig' %}
+{% include 'components/sidebar.twig' %}
 
 <div class="layout-wrapper">
 
     <div class="layout-content">
         
-        {{ include('components/header.twig', sandboxed = true) }}
+        {% include 'components/header.twig' %}
         
         <div class="layout-content__wrapper">
             
-            {{ include('components/content.twig', sandboxed = true) }}
+            {% include 'components/content.twig' %}
 
         </div>
 
@@ -27,4 +27,4 @@
 
 </div>
 
-{{ include('components/scripts.twig', sandboxed = true) }}
+{% include 'components/scripts.twig' %}
