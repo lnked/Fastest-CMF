@@ -5,8 +5,7 @@ $a-long-time:                   .7s;
 
 // Fonts
 $font-base:                     10px;
-$font-family:                   Verdana, Arial, Helvetica, sans-serif;
-$font-arial:                    Arial, Helvetica, sans-serif;
+$font-family:                   Roboto, sans-serif;
 $font-forms:                    Arial, Helvetica, sans-serif;
 
 // Colors
@@ -59,7 +58,8 @@ $c-golden-poppy:                #f6c109;
 $c-christi:                     #71c21e;
 $c-pumpkin:                     #f86519;
 $c-denim:                       #0c63b9;
-$c-denim-divider:               #538fb5;
+$c-denim-divider:               #3372b1;
+$c-maya-blue:                   #61B6E7;
 
 $c-silver-tree:                 #57BB8A;
 $c-geraldine:                   #e67c73;
@@ -99,8 +99,8 @@ $c-warning:                     $c-persimmon;
 $layout-width:                  1260px;
 $layout-margin:                 10px;
 
-$header-height:                 55px;
+$header-height:                 50px;
 
-$sidebar-width:                 55px;
-$sidebar-helper-width:          195px;
 $sidebar-margin:                20px;
+$sidebar-width:                 50px;
+$sidebar-helper-width:          230px;

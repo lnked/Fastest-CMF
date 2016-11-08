@@ -17,16 +17,16 @@
             </svg>
         </a>
 
-{#
         <nav class="nav" role="navigation">
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/site" class="nav__item__link{{ app.controller == 'site' ? ' _current' : '' }}">Сайт</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/marketing" class="nav__item__link{{ app.controller == 'marketing' ? ' _current' : '' }}">Маркетинг</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/seo" class="nav__item__link{{ app.controller == 'seo' ? ' _current' : '' }}">Поисковая оптимизация</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/users" class="nav__item__link{{ app.controller == 'users' ? ' _current' : '' }}">Пользователи</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/shop" class="nav__item__link{{ app.controller == 'shop' ? ' _current' : '' }}">Магазин</a></span>
-            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/system" class="nav__item__link{{ app.controller == 'system' ? ' _current' : '' }}">Система</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/site" class="nav__item__link{{ app.controller == 'site' ? ' is-current' : '' }}">Сайт</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/marketing" class="nav__item__link{{ app.controller == 'marketing' ? ' is-current' : '' }}">Маркетинг</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/seo" class="nav__item__link{{ app.controller == 'seo' ? ' is-current' : '' }}">Поисковая оптимизация</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/users" class="nav__item__link{{ app.controller == 'users' ? ' is-current' : '' }}">Пользователи</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/shop" class="nav__item__link{{ app.controller == 'shop' ? ' is-current' : '' }}">Магазин</a></span>
+            <span class="nav__item"><a href="/{{ ADMIN_DIR }}/system" class="nav__item__link{{ app.controller == 'system' ? ' is-current' : '' }}">Система</a></span>
         </nav>
 
+{#
         <a class="header__activity is_active">
             <span class="badge badge_small badge_success">1</span>
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20" xml:space="preserve"><path d="M12.6,3.3c-0.5-0.3-0.9-0.9-0.9-1.5c0,0,0,0,0,0C11.8,0.8,11,0,10,0C9,0,8.2,0.8,8.2,1.8c0,0,0,0,0,0c0,0.6-0.3,1.2-0.9,1.5c-3.9,2.3-1.7,9.8-5.8,11.1L2,16h16l0.4-1.6C14.3,13.1,16.6,5.5,12.6,3.3z M10,1.1c0.4,0,0.7,0.3,0.7,0.7c0,0.4-0.3,0.7-0.7,0.7c-0.4,0-0.7-0.3-0.7-0.7S9.6,1.1,10,1.1z M13,17c0,1.7-1.3,3-3,3c-1.6,0-3-1.3-3-3H13z"></path></svg>
