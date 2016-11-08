@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.31-dev/40, created on 2016-11-07 16:25:01
+/* Smarty version 3.1.31-dev/40, created on 2016-11-08 08:41:26
   from "/Users/edik/web/fastest.dev/apps/app/views/frontend/smarty/base.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/40',
-  'unifunc' => 'content_5820aadd626218_13787675',
+  'unifunc' => 'content_58218fb6de4a79_68235223',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5820aadd626218_13787675 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58218fb6de4a79_68235223 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><title><?php echo $_smarty_tpl->tpl_vars['app']->value['title'];?>

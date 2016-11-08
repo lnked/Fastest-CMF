@@ -1,0 +1,25 @@
+.layout-header {
+    clear: both;
+    position: relative;
+    height: $header-height;
+
+    &__wrapper {
+        @extend %layout;
+    }
+
+    &__logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+@media only screen and (max-width: 1280px) {}
+@media only screen and (max-width: 1140px) {}
+@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 960px) {}
+@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 568px) {}
+@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 375px) {}
+@media only screen and (max-width: 320px) {}
