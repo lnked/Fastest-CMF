@@ -22,6 +22,12 @@ final class Application extends Initialize
             'action'        => $this->action,
             'params'        => $this->params
         ];
+
+        if ($this->controller == 'cache')
+        {
+            fn_rrmdir(PATH_RUNTIME, true);
+            fn_redirect('/'.ADMIN_DIR);
+        }
         
         $this->template->assign('app', $app);
 

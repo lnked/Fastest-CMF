@@ -1,20 +1,10 @@
-.layout-footer {
-    clear: both;
-    position: relative;
-    height: $footer-height;
-    margin-top: -$footer-height;
-    
-    &__wrapper {
-        @extend %layout;
-    }
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
 
-    &__copiright {}
-
-    &__navigation {
-        &__list {}
-        &__item {
-            &__link {}
-        }
+    &__content {
+        padding-left: $sidebar-width + $sidebar-margin;
     }
 }
 

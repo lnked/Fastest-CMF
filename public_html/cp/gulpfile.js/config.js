@@ -1,5 +1,5 @@
 const src = './frontend/';
-const app = './public_html/';
+const app = './';
 const markup = 'markup';
 
 module.exports.app  = app;

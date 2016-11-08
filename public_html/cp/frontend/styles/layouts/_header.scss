@@ -1,16 +1,46 @@
-.layout-header {
+.header {
     clear: both;
     position: relative;
     height: $header-height;
-
-    &__wrapper {
-        @extend %layout;
-    }
+    background-color: $c-header;
 
     &__logo {
         position: absolute;
         left: 0;
         top: 0;
+        color: #fff;
+        width: $header-height;
+        height: $header-height;
+        text-align: center;
+        line-height: $header-height;
+        border-right: 1px solid $c-denim-divider;
+
+        .protect {
+            max-width: 30px;
+            max-height: 30px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+
+    &__cache {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #fff;
+        text-align: center;
+        line-height: $header-height;
+        width: $header-height;
+        height: $header-height;
+        border-right: 1px solid $c-denim-divider;
+
+        .clear-cache {
+            max-width: 30px;
+            max-height: 30px;
+            display: inline-block;
+            vertical-align: middle;
+        }
     }
 }
 

@@ -14,7 +14,6 @@ $c-select-color:                #f00;
 $c-select-background:           #000;
 
 $c-text-color:                  #121212;
-$c-body-background:             #fff !default;
 
 $c-placeholder-color:           #000;
 $c-placeholder-opacity:         .5;
@@ -38,8 +37,29 @@ $c-jordy-blue:                  #7baaf7;
 $c-maya-blue:                   #76B5FF;
 $c-hawkes-blue:                 #d4e4f8;
 $c-ultramarine-blue:            #5477F7;
-
 $c-electric-indigo:             #6100EA;
+
+// CMS
+$c-catalina-blue:               #2c405a;
+$c-astronaut:                   #3f536e;
+$c-polo-blue:                   #8dabc4;
+$c-light-steel-blue:            #a8c6df;
+$c-pattens-blue:                #c5d9e8;
+$c-pattens-blue-light:          #dde7ea;
+$c-alice-blue:                  #ecf5fd;
+$c-alice-blue-divider:          #fafbfc;
+$c-dodger-blue:                 #0093ee;
+$c-lime-green:                  #4ece3d;
+$c-torch-red:                   #ff151f;
+$c-navy-blue:                   #0079c4;
+$c-lime-green-active:           #40b630;
+$c-medium-purple:               #ab7df6;
+$c-light-sea-green:             #26b5bd;
+$c-golden-poppy:                #f6c109;
+$c-christi:                     #71c21e;
+$c-pumpkin:                     #f86519;
+$c-denim:                       #0c63b9;
+$c-denim-divider:               #538fb5;
 
 $c-silver-tree:                 #57BB8A;
 $c-geraldine:                   #e67c73;
@@ -49,6 +69,10 @@ $c-royal-blue:                  #3367d6;
 $c-salem:                       #0b8043;
 $c-rersian-red:                 #c53929;
 $c-persimmon:                   #ea6100;
+
+$c-header:                      $c-denim !default;
+$c-sidebar:                     $c-catalina-blue !default;
+$c-body-background:             $c-alice-blue !default;
 
 // Alerts
 
@@ -75,10 +99,8 @@ $c-warning:                     $c-persimmon;
 $layout-width:                  1260px;
 $layout-margin:                 10px;
 
-$header-height:                 159px;
+$header-height:                 55px;
 
-$footer-margin:                 20px;
-$footer-height:                 100px;
-
-$sidebar-width:                 200px;
+$sidebar-width:                 55px;
+$sidebar-helper-width:          195px;
 $sidebar-margin:                20px;

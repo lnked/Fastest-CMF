@@ -1,22 +1,23 @@
 {% include 'components/meta.twig' %}
 {% include 'svgstore.html' %}
 
-<div class="preload show1 active">
-    <span class="preload__spinner"></span>
-    <span class="preload__label">
-        Загрузка...
-    </span>
-</div>
-
+{#
+{% include 'components/preloader.html' %}
 {% include 'components/popup.twig' %}
+#}
+
 {% include 'components/sidebar.twig' %}
 
-<div class="layout-wrapper">
+<main class="wrapper">
+    
+    {% include 'components/header.twig' %}
 
+    <div class="wrapper__content">
+        xxx
+    </div>
+
+{#
     <div class="layout-content">
-        
-        {% include 'components/header.twig' %}
-        
         <div class="layout-content__wrapper">
             
             {% include 'components/content.twig' %}
@@ -24,7 +25,8 @@
         </div>
 
     </div>
+#}
 
-</div>
+</main>
 
 {% include 'components/scripts.twig' %}
