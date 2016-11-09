@@ -3,6 +3,7 @@
     position: relative;
     height: $header-height;
     background-color: $c-header;
+    margin-left: -$sidebar-width;
 
     &__logo {
         position: absolute;

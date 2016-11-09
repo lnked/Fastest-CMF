@@ -1,6 +1,6 @@
 .nav {
     float: left;
-    padding-left: $sidebar-width + $sidebar-margin;
+    padding-left: $sidebar-width + $content-margin;
 
     &__item {
         line-height: $header-height;
@@ -11,10 +11,15 @@
         &__link {
             color: $c-pattens-blue;
             font-size: 1.4rem;
-            line-height: 20px;
+            line-height: 26px;
             display: inline-block;
             vertical-align: middle;
             text-decoration: none;
+            transition: color $a-time;
+
+            &:hover {
+                color: $c-white;
+            }
 
             &.is-current {
                 color: $c-white;

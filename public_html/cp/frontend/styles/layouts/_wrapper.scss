@@ -2,12 +2,11 @@
     width: 100%;
     min-height: 100%;
     overflow: hidden;
+    padding-left: $sidebar-width;
 
     &__content {
         clear: both;
-        border: 1px solid red;
-        padding-top: $header-height;
-        padding-left: $sidebar-width + $sidebar-margin;
+        padding: $content-margin;
     }
 }
 
