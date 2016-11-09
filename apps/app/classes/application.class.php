@@ -12,6 +12,31 @@ final class Application extends Initialize
 
     }
 
+    private function initialize()
+    {
+        if ($this->controller == 'cache')
+        {
+            fn_rrmdir(PATH_RUNTIME, true);
+            fn_redirect('/'.ADMIN_DIR);
+        }
+
+        if (!empty($this->controller))
+        {
+            exit(__('controller: ', $this->controller, 'action: ', $this->action, 'params: ', $this->params));
+
+            // http://fastest.dev/cp/site/news/edit/10
+
+            // site
+            // news
+            // Array
+            // (
+            //     [0] => edit
+            //     [1] => 10
+            // )
+
+        }
+    }
+
     public function handle()
     {
         $this->initMVC();
@@ -23,12 +48,8 @@ final class Application extends Initialize
             'params'        => $this->params
         ];
 
-        if ($this->controller == 'cache')
-        {
-            fn_rrmdir(PATH_RUNTIME, true);
-            fn_redirect('/'.ADMIN_DIR);
-        }
-        
+        $this->initialize();
+
         $this->template->assign('app', $app);
 
         $this->template->display('base');

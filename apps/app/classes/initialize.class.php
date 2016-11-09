@@ -19,10 +19,6 @@ class Initialize extends templateEngine
     protected $action = null;
     protected $params = null;
 
-    # /controller/action/var1/value1/var2/value2
-    # /controller/action/foo/bar/
-    # /controller/action/param1:value1/param2:value2
-
     public $domain  = null;
     public $path    = [];
     public $page    = ['id' => 0];
