@@ -4,16 +4,21 @@
 
     &__item {
         line-height: $header-height;
-        margin-right: 20px;
+        margin-right: 25px;
+        display: inline-block;
+        vertical-align: top;
 
         &__link {
             color: $c-pattens-blue;
             font-size: 1.4rem;
+            line-height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            text-decoration: none;
 
             &.is-current {
                 color: $c-white;
                 cursor: default;
-                text-decoration: none;
             }
         }
     }
