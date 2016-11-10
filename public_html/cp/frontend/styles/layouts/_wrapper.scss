@@ -7,12 +7,15 @@
     // position: absolute;
     // backface-visibility: hidden;
     // transform: translate3d(-270px, 0px, 0px);
-
     // transform: translate3d(0px, 0px, 0px);
 
     &__content {
         clear: both;
         padding: $content-margin;
+
+        &.loading {
+            border: 1px solid red;
+        }
     }
 }
 

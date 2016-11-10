@@ -27,11 +27,32 @@ fn_init_config(
 spl_autoload_register(function($_class) {
     $_class = strtolower($_class);
 
-    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.trait.php')) {
+    if ($_class == 'news' || $_class == 'newsitem')
+    {
+        // exit(PATH_MODULES.DS.'news'.DS.'models'.DS.$_class.'.Model.php');
+    
+    //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
+    //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
+    //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
+    }
+
+    if (file_exists(PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php'))
+    {
+        require_once PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php';
+    }
+
+    // if (file_exists(PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php'))
+    // {
+    //     require_once PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php';
+    // }
+
+    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.trait.php'))
+    {
         require_once FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.trait.php';
     }
 
-    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.class.php')) {
+    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.class.php'))
+    {
         require_once FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.class.php';
     }
 });

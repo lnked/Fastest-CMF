@@ -7,7 +7,7 @@ var app = app || {};
         
         init: function()
         {
-            this.history.init();
+            // this.history.init();
             
             // var container = document.querySelector('.gallery');
 

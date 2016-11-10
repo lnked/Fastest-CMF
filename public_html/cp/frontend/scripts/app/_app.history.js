@@ -29,8 +29,30 @@ var app = app || {};
 
     app.history = {
         
+        navi: null,
+
+        wrap: null,
+
         init: function()
         {
+            var _this_ = this, _url_ = null;
+
+            _this_.navi = $(".j-ajax-link");
+            _this_.wrap = $("#content");
+
+            _this_.navi.on('click', function(e){
+                e.preventDefault();
+                
+                _url_ = $(this).attr('href');
+                
+                _this_.navi.filter('.is-current').removeClass('is-current');
+                _this_.navi.filter('[href="'+_url_+'"]').addClass('is-current');
+
+                window.history.pushState({}, null, _url_);
+            });
+
+            console.log(window.History);
+
             // function requestContent(file) {
             //   $('.wrapper__content').load(file + ' .wrapper__content');
             // }
@@ -51,9 +73,7 @@ var app = app || {};
             //   }
             // });
 
-            console.log(window.History);
-
-            window.history.pushState({}, null, '/cp/site/edik');
+            // 
 
             // Bind to StateChange Event
             // History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
@@ -70,6 +90,8 @@ var app = app || {};
             // History.back(); // logs {}, "Home Page", "?"
             // History.go(2); // logs {state:3}, "State 3", "?state=3"
             
+            return false;
+
             /*  Инициализируем контейнер для записей */
             var $entries = $(".wrapper__content");
 
