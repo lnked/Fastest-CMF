@@ -5,11 +5,23 @@ var app = app || {};
 
     app = {
         
-        init: function() {
-            this.map.init();
-            this.faq.init();
-            this.faq.morph();
-            this.fixmenu.init();
+        init: function()
+        {
+            this.history.init();
+            
+            // var container = document.querySelector('.gallery');
+
+            // container.addEventListener('click', function(e) {
+            //   if (e.target != e.currentTarget) {
+            //     e.preventDefault();
+            //     // e.target is the image inside the link we just clicked.
+            //   }
+            //   e.stopPropagation();
+            // }, false);
+
+            // window.addEventListener('popstate', function(e) {
+            //   // e.state is equal to the data-attribute of the last image we clicked
+            // });
         }
 
     };

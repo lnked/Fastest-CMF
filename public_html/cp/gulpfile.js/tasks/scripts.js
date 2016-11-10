@@ -15,6 +15,7 @@ module.exports = function(config) {
     return function(callback) {
 
         // Bower files
+        
         try {
             
             gulp.src(

@@ -7,11 +7,6 @@ final class Application extends Initialize
         parent::__construct();
     }
 
-    public function register()
-    {
-
-    }
-
     private function initialize()
     {
         if ($this->controller == 'cache')
@@ -22,7 +17,7 @@ final class Application extends Initialize
 
         if (!empty($this->controller))
         {
-            exit(__('controller: ', $this->controller, 'action: ', $this->action, 'params: ', $this->params));
+            // exit(__('controller: ', $this->controller, 'action: ', $this->action, 'params: ', $this->params));
 
             // http://fastest.dev/cp/site/news/edit/10
 
