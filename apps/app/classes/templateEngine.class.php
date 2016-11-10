@@ -15,11 +15,11 @@ class templateEngine
             $dir = str_replace('#', $driver, $dir);
         }
 
-        if (file_exists(PATH_DRIVERS.DS.$driver.'.templateEngine.php'))
+        if (file_exists(PATH_TEMPLATING.DS.$driver.'.templateEngine.php'))
         {
             if (!class_exists('templateRender'))
             {
-                include PATH_DRIVERS.DS.$driver.'.templateEngine.php';
+                include_once PATH_TEMPLATING.DS.$driver.'.templateEngine.php';
 
                 $this->template = new templateRender($dir);
             }

@@ -66,7 +66,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'PATH_DRIVERS' => FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'drivers',
+    'PATH_TEMPLATING' => FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'templating',
     
     /*
     |--------------------------------------------------------------------------

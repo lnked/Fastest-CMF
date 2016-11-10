@@ -56,7 +56,7 @@ class templateRender extends Renderer
 
 	            extract($this->data);
 
-				include_once($file);
+				require_once $file;
 				
 				$output = ob_get_contents();
 				
