@@ -3,28 +3,8 @@
     position: relative;
     height: $header-height;
     background-color: $c-header;
-    margin-left: -$sidebar-width;
-
-    &__logo {
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: #fff;
-        width: $header-height;
-        height: $header-height;
-        text-align: center;
-        line-height: $header-height;
-        border-right: 1px solid $c-denim-divider;
-
-        .protect {
-            max-width: 24px;
-            max-height: 24px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-    }
-
-
+    transition: transform $a-micro-time;
+    
     &__cache {
         position: absolute;
         right: 0;

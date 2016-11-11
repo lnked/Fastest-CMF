@@ -15,7 +15,7 @@ final class Application extends Initialize
             fn_redirect('/'.ADMIN_DIR);
         }
 
-        if (!empty($this->controller))
+        if (!empty($this->action))
         {
             $_class = $this->action;
             

@@ -1,6 +1,9 @@
 .nav {
     float: left;
-    padding-left: $sidebar-width + $content-margin;
+    user-select: none;
+    padding-left: $content-margin;
+    border-left: 1px solid $c-denim-divider;
+    transition: border-color $a-micro-time;
 
     &__item {
         line-height: $header-height;
@@ -27,6 +30,10 @@
             }
         }
     }
+}
+
+.is-open .nav {
+    border-color: rgba(0,0,0,0);
 }
 
 @media only screen and (max-width: 1280px) {}

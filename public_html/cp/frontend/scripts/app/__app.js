@@ -7,6 +7,14 @@ var app = app || {};
         
         init: function()
         {
+            $('body').on('click', '.sidebar__logo', function(e){
+                e.preventDefault();
+
+                $('#header').toggleClass('is-open');
+                $('#wrapper').toggleClass('is-open');
+                $('#sidebar').toggleClass('is-open');
+            });
+
             // this.history.init();
             
             // var container = document.querySelector('.gallery');

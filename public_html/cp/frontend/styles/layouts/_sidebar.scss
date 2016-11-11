@@ -1,16 +1,43 @@
 .sidebar {
-    width: $sidebar-width;
+    width: $sidebar-width-open;
     height: 100%;
     position: fixed;
     left: 0;
     top: 0;
-    margin-right: -$sidebar-width;
+    margin-right: -$sidebar-width-close;
     background-color: $c-sidebar;
+    backface-visibility: hidden;
+    // transform: translate3d(-$sidebar-width-diff,0,0);
+    transition: transform $a-micro-time;
+
+    &.is-open {
+        transform: translate3d(0,0,0);
+    }
     
-    // position: absolute;
-    // background-color: rgb(255, 255, 255);
-    // width: 270px;
-    // height: 708px;
+    &__logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+        color: #fff;
+        width: $header-height;
+        height: $header-height;
+        text-align: center;
+        line-height: $header-height;
+        background-color: $c-header;
+        transition: background-color $a-micro-time;
+
+        .protect {
+            max-width: 24px;
+            max-height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &.is-open &__logo {
+        background-color: rgba(0,0,0,0);
+    }
 
     &__helper {
         width: $sidebar-helper-width;
