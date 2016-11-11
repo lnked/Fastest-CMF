@@ -4,18 +4,20 @@
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 2;
     margin-right: -$sidebar-width-close;
     background-color: $c-sidebar;
     backface-visibility: hidden;
-    // transform: translate3d(-$sidebar-width-diff,0,0);
-    transition: transform $a-micro-time;
+    transform: translate3d(-$sidebar-width-diff,0,0);
+    transition: transform $a-animate-time;
 
     &.is-open {
+        // width: $sidebar-width-open;
         transform: translate3d(0,0,0);
     }
     
     &__logo {
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 0;
         cursor: pointer;
@@ -25,7 +27,7 @@
         text-align: center;
         line-height: $header-height;
         background-color: $c-header;
-        transition: background-color $a-micro-time;
+        transition: background-color $a-animate-time;
 
         .protect {
             max-width: 24px;

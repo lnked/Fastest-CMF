@@ -3,12 +3,12 @@
     min-height: 100%;
     overflow: hidden;
     position: relative;
-    z-index: 100;
-    margin-left: $sidebar-width-close;
-    background-color: $c-body-background;
+    z-index: 1;
+    padding-left: $sidebar-width-close;
+    background-color: $c-wrapper;
     backface-visibility: hidden;
-    transition: transform $a-micro-time;
-    
+    transition: transform $a-animate-time;
+
     &.is-open {
         transform: translate3d($sidebar-width-diff, 0, 0);
     }

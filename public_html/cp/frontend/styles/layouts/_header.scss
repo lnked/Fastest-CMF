@@ -1,5 +1,6 @@
 .header {
     clear: both;
+    width: 100%;
     position: relative;
     height: $header-height;
     background-color: $c-header;
@@ -9,6 +10,7 @@
         position: absolute;
         right: 0;
         top: 0;
+        z-index: 100;
         color: #fff;
         text-align: center;
         line-height: $header-height;

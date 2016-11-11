@@ -1,6 +1,7 @@
 // Animation
 $a-time:                        .3s;
 $a-micro-time:                  .15s;
+$a-animate-time:                .35s;
 $a-long-time:                   .7s;
 
 // Fonts
@@ -72,7 +73,9 @@ $c-persimmon:                   #ea6100;
 
 $c-header:                      $c-denim !default;
 $c-sidebar:                     $c-catalina-blue !default;
-$c-body-background:             $c-alice-blue !default;
+$c-body-background:             $c-catalina-blue !default;
+$c-wrapper:                     $c-alice-blue !default;
+// $c-body-background:             $c-alice-blue !default;
 
 // Alerts
 
