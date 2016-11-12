@@ -31,11 +31,10 @@ class Initialize extends templateEngine
         $this->locale   = $this->getLocale($this->request, $this->path);
         $this->tpath    = $this->path;
 
-        $this->csrf();
-
         $this->checkAdmin();
-
         $this->initTemplate();
+
+        $this->csrf();
     }
 
     protected function initMVC()
@@ -84,7 +83,7 @@ class Initialize extends templateEngine
 
     private function csrf()
     {
-        if (defined('CSRF_PROTECTION') && CSRF_PROTECTION)
+        if (!count($_POST) && defined('CSRF_PROTECTION') && CSRF_PROTECTION)
         {
             unset($_SESSION['csrf_param']);
             unset($_SESSION[$this->csrf_param]);
