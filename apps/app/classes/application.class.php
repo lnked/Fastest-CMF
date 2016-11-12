@@ -37,7 +37,7 @@ final class Application extends Initialize
             }
 
             // exit(PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php');
-            
+
             if (class_exists($_class))
             {
                 $module = new $_class;
@@ -133,7 +133,7 @@ final class Application extends Initialize
 
                 $tpl_exbody = $this->moduleTemplate($tpl_exbody);
                 
-                if (!file_exists($tpl_exbody . '.tpl' ))
+                if (!file_exists($tpl_exbody . '.twig' ))
                 {
                     $this->errorPage();
                 }
@@ -145,6 +145,11 @@ final class Application extends Initialize
         }
     }
 
+    protected function getContent()
+    {
+        return $this->template->fetch(PATH_MODULES.DS.'news'.DS.'views'.DS.'backend/index');
+    }
+
     public function handle()
     {
         $this->initMVC();
@@ -153,7 +158,8 @@ final class Application extends Initialize
             'title'         => 'Fastest CMS',
             'controller'    => $this->controller,
             'action'        => $this->action,
-            'params'        => $this->params
+            'params'        => $this->params,
+            'content'       => $this->getContent()
         ];
 
         $this->initialize();

@@ -47,11 +47,36 @@ class templateRender extends Renderer
     }
 
     public function fetch($template = '', $cache_id = '', $compile_id = '')
-    {}
+    {
+        $twig = clone $this->template;
+        $twig->setLoader(new Twig_Loader_String());
+
+        if (file_exists($template . $this->extension))
+        {
+            $rendered = $twig->render(
+                file_get_contents($template . $this->extension),
+                $this->data
+            );
+
+            unset($twig);
+
+            return $rendered;
+        }
+        else if (file_exists($template))
+        {
+            $rendered = $twig->render(
+                file_get_contents($template),
+                $this->data
+            );
+
+            unset($twig);
+
+            return $rendered;
+        }
+    }
 
     public function display($template = '')
     {
-        // exit($template . $this->extension);
         $this->template->addGlobal("session", $_SESSION);
   		$this->template->loadTemplate($template . $this->extension)->display($this->data);
     }

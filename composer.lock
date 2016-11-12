@@ -4430,12 +4430,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "e867ae125e95ff629eb3b748eb222200f50e1769"
+                "reference": "be054c1727b7aa3d40fd9189d7690d0d9655560d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/e867ae125e95ff629eb3b748eb222200f50e1769",
-                "reference": "e867ae125e95ff629eb3b748eb222200f50e1769",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/be054c1727b7aa3d40fd9189d7690d0d9655560d",
+                "reference": "be054c1727b7aa3d40fd9189d7690d0d9655560d",
                 "shasum": ""
             },
             "require": {
@@ -4475,7 +4475,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-11-08 17:09:14"
+            "time": "2016-11-11 21:17:35"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5045,12 +5045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "dc3533c3479c9ffd4ebcdf3dd8f0cdd24a5a19ff"
+                "reference": "c19448545af1e83a43244ca2f5855ffeada961bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/dc3533c3479c9ffd4ebcdf3dd8f0cdd24a5a19ff",
-                "reference": "dc3533c3479c9ffd4ebcdf3dd8f0cdd24a5a19ff",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c19448545af1e83a43244ca2f5855ffeada961bf",
+                "reference": "c19448545af1e83a43244ca2f5855ffeada961bf",
                 "shasum": ""
             },
             "require": {
@@ -5063,7 +5063,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.27-dev"
+                    "dev-master": "1.28-dev"
                 }
             },
             "autoload": {
@@ -5098,7 +5098,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-11-08 20:40:21"
+            "time": "2016-11-11 21:49:36"
         },
         {
             "name": "webmozart/assert",

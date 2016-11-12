@@ -14,9 +14,21 @@
 
     <div class="wrapper__content" id="content">
         
-        <div style="font-size: 10px;">xxxxx</div>
         
-        <ul id="buttons"></ul>
+        {{ app.content|raw }}
+        
+        <form action="" method="POST" enctype="multipart/form-data">
+            
+            <div class="btn-list">
+                <button class="btn is-save" name="save" type="submit">Сохранить и закрыть</button>
+                <button class="btn is-apply" name="apply" type="submit">Сохранить</button>
+                <span class="btn-list__title">
+                    или
+                </span>
+
+                <a href="#" class="btn is-link">Отменить</a>
+            </div>
+        </form>
         
         {# {% include 'components/content.twig' %} #}
 

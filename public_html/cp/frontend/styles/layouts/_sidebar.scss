@@ -12,13 +12,12 @@
     transition: transform $a-animate-time;
 
     &.is-open {
-        // width: $sidebar-width-open;
         transform: translate3d(0,0,0);
     }
     
     &__logo {
         position: fixed;
-        left: 0;
+        right: 0;
         top: 0;
         cursor: pointer;
         color: #fff;

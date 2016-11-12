@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+    font-size: 1.4rem;
+    background-color: $c-white;
+    
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    
+    td, th {
+        padding: 10px;
+        border: 1px solid $c-border;
+    }
+}
