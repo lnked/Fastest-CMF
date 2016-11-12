@@ -8,7 +8,8 @@
     background-color: $c-wrapper;
     backface-visibility: hidden;
     transition: transform $a-animate-time;
-
+    transform-style: flat;
+    
     &.is-open {
         transform: translate3d($sidebar-width-diff, 0, 0);
     }
