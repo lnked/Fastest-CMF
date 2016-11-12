@@ -21,7 +21,10 @@ class templateEngine
             {
                 include_once PATH_TEMPLATING.DS.$driver.'.templateEngine.php';
 
-                $this->template = new templateRender($dir);
+                $this->template = new templateRender([
+                    PATH_TEMPLATES.DS.$dir,
+                    PATH_TEMPLATES.DS.PATH_COMMON
+                ]);
             }
         }
     }

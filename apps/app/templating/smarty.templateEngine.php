@@ -4,13 +4,13 @@ class templateRender extends Renderer
 {
 	protected $extension = '.tpl';
 
-	public function __construct($dir = '')
+	public function __construct($templateDir = '')
 	{
 		$this->template = new Smarty;
 
 		$this->template->setCacheDir(PATH_RUNTIME);
 		$this->template->setCompileDir(PATH_RUNTIME);
-		$this->template->setTemplateDir(PATH_TEMPLATES.DS.$dir);
+		$this->template->setTemplateDir($templateDir);
 		
 		$this->template->setCaching(CACHING);
 		$this->template->setCacheLifetime(60);

@@ -4,14 +4,13 @@ class templateRender extends Renderer
 {
     protected $extension = '.twig';
 
-	public function __construct($dir = '')
+	public function __construct($templateDir = '')
 	{
-		$loader = new Twig_Loader_Filesystem(PATH_TEMPLATES.DS.$dir);
+		$loader = new Twig_Loader_Filesystem($templateDir);
         
         $loader->addPath(FASTEST_ROOT.PUBLIC_ROOT.DS.ADMIN_DIR.DS.'frontend'.DS);
 
         $this->template = new Twig_Environment($loader, [
-        	'template_dir'		=> 	PATH_TEMPLATES.DS.$dir,
         	'cache'             =>	PATH_RUNTIME,
             'debug'             => 	TEMPLATING_DEBUG,
             'auto_reload'       =>  FORCE_COMPILE,
