@@ -18,6 +18,8 @@ final class Application extends Initialize
 
     public function handle()
     {
+        $this->headers();
+        
         if (count($_POST))
         {
             exit(__($_POST, $_SESSION[$this->csrf_param]));

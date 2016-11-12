@@ -60,6 +60,31 @@ class Initialize extends templateEngine
         }
     }
 
+    protected static function headers($cache = false)
+    {
+        header("Last-Modified: " . gmdate('D, d M Y H:i:s', (time() - 3600)) . " GMT");
+        header("Cache-control: public");
+        
+        if ($cache)
+        {
+            header("Cache-control: max-age=31536000");
+        }
+        else
+        {
+            header("Strict-Transport-Security: max-age=31536000");
+            header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0');
+            header("Pragma: no-cache");
+        }
+
+        header("Expires: " . date("r", time() + 2592000));
+
+        if (extension_loaded('zlib') && (!defined('GZIP_COMPRESS') || defined('GZIP_COMPRESS') && GZIP_COMPRESS))
+        {
+            ini_set("zlib.output_compression", "On");
+            ini_set('zlib.output_compression_level', "7");
+        }
+    }
+
     private function initTemplate()
     {
         if ($this->is_admin)
