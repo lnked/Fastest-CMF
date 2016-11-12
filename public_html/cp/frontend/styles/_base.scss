@@ -19,12 +19,12 @@ html {
 }
 
 body {
-    color: $c-text-color;
+    color: $c-text;
     overflow: hidden;
     min-width: 320px;
     font-size: 0;
     line-height: 1.4446;
-    background-color: $c-body-background;
+    background-color: $c-body;
 }
 
 body, input, textarea, select, button {
