@@ -46,6 +46,16 @@ spl_autoload_register(function($_class) {
     //     require_once PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php';
     // }
 
+    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'kernel'.DS.$_class.'.trait.php'))
+    {
+        require_once FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'kernel'.DS.$_class.'.trait.php';
+    }
+
+    if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'kernel'.DS.$_class.'.class.php'))
+    {
+        require_once FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'kernel'.DS.$_class.'.class.php';
+    }
+    
     if (file_exists(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.trait.php'))
     {
         require_once FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'classes'.DS.$_class.'.trait.php';
