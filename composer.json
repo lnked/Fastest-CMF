@@ -29,6 +29,7 @@
         "monolog/monolog": "^1.21",
         "twig/twig": "^1.27",
         "fenom/fenom": "^2.11",
-        "fenom/smarty-fallback": "dev-master"
+        "fenom/smarty-fallback": "dev-master",
+        "filp/whoops": "^2.1"
     }
 }

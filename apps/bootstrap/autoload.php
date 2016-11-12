@@ -2,6 +2,23 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Handler\JsonResponseHandler;
+
+$whoops = new \Whoops\Run;
+
+$handler = new PrettyPageHandler;
+$handler->addDataTable('Killer App Details', []);
+$handler->setPageTitle("Whoops! There was a problem.");
+// $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->pushHandler($handler);
+
+if (Whoops\Util\Misc::isAjaxRequest()) {
+    $whoops->pushHandler(new JsonResponseHandler);
+}
+
+$whoops->register();
+
 # Functions
 #
 $fn_list = [

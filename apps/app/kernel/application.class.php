@@ -18,6 +18,9 @@ final class Application extends Initialize
 
     public function handle()
     {
+        exit( __( (123 == '123foo'), ' as ', 1 / 0,  (int) (0123 == '0123foo') ) );
+
+
         if (count($_POST))
         {
             exit(__($_POST, $_SESSION[$this->csrf_param]));
@@ -39,5 +42,4 @@ final class Application extends Initialize
 
         $this->template->display('base');
     }
-
 }
