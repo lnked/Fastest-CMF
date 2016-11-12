@@ -1,6 +1,6 @@
 svg {
     fill: currentColor;
-    shape-rendering: optimizeSpeed;
+    shape-rendering: geometricPrecision; // auto | optimizeSpeed | crispEdges | geometricPrecision | inherit;
 }
 
 .image {

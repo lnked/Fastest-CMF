@@ -8,7 +8,7 @@ $c-lighten-lighten:             10%;
 
 // Fonts
 $font-base:                     10px;
-$font-family:                   Roboto, sans-serif;
+$font-family:                   IstokWeb, 'Istok Web', Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 $font-forms:                    Arial, Helvetica, sans-serif;
 
 // Colors
@@ -74,12 +74,13 @@ $c-royal-blue:                  #3367d6;
 $c-salem:                       #0b8043;
 $c-rersian-red:                 #c53929;
 $c-persimmon:                   #ea6100;
+$c-saffron:                     #F8C52C;
 
 $c-header:                      $c-denim !default;
 $c-sidebar:                     $c-catalina-blue !default;
 $c-body-background:             $c-catalina-blue !default;
 $c-wrapper:                     $c-alice-blue !default;
-// $c-body-background:             $c-alice-blue !default;
+$c-icon-active:                 $c-saffron !default;
 
 // Alerts
 
