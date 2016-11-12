@@ -34,6 +34,22 @@ trait Tools {
 		return $result;
 	}
 
+	public static function colored($content = '')
+	{
+		if (is_string($content))
+		{
+			return '<span style="color: red">'.$content.'</span>';
+		}
+		elseif (is_array($content))
+		{
+			return array_map(function($item){
+				return '<span style="color: red">'.$item.'</span>';
+			}, $content);
+		}
+
+		return $content;
+	}
+
 	public static function base_url($path = array(), $length = 1, $start = 0)
 	{
 		$baseurl = '';
