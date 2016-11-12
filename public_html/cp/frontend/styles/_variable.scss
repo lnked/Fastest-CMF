@@ -24,10 +24,9 @@ $c-sandwich-overlay:            #000;
 $c-sandwich-background:         #2b65b6;
 $c-sandwich-background-active:  #fff;
 
-$c-border:                      #dde7ea;
-
 $c-lime:                        lime;
 $c-white:                       #fff;
+$c-gray:                        #cdcdcd;
 $c-black:                       #000;
 $c-green:                       #00f;
 $c-whisper:                     #E7E7E7;
@@ -81,6 +80,9 @@ $c-sidebar:                     $c-catalina-blue !default;
 $c-body-background:             $c-catalina-blue !default;
 $c-wrapper:                     $c-alice-blue !default;
 $c-icon-active:                 $c-saffron !default;
+
+$c-border:                      #dde7ea;
+// $c-border:                      $c-very-light-grey;
 
 // Alerts
 

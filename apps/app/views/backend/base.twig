@@ -15,29 +15,17 @@
     <div class="wrapper__content" id="content">
         
         {{ app.content|raw }}
-        
-{# 
-        {{ form_start(form, {'method': 'GET'}) }}
-            {{ form_errors(form) }}
 
-            {{ form_row(form.name) }}
-            {{ form_row(form.dueDate) }}
-
-            {{ form_row(form.submit, { 'label': 'Submit me' }) }}
-
-            {{ form_label(form.name) }}
-
-            {{ form_label(form.name, 'Your Name', {'label_attr': {'class': 'foo'}}) }}
-
-            {{ form_label(form.name, null, {
-                'label': 'Your name',
-                'label_attr': {'class': 'foo'}
-            }) }}
-
-        {{ form_end(form, {'render_rest': false}) }}
- #}
         <form action="" method="POST" enctype="multipart/form-data">
             
+            <label class="f-label">
+                <input type="text" class="f-input">
+            </label>
+
+            <label class="f-label">
+                <input type="text" class="f-input">
+            </label>
+
             <div class="btn-list">
                 <button class="btn is-save" name="save" type="submit">Сохранить и закрыть</button>
                 <button class="btn is-apply" name="apply" type="submit">Сохранить</button>
@@ -45,8 +33,9 @@
                     или
                 </span>
 
-                <a href="#" class="btn is-link">Отменить</a>
+                <a href="/{{ ADMIN_DIR }}" class="btn is-link">Отменить</a>
             </div>
+
         </form>
         
         {# {% include 'components/content.twig' %} #}

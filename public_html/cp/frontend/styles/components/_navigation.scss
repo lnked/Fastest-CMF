@@ -7,9 +7,12 @@
 
     &__item {
         line-height: $header-height;
-        margin-right: 25px;
         display: inline-block;
         vertical-align: top;
+
+        &:not(:last-child) {
+            margin-right: 25px;
+        }
 
         &__link {
             color: $c-pattens-blue;
