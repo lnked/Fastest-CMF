@@ -10,11 +10,11 @@ class Content
     {
         if ($this->is_admin)
         {
-            exit(__(
-                'controller: ', $this->colored($this->controller),
-                'action: ', $this->colored($this->action),
-                'params: ', $this->colored($this->params)
-            ));
+            // exit(__(
+            //     'controller: ', $this->colored($this->controller),
+            //     'action: ', $this->colored($this->action),
+            //     'params: ', $this->colored($this->params)
+            // ));
         }
 
         if (!empty($this->action))
