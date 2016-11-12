@@ -15,13 +15,13 @@
         }
 
         &__link {
-            color: $c-pattens-blue;
+            color: $c-heather;
             font-size: 1.4rem;
             line-height: 26px;
             display: inline-block;
             vertical-align: middle;
             text-decoration: none;
-            transition: color $a-time;
+            transition: color $a-time ease;
 
             &:hover {
                 color: $c-white;
