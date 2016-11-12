@@ -21,9 +21,17 @@ class templateRender extends Renderer
             'charset'           => 	$this->charset
         ]);
 
+        // https://symfony.com/doc/current/components/form.html
+        // $defaultFormTheme = 'form_div_layout.html.twig';        
+        // $formEngine = new TwigRendererEngine(array($defaultFormTheme));
+        // $formEngine->setEnvironment($this->template);
+        // $this->template->addExtension(new FormExtension(new TwigRenderer($formEngine)));
+        // $this->template->addExtension(new TwigRenderer());
+        // $this->template->addExtension(new TranslationExtension(new Translator('en')));
+
         $this->template->addExtension(new Twig_Extension_Escaper('html'));
         $this->template->addExtension(new Twig_Extension_Optimizer(Twig_NodeVisitor_Optimizer::OPTIMIZE_FOR));
-        
+
         $lexer = new Twig_Lexer($this->template, [
         	'tag_comment'   => ['{#', '#}'],
         	'tag_block'     => ['{%', '%}'],

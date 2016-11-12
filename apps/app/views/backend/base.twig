@@ -14,9 +14,28 @@
 
     <div class="wrapper__content" id="content">
         
-        
         {{ app.content|raw }}
         
+{# 
+        {{ form_start(form, {'method': 'GET'}) }}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.dueDate) }}
+
+            {{ form_row(form.submit, { 'label': 'Submit me' }) }}
+
+            {{ form_label(form.name) }}
+
+            {{ form_label(form.name, 'Your Name', {'label_attr': {'class': 'foo'}}) }}
+
+            {{ form_label(form.name, null, {
+                'label': 'Your name',
+                'label_attr': {'class': 'foo'}
+            }) }}
+
+        {{ form_end(form, {'render_rest': false}) }}
+ #}
         <form action="" method="POST" enctype="multipart/form-data">
             
             <div class="btn-list">
