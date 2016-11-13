@@ -5,20 +5,21 @@
             <use xlink:href="#protect"/>
         </svg>
 
+        {#
         <span class="sandwich js-sandwich-menu">
             <span class="sandwich__layer"></span>
         </span>
+
+        <div class="smart-object" style="position: absolute; transform: translate3d(0px, 0px, 0px);">
+            <div class="smart-object" style="position: absolute; transform: translate3d(0px, 0px, 0px); background-color: rgb(255, 255, 255); width: 40px; height: 20px; cursor: pointer; pointer-events: all; z-index: 3; opacity: 0;"></div>
+            <div class="smart-object" style="position: absolute; transform: translate3d(0px, 0px, 0px); width: 40px; height: 1px; background-color: rgb(255, 255, 255);"></div>
+            <div class="smart-object" style="position: absolute; transform: translate3d(0px, 5px, 0px); width: 40px; height: 1px; background-color: rgb(255, 255, 255);"></div>
+            <div class="smart-object" style="position: absolute; transform: translate3d(0px, 10px, 0px); width: 40px; height: 1px; background-color: rgb(255, 255, 255);"></div>
+        </div>
+        #}
     </div>
 
-    <div class="smart-object" style="position: absolute; transform: translate3d(0px, 0px, 0px);">
-        <div class="smart-object" style="position: absolute; transform: translate3d(0px, 0px, 0px); background-color: rgb(255, 255, 255); width: 40px; height: 20px; cursor: pointer; pointer-events: all; z-index: 3; opacity: 0;"></div>
-        <div class="smart-object" style="position: absolute; transform: translate3d(0px, 0px, 0px); width: 40px; height: 1px; background-color: rgb(255, 255, 255);"></div>
-        <div class="smart-object" style="position: absolute; transform: translate3d(0px, 5px, 0px); width: 40px; height: 1px; background-color: rgb(255, 255, 255);"></div>
-        <div class="smart-object" style="position: absolute; transform: translate3d(0px, 10px, 0px); width: 40px; height: 1px; background-color: rgb(255, 255, 255);"></div>
-    </div>
-    
-    <div class="sidebar__bottom">
-
+    <div class="sidebar__content">
         <a href="/{{ ADMIN_DIR }}/tasks" class="sidebar__ico">
             <svg role="image">
                 <use xlink:href="#todo"/>
@@ -31,6 +32,14 @@
             </svg>
         </a>
 
+        <a href="/cp" class="sidebar__ico logo">
+            <svg class="logo__image" role="image">
+                <use xlink:href="#lightning"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="sidebar__bottom">
         <a href="/{{ ADMIN_DIR }}/settings" class="sidebar__ico sidebar__settings">
             <svg role="image">
                 <use xlink:href="#settings"/>
@@ -42,12 +51,7 @@
         
     </div>
 
-    {# 
-    <a href="/cp" class="sidebar__logo logo">
-        <svg class="logo__image" role="image">
-            <use xlink:href="#lightning"/>
-        </svg>
-    </a>
+    {#
 
     <div class="sidebar__container j-sidebar-content">
 

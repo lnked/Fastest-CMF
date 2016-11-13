@@ -37,6 +37,14 @@
         }
     }
 
+    &__content {
+        width: $sidebar-width-close;
+        position: absolute;
+        top: $header-height;
+        right: 0;
+        bottom: 0;
+    }
+
     &.is-open &__logo {
         color: $c-icon-active;
         background-color: rgba(0,0,0,0);
