@@ -51,6 +51,37 @@
         background-color: $c-white;
         border-right: 1px solid $c-pattens-blue-light;
     }
+
+    &__bottom {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    &__settings {
+        width: $sidebar-width-close;
+        height: $sidebar-width-close;
+        line-height: $sidebar-width-close;
+        text-align: center;
+        color: $c-white;
+        display: block;
+        transition: color $a-animate-time;
+
+        svg {
+            max-width: 23px;
+            max-height: 23px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &:hover {
+            color: $c-icon-active;
+
+            svg {
+                animation: spinner 2.5s linear infinite;    
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 1280px) {}
