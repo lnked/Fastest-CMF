@@ -18,7 +18,20 @@
     </div>
     
     <div class="sidebar__bottom">
-        <a href="/{{ ADMIN_DIR }}/settings" class="sidebar__settings">
+
+        <a href="/{{ ADMIN_DIR }}/tasks" class="sidebar__ico">
+            <svg role="image">
+                <use xlink:href="#todo"/>
+            </svg>
+        </a>
+        
+        <a href="/{{ ADMIN_DIR }}/dashboard" class="sidebar__ico">
+            <svg role="image">
+                <use xlink:href="#dashboard"/>
+            </svg>
+        </a>
+
+        <a href="/{{ ADMIN_DIR }}/settings" class="sidebar__ico sidebar__settings">
             <svg role="image">
                 <use xlink:href="#settings"/>
             </svg>

@@ -1,5 +1,6 @@
 .sidebar {
     width: $sidebar-width-open;
+    // width: $sidebar-width-close;
     height: 100%;
     position: fixed;
     left: 0;
@@ -57,8 +58,8 @@
         bottom: 0;
         right: 0;
     }
-
-    &__settings {
+    
+    &__ico {
         width: $sidebar-width-close;
         height: $sidebar-width-close;
         line-height: $sidebar-width-close;
@@ -68,15 +69,19 @@
         transition: color $a-animate-time;
 
         svg {
-            max-width: 23px;
-            max-height: 23px;
+            max-width: 21px;
+            max-height: 21px;
             display: inline-block;
             vertical-align: middle;
         }
 
         &:hover {
             color: $c-icon-active;
+        }
+    }
 
+    &__settings {
+        &:hover {
             svg {
                 animation: spinner 2.5s linear infinite;    
             }
