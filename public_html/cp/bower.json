@@ -24,6 +24,7 @@
     "cleave.js": "0.7.10",
     "isMobile": "0.4.1",
     "cookie": "1.2.1",
-    "jquery": "1.11.3"
+    "jquery": "1.11.3",
+    "chosen": "1.6.2"
   }
 }
