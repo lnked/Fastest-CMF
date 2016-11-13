@@ -29,9 +29,10 @@
 
 <template id="tmpl-modal-template">
     <div class="modal">
-        <div class="modal__wrapper">
-            <section class="modal__content">
-                <b class="modal__close js-modal-close">Закрыть</b>
+        <div class="modal__scroller j-custom-scroll">
+            
+            <section class="modal__body">
+                <i class="modal__close js-modal-close">Закрыть</i>
 
                 <header class="modal__header">
                     <h4 class="modal__header__title">default header</h4>
@@ -47,6 +48,11 @@
                     <button class="modal-default-button">OK</button>
                 </footer>
             </section>
+
+            <div class="overlay modal__overlay is-animate is-visible">
+                <span class="modal__overlay__spinner spinner spinner_center" style="display: none;"></span>
+            </div>
+            
         </div>
     </div>
 </template>

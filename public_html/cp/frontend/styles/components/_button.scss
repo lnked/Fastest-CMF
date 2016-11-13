@@ -9,17 +9,18 @@
     @extend %button;
 
     &.is-link {
-        color: $c-maya-blue;
+        color: $c-raven;
         padding: 0;
         height: auto;
         line-height: .9;
         margin-top: 4px;
         background: none;
         padding-bottom: 1px;
-        border-bottom: 1px solid $c-dodger-blue;
+        border-bottom: 1px solid lighten($c-raven, $c-lighten-percent * 2);
 
         &:hover {
             color: $c-dodger-blue;
+            border-color: $c-dodger-blue;
         }
     }
 
@@ -28,7 +29,7 @@
         background-color: $c-astronaut;
         
         &:hover {
-            background-color: lighten($c-astronaut, $c-lighten-lighten);
+            background-color: lighten($c-astronaut, $c-lighten-percent);
         }
     }
 
@@ -37,7 +38,7 @@
         background-color: $c-silver-tree;
         
         &:hover {
-            background-color: lighten($c-silver-tree, $c-lighten-lighten);
+            background-color: lighten($c-silver-tree, $c-lighten-percent);
         }
     }
 
@@ -76,7 +77,7 @@
         color: $c-tower-grey;
         font-size: 1.3rem;
         line-height: 1;
-        margin-right: 15px;
+        margin-right: 7px;
         display: inline-block;
         vertical-align: middle;
     }
