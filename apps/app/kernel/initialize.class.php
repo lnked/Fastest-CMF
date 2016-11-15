@@ -59,6 +59,14 @@ class Initialize extends templateEngine
             $this->params = array_slice($this->tpath, 2, count($this->tpath));
         }
     }
+    
+    protected function initHooks()
+    {
+        if ($this->controller == CAPTCHA_URL)
+        {
+            return new Captcha();
+        }
+    }
 
     protected static function headers($cache = false)
     {

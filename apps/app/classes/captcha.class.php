@@ -13,7 +13,7 @@ final class Captcha
 
     # CAPTCHA image siz
     public $width = 120;
-    public $height = 70;
+    public $height = 60;
 
     # JPEG quality of CAPTCHA image (bigger is better quality, but larger file size)
     public $quality = 90;
@@ -187,15 +187,7 @@ final class Captcha
             
         }
 
-        $center=$x/2;
-
-        // // credits. To remove, see configuration file
-        $this->captcha2=imagecreatetruecolor($this->width, $this->height+12);
-        $foreground=imagecolorallocate($this->captcha2, $this->foreground_color[0], $this->foreground_color[1], $this->foreground_color[2]);
-        $background=imagecolorallocate($this->captcha2, $this->background_color[0], $this->background_color[1], $this->background_color[2]);
-        imagefilledrectangle($this->captcha2, 0, 0, $this->width-1, $this->height-1, $background);        
-        imagefilledrectangle($this->captcha2, 0, $this->height, $this->width-1, $this->height+12, $foreground);
-        imagestring($this->captcha2, 2, $this->width/2-ImageFontWidth(2)/2, $this->height-2, '', $background);
+        $center = $x/2;
 
         // periods
         $rand1=mt_rand(750000,1200000)/10000000;
@@ -211,7 +203,7 @@ final class Captcha
         $rand9=mt_rand(330,420)/110;
         $rand10=mt_rand(330,450)/110;
 
-        //wave distortion
+        # wave distortion
 
         for($x=0;$x<$this->width;$x++){
             for($y=0;$y<$this->height;$y++){
@@ -253,8 +245,6 @@ final class Captcha
                     $newgreen=$newcolor0*$this->foreground_color[1]+$newcolor*$this->background_color[1];
                     $newblue=$newcolor0*$this->foreground_color[2]+$newcolor*$this->background_color[2];
                 }
-
-                imagesetpixel($this->captcha2, $x, $y, imagecolorallocate($this->captcha2, $newred, $newgreen, $newblue));
             }
         }
     }

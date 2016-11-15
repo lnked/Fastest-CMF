@@ -18,6 +18,7 @@ final class Application extends Initialize
 
     public function handle()
     {
+
         $this->headers();
         
         if (count($_POST))
@@ -26,6 +27,8 @@ final class Application extends Initialize
         }
 
         $this->initMVC();
+        
+        $this->initHooks();
 
         $app = [
             'title'         => 'Fastest CMS',
