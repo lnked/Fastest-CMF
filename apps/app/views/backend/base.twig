@@ -9,38 +9,13 @@
 <main class="wrapper" id="wrapper">
     
     {% include 'components/header.twig' %}
+    
+    <div class="wrapper__row clearfix">
+        {% include 'components/helper.twig' %}
 
-    <div class="wrapper__content" id="content">
-        
-        {{ app.content|raw }}
-        
-        <form action="" method="POST" enctype="multipart/form-data">
-            
-            <input type="hidden" name="csrf-param" value="{{ session.csrf_param }}">
-            <input type="hidden" name="csrf-token" value="{{ session[session.csrf_param] }}">
-
-            <label class="f-label">
-                <input type="text" class="f-input">
-            </label>
-
-            <label class="f-label">
-                <input type="text" class="f-input">
-            </label>
-
-            <div class="btn-list">
-                <button class="btn is-apply" name="apply" type="submit">Сохранить</button>
-                <button class="btn is-save" name="save" type="submit">Сохранить и закрыть</button>
-                <span class="btn-list__title">
-                    или
-                </span>
-
-                <a href="/{{ ADMIN_DIR }}" class="btn is-link">Отменить</a>
-            </div>
-
-        </form>
-        
-        {# {% include 'components/content.twig' %} #}
-
+        <div class="wrapper__pusher">
+            {% include 'components/content.twig' %}
+        </div>
     </div>
 
 </main>

@@ -14,6 +14,22 @@
         transform: translate3d($sidebar-width-diff, 0, 0);
     }
 
+    &__row {
+        clear: both;
+    }
+
+    &__helper {
+        width: 300px;
+        margin-right: -300px;
+        height: 100%;
+        float: left;
+        min-height: 1500px;
+        position: relative;
+        z-index: 1;
+        background-color: $c-white;
+        border-right: 1px solid $c-pattens-blue-light;
+    }
+
     &__content {
         clear: both;
         padding: $content-margin;
@@ -21,6 +37,15 @@
         &.loading {
             border: 1px solid red;
         }
+    }
+
+    &__pusher {
+        width: 100%;
+    }
+
+    &__helper + &__pusher {
+        float: left;
+        padding-left: 300px;
     }
 }
 

@@ -6,6 +6,8 @@
         </svg>
     </a>
 
+    {# {% include 'components/sidebar-helper.twig' %} #}
+
     {#
     <div class="sidebar__logo">
         <svg class="protect" role="image">
@@ -24,9 +26,28 @@
         </div>
     </div>
     #}
-
+    
     <div class="sidebar__content">
         
+        <nav class="menu" role="navigation">
+            
+            {#
+            <a href="/cp/site" class="menu__item _selected1" data-entity="page">
+                <span class="menu__item__notification badge badge_success">4</span>
+                <span class="menu__item__icon">
+                    <svg role="image">
+                        <use xlink:href="#pages"/>
+                    </svg>
+                </span>
+                <span class="menu__item__title">
+                    Страницы
+                </span>
+                <span class="menu__item__spinner spinner-icon"></span>
+            </a>
+            #}
+
+        </nav>
+
         <a href="/{{ ADMIN_DIR }}/dashboard" class="sidebar__ico">
             <svg role="image">
                 <use xlink:href="#dashboard"/>
@@ -66,32 +87,5 @@
             </svg>
         </a>
     </div>
-
-    <div class="sidebar__helper">
-        
-    </div>
-
-    {#
-
-    <div class="sidebar__container j-sidebar-content">
-
-        <nav class="menu" role="navigation">
-
-            <a href="/cp/site" class="menu__item _selected1" data-entity="page">
-                <span class="menu__item__notification badge badge_success">4</span>
-                <span class="menu__item__icon">
-                    <svg role="image">
-                        <use xlink:href="#pages"/>
-                    </svg>
-                </span>
-                <span class="menu__item__title">
-                    Страницы
-                </span>
-                <span class="menu__item__spinner spinner-icon"></span>
-            </a>
-
-        </nav>
-
-    </div>
-    #}
+    
 </aside>

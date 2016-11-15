@@ -42,11 +42,11 @@
 
     &__helper {
         width: $sidebar-helper-width;
+        width: 300px;
         height: 100%;
         position: absolute;
         left: 100%;
-        top: 0;
-        display: none;
+        top: $header-height;
         background-color: $c-white;
         border-right: 1px solid $c-pattens-blue-light;
     }
