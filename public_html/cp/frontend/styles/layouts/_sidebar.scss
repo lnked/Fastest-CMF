@@ -81,7 +81,8 @@
     &__settings {
         &:hover {
             svg {
-                animation: spinner 2.5s linear infinite;    
+                transform: translateZ(0);
+                animation: spinner 1s infinite linear;
             }
         }
     }
