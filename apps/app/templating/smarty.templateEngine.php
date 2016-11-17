@@ -23,7 +23,7 @@ class templateRender extends Renderer
 		$this->template->error_reporting        = TEMPLATING_DEBUG ? E_ALL & ~E_NOTICE & ~E_WARNING : E_ALL & ~E_NOTICE;
 
 		$pluginsDir = [
-			FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'functions'.DS.'smarty_plugins'
+			APP_ROOT.DS.'functions'.DS.'smarty_plugins'
 		];
 
 		foreach ($pluginsDir as $d)
