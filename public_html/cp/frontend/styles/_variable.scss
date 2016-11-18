@@ -21,16 +21,6 @@ $c-sandwich-overlay:            #000;
 $c-sandwich-background:         #2b65b6;
 $c-sandwich-background-active:  #fff;
 
-$c-lime:                        lime;
-$c-white:                       #fff;
-$c-gray:                        #cdcdcd;
-$c-black:                       #000;
-$c-green:                       #93ea9b;
-$c-whisper:                     #E7E7E7;
-$c-lavender:                    #f0f0f2;
-$c-very-light-grey:             #c8c8c8;
-$c-pink-swan:                   #B4B4B4;
-
 $c-jordy-blue:                  #7baaf7;
 $c-maya-blue:                   #76B5FF;
 $c-hawkes-blue:                 #d4e4f8;
@@ -63,6 +53,13 @@ $c-maya-blue:                   #6ab8ff;
 $c-tower-grey:                  #9c9e9d;
 $c-very-light-grey:             #cfcfcf;
 
+$c-light-slate-blue:            #7D6DFB;
+$c-sunglow:                     #FEC541;
+$c-shamrock:                    #36D484;
+$c-wild-watermelon:             #FC5A7D;
+$c-crusta:                      #FD9252;
+$c-mint-green:                  #ACFFAC;
+
 $c-silver-tree:                 #57BB8A;
 $c-geraldine:                   #e67c73;
 $c-kournikova:                  #ffd530;
@@ -84,6 +81,19 @@ $c-border:                      #dde7ea;
 
 $c-select-color:                $c-denim;
 $c-select-background:           $c-alice-blue;
+
+$c-white:                       #fff;
+$c-gray:                        #cdcdcd;
+$c-black:                       #000;
+$c-lime:                        $c-mint-green;
+$c-orange:                      $c-crusta;
+$c-green:                       $c-shamrock;
+$c-pink:                        $c-wild-watermelon;
+$c-whisper:                     #E7E7E7;
+$c-lavender:                    #f0f0f2;
+$c-very-light-grey:             #c8c8c8;
+$c-pink-swan:                   #B4B4B4;
+
 
 // Alerts
 
