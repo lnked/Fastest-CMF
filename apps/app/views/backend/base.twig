@@ -11,7 +11,10 @@
     {% include 'components/header.twig' %}
     
     <div class="wrapper__row clearfix">
-        {% include 'components/helper.twig' %}
+        
+        {% if app.controller == 'site' and app.action == 'pages' %}
+            {% include 'components/helper.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+        {% endif %}
 
         <div class="wrapper__pusher">
             {% include 'components/content.twig' %}
