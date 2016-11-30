@@ -16,11 +16,8 @@ final class Application extends Initialize
         }
     }
 
-    public function handle()
+    public function launch()
     {
-
-        $this->headers();
-        
         if (count($_POST))
         {
             exit(__($_POST, $_SESSION[$this->csrf_param]));
@@ -41,7 +38,12 @@ final class Application extends Initialize
         $this->initialize();
 
         $this->template->assign('app', $app);
-
+    }
+    
+    public function terminate()
+    {
+        $this->headers();
+        
         $this->template->display('base');
     }
 }

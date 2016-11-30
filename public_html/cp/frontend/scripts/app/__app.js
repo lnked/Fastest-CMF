@@ -15,6 +15,15 @@ var app = app || {};
                 $('#sidebar').toggleClass('is-open');
             });
 
+            $(".a-link").pageParser({
+                container: $("#container"),
+                parseElement: ".a-update",
+                urlAttribute: 'href',
+                error: function(){},
+                before: function(){},
+                finished: function(){}
+            });
+
             // this.history.init();
             
             // var container = document.querySelector('.gallery');

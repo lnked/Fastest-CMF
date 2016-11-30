@@ -1,6 +1,8 @@
-<div class="wrapper__content" id="content">
-    
-    {{ app.content|raw }}
+<div class="wrapper__content a-update" id="content">
+
+    {% autoescape %}
+        {{ app.content|raw }}
+    {% endautoescape %}
 
     <form action="" method="POST" enctype="multipart/form-data">
         
@@ -22,7 +24,7 @@
                 или
             </span>
 
-            <a href="/{{ ADMIN_DIR }}" class="btn is-link">Отменить</a>
+            <a href="/{{ ADMIN_DIR }}" class="btn is-link a-link">Отменить</a>
         </div>
 
     </form>

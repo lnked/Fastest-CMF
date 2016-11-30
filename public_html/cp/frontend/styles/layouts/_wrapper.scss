@@ -19,7 +19,7 @@
     }
 
     &__helper {
-        width: 300px;
+        width: 280px;
         height: 100%;
         float: left;
         position: relative;
@@ -28,6 +28,15 @@
         margin-right: -300px;
         background-color: $c-white;
         border-right: 1px solid $c-pattens-blue-light;
+    }
+
+    &__section {
+        width: 250px;
+        float: right;
+        height: 1000px;
+        margin-left: -250px;
+        background-color: $c-white;
+        border-left: 1px solid $c-pattens-blue-light;
     }
 
     &__content {
@@ -46,6 +55,12 @@
     &__helper + &__pusher {
         float: left;
         padding-left: 300px;
+    }
+
+    &__helper + &__section + &__pusher {
+        float: left;
+        padding-left: 280px;
+        padding-right: 250px;
     }
 }
 

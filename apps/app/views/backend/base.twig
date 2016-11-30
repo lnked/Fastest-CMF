@@ -10,14 +10,19 @@
     
     {% include 'components/header.twig' %}
     
-    <div class="wrapper__row clearfix">
-        
-        {% if app.controller == 'site' and app.action == 'pages' %}
-            {% include 'components/helper.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
-        {% endif %}
+    <div class="wrapper__row clearfix" id="container">
+        <div class="a-update">
+            {% if app.controller == 'site' and app.action == 'pages' %}
+                {% include 'components/helper.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+            {% endif %}
 
-        <div class="wrapper__pusher">
-            {% include 'components/content.twig' %}
+            {% if app.controller == 'site' and app.action == 'pages' %}
+                {% include 'components/section.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+            {% endif %}
+
+            <div class="wrapper__pusher">
+                {% include 'components/content.twig' %}
+            </div>
         </div>
     </div>
 
