@@ -32,6 +32,10 @@ if (!defined('APPS_ROOT')) {
 */
 require FASTEST_ROOT.APPS_ROOT.DS.'bootstrap'.DS.'autoload.php';
 
+setlocale(LC_ALL, Tools::getLocale($_SERVER['REQUEST_URI']));
+
+date_default_timezone_set(FASTEST_TIMEZONE);
+
 /*
 |--------------------------------------------------------------------------
 | Application

@@ -12,12 +12,15 @@ class Initialize extends templateEngine
     protected $template_driver = null;
 
     protected $is_admin   = false;
+
     protected $csrf_token = null;
     protected $csrf_param = 'authenticity_token';
 
     protected $controller = null;
     protected $action = null;
     protected $params = null;
+
+    protected $enabled_caching = true;
 
     public $domain  = null;
     public $path    = [];
@@ -30,6 +33,8 @@ class Initialize extends templateEngine
         $this->path     = preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
         $this->locale   = $this->getLocale($this->request, $this->path);
         $this->tpath    = $this->path;
+
+        $caching = new Caching();
 
         $this->checkAdmin();
         $this->initTemplate();
