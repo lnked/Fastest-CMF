@@ -44,6 +44,6 @@ final class Application extends Initialize
     {
         $this->headers();
         
-        $this->template->display('base');
+        $this->template->display($this->template_file);
     }
 }

@@ -4,13 +4,18 @@ class templateEngine extends Content
 {
     protected $template = null;
 
-    public function __construct($driver = 'smarty', $dir = '')
+    public function __construct($driver = 'smarty', $dir = '', $theme = '')
     {
         $driver = strtolower($driver);
         
+        if (!$theme)
+        {
+            $theme = FRONTEND_THEME;
+        }
+
         if (strstr($dir, '#'))
         {
-            $dir = str_replace('#', $driver, $dir);
+            $dir = str_replace('#', $theme, $dir);
         }
 
         if (file_exists(PATH_TEMPLATING.DS.$driver.'.templateEngine.php'))

@@ -1,15 +1,10 @@
 <?php declare(strict_types = 1);
 
+// https://bitsofco.de/an-overview-of-client-side-storage/
+
 class Caching extends Initialize
 {
     use Singleton, Tools;
-
-    protected $mcache = null;
-    protected $mcache_enable = false;
-    protected $mcache_driver = null;
-    protected $mcache_compress = MEMCACHE_COMPRESSED;
-    protected $mcache_expire = 3600;
-    protected $mcache_path = '';
 
     public function __construct()
     {
@@ -31,7 +26,7 @@ class Caching extends Initialize
 
     protected function getContent()
     {
-        if (!$this->mcache_enable || ($this->caching == 1 && !($articles = $this->getCache('module.articles.item'))))
+        if (!$this->cache_enable || ($this->caching == 1 && !($articles = $this->getCache('module.articles.item'))))
         {
             $articles = Q("SELECT `id`, `date`, `name`, `system`, `anons`, `text`, `meta_title`, `meta_robots`, `meta_keywords`, `meta_description` FROM `#_mdd_articles` WHERE `visible`='1' AND `id`=?i", array( $item ))->row();
             $articles['date'] = Dates($articles['date'], $this->locale);
@@ -51,12 +46,12 @@ class Caching extends Initialize
 
             if (class_exists('Memcached'))
             {
-                $this->mcache = new Memcached;
-                $this->mcache_driver = 'memcached';
+                $this->cache = new Memcached;
+                $this->cache_driver = 'memcached';
 
-                if ($this->mcache->addServer($this->server, 11211))
+                if ($this->cache->addServer($this->server, 11211))
                 {
-                    $this->mcache_enable = true;
+                    $this->cache_enable = true;
                 }
             }
         }
@@ -64,16 +59,16 @@ class Caching extends Initialize
 
     protected function getCache($key = '', $global = false)
     {
-        if (!$this->mcache_enable) return false;
+        if (!$this->cache_enable) return false;
         
         if (!$global)
         {
-            $key .= $this->mcache_path;
+            $key .= $this->cache_path;
         }
 
-        if (!($this->mcache->get($this->domain . $key) === false))
+        if (!($this->cache->get($this->domain . $key) === false))
         {
-            return $this->mcache->get($this->domain . $key);
+            return $this->cache->get($this->domain . $key);
         }
 
         return false;
@@ -81,20 +76,20 @@ class Caching extends Initialize
 
     protected function setCache($key = '', $value = '', $global = false)
     {
-        if ($this->mcache_enable)
+        if ($this->cache_enable)
         {
             if (!$global)
             {
-                $key .= $this->mcache_path;
+                $key .= $this->cache_path;
             }
 
-            if ($this->mcache_driver == 'memcached')
+            if ($this->cache_driver == 'memcached')
             {
-                $this->mcache->set($this->domain . $key, $value, time() + $this->mcache_expire);
+                $this->cache->set($this->domain . $key, $value, time() + $this->cache_expire);
             }
             else
             {
-                $this->mcache->set($this->domain . $key, $value, $this->mcache_compress, time() + $this->mcache_expire);
+                $this->cache->set($this->domain . $key, $value, $this->cache_compress, time() + $this->cache_expire);
             }
         }
     }

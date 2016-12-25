@@ -4,6 +4,10 @@ class Initialize extends templateEngine
 {
     use Tools, Singleton;
 
+    public $domain  = null;
+    public $path    = [];
+    public $page    = ['id' => 0];
+
     protected $request  = null;
     protected $locale   = null;
     
@@ -22,9 +26,15 @@ class Initialize extends templateEngine
 
     protected $enabled_caching = true;
 
-    public $domain  = null;
-    public $path    = [];
-    public $page    = ['id' => 0];
+    protected $cache = null;
+    protected $cache_enable = false;
+    protected $cache_driver = null;
+    protected $cache_compress = MEMCACHE_COMPRESSED;
+    protected $cache_expire = 3600;
+    protected $cache_path = '';
+    
+    protected $template_file = 'base';
+    // protected $template_file = 'error-page';
 
     public function __construct()
     {
@@ -67,7 +77,7 @@ class Initialize extends templateEngine
     
     protected function initHooks()
     {
-        if ($this->controller == CAPTCHA_URL)
+        if ($this->controller == CAPTCHA_URL && !$this->action)
         {
             return new Captcha();
         }
@@ -88,9 +98,6 @@ class Initialize extends templateEngine
             header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0');
             header("Pragma: no-cache");
             header("Expires: " . date("r", time() + 2592000));
-    
-            // header("Cache-Control: no-cache, must-revalidate");
-            // header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Дата в прошлом
         }
 
         if (extension_loaded('zlib') && (!defined('GZIP_COMPRESS') || defined('GZIP_COMPRESS') && GZIP_COMPRESS))
@@ -112,8 +119,8 @@ class Initialize extends templateEngine
             $this->template_dir = PATH_FRONTEND;
             $this->template_driver = TEMPLATING_FRONTEND;
         }
-        
-        $this->template = new templateEngine($this->template_driver, $this->template_dir);
+
+        $this->template = new templateEngine($this->template_driver, $this->template_dir, FRONTEND_THEME);
 
         if ($this->is_admin)
         {
