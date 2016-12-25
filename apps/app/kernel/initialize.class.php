@@ -11,6 +11,8 @@ class Initialize extends templateEngine
     protected $request  = null;
     protected $locale   = null;
     
+    protected $base_tpl = 'base';
+    
     protected $template = null;
     protected $template_dir = null;
     protected $template_driver = null;
@@ -32,9 +34,6 @@ class Initialize extends templateEngine
     protected $cache_compress = MEMCACHE_COMPRESSED;
     protected $cache_expire = 3600;
     protected $cache_path = '';
-    
-    protected $template_file = 'base';
-    // protected $template_file = 'error-page';
 
     public function __construct()
     {
@@ -111,6 +110,7 @@ class Initialize extends templateEngine
     {
         if ($this->is_admin)
         {
+            $this->base_tpl = 'base';
             $this->template_dir = PATH_BACKEND;
             $this->template_driver = TEMPLATING_BACKEND;
         }
