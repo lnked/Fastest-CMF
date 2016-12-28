@@ -1,6 +1,7 @@
 <?php
 
-trait Tools {
+trait Tools
+{
 	
 	/**
 	 * Helper function

@@ -1,19 +1,9 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
-
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
 
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-
-if (Whoops\Util\Misc::isAjaxRequest())
-{
-    $whoops->pushHandler(new JsonResponseHandler);
-}
-
-$whoops->register();
+require __DIR__.'/../vendor/autoload.php';
 
 # Functions
 #
@@ -35,6 +25,19 @@ fn_init_config(
     require(FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'config'.DS.'app.php')
 );
 
+if (DEV_MODE)
+{
+    $whoops = new \Whoops\Run;
+    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+
+    if (Whoops\Util\Misc::isAjaxRequest())
+    {
+        $whoops->pushHandler(new JsonResponseHandler);
+    }
+
+    $whoops->register();
+}
+
 # Autoload
 #
 spl_autoload_register(function($_class) {
@@ -42,23 +45,29 @@ spl_autoload_register(function($_class) {
 
     $paths = [
         'kernel',
+        'hooks',
+        'helpers',
         'classes',
-        'hooks'
+        'services'
     ];
 
-    if ($_class == 'news' || $_class == 'newsitem')
-    {
-        // exit(PATH_MODULES.DS.'news'.DS.'models'.DS.$_class.'.Model.php');
-    
-    //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
-    //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
-    //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
-    }
+    // if ($_class == 'news' || $  == 'newsitem')
+    // {
+    //     // exit(PATH_MODULES.DS.'news'.DS.'models'.DS.$_class.'.Model.php');
+    //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
+    //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
+    //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
+    // }
 
-    if (file_exists(PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php'))
-    {
-        require_once PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php';
-    }
+    #
+    # Load module
+    // if (file_exists(PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php'))
+    // {
+    //     require_once PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php';
+    // }
+
+    #
+    # Load class & trait
 
     foreach ($paths as $path)
     {

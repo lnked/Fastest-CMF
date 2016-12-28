@@ -2,7 +2,7 @@
 
 class Initialize extends templateEngine
 {
-    use Tools, Singleton;
+    use Tools, Singleton, Storage;
 
     public $domain  = null;
     public $path    = [];
@@ -12,7 +12,7 @@ class Initialize extends templateEngine
     protected $locale   = null;
     
     protected $base_tpl = 'base';
-    
+
     protected $template = null;
     protected $template_dir = null;
     protected $template_driver = null;
@@ -26,15 +26,6 @@ class Initialize extends templateEngine
     protected $action = null;
     protected $params = null;
 
-    protected $enabled_caching = true;
-
-    protected $cache = null;
-    protected $cache_enable = false;
-    protected $cache_driver = null;
-    protected $cache_compress = MEMCACHE_COMPRESSED;
-    protected $cache_expire = 3600;
-    protected $cache_path = '';
-
     public function __construct()
     {
         $this->domain   = $_SERVER['HTTP_HOST'];
@@ -43,12 +34,12 @@ class Initialize extends templateEngine
         $this->locale   = $this->getLocale($this->request, $this->path);
         $this->tpath    = $this->path;
 
-        $caching = new Caching();
-
         $this->checkAdmin();
         $this->initTemplate();
 
-        $this->csrf();
+        $this->storage();
+
+        $this->csrfProtection();
     }
 
     protected function initMVC()
@@ -80,6 +71,38 @@ class Initialize extends templateEngine
         {
             return new Captcha();
         }
+
+        if ($this->is_admin)
+        {
+            if ($this->controller == 'cache')
+            {
+                fn_rrmdir(PATH_RUNTIME, true);
+                fn_redirect(DS.ADMIN_DIR);
+            }   
+        }
+
+        // exit(PATH_MODULES);
+
+        // if (DEV_MODE)
+        // {
+        //     $cache = new Caching;
+        //     $cache->clearStorage();
+        // }
+
+        // if ($_class == 'news' || $  == 'newsitem')
+        // {
+        //     // exit(PATH_MODULES.DS.'news'.DS.'models'.DS.$_class.'.Model.php');
+        //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
+        //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
+        //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
+        // }
+
+        #
+        # Load module
+        // if (file_exists(PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php'))
+        // {
+        //     require_once PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php';
+        // }
     }
 
     protected static function headers($cache = false)
@@ -128,7 +151,7 @@ class Initialize extends templateEngine
         }
     }
 
-    private function csrf()
+    private function csrfProtection()
     {
         if (!count($_POST) && defined('CSRF_PROTECTION') && CSRF_PROTECTION)
         {

@@ -44,12 +44,6 @@ class templateEngine extends Content
 
     protected function display($pattern = '')
     {
-        if (DEV_MODE)
-        {
-            $cache = new Cache;
-            $cache->clearMemory();
-        }
-
         $this->template->display($pattern);
     }
 }

@@ -9,11 +9,6 @@ final class Application extends Initialize
 
     private function initialize()
     {
-        if ($this->is_admin && $this->controller == 'cache')
-        {
-            fn_rrmdir(PATH_RUNTIME, true);
-            fn_redirect('/'.ADMIN_DIR);
-        }
     }
 
     public function launch()
@@ -43,7 +38,7 @@ final class Application extends Initialize
     public function terminate()
     {
         $this->headers();
-        
+
         $this->template->display($this->base_tpl);
     }
 }
