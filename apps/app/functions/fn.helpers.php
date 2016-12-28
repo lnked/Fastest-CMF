@@ -39,7 +39,7 @@ function fn_redirect($url = '', $referer = '')
     exit;
 }
 
-function fn_rrmdir($dir = '', $internal_only = false)
+function fn_rrmdir($dir = '', $internal_only = false, $is_inner = false)
 {
     if (is_dir($dir))
     {
@@ -49,7 +49,7 @@ function fn_rrmdir($dir = '', $internal_only = false)
         {
             if (is_dir($dir.DS.$file))
             {
-                fn_rrmdir($dir.DS.$file);
+                fn_rrmdir($dir.DS.$file, $internal_only, true);
             }
             else
             {
@@ -59,7 +59,7 @@ function fn_rrmdir($dir = '', $internal_only = false)
 
         reset($files);
 
-        if (!$internal_only)
+        if (!$internal_only || $is_inner)
         {
             rmdir($dir);
         }

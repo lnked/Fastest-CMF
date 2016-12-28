@@ -10,7 +10,6 @@ trait Storage
 
     protected $cache = null;
     protected $cache_path = '';
-    protected $cache_enable = false;
     protected $cache_expire = 3600;
 
     public function storage()
@@ -22,30 +21,24 @@ trait Storage
                 $this->server = $_REQUEST['server'];
             }
 
-            $this->cache_enable = true;
-            $this->cache_path = str_replace('/', '.', trim($this->request, '/'));
-
             $this->connect();
+
+            $this->cache_path = str_replace('/', '.', trim($this->request, '/'));
         }
     }
 
     public function setCache($key = '', $value = '', $global = false)
     {
-        if ($this->cache_enable)
+        if (!$global)
         {
-            if (!$global)
-            {
-                $key .= $this->cache_path;
-            }
-
-            $this->cache->set($this->domain . $key, $value, time() + $this->cache_expire);
+            $key .= $this->cache_path;
         }
+
+        $this->cache->set($this->domain . $key, $value, time() + $this->cache_expire);
     }
 
     public function getCache($key = '', $global = false)
     {
-        if (!$this->cache_enable) return false;
-        
         if (!$global)
         {
             $key .= $this->cache_path;

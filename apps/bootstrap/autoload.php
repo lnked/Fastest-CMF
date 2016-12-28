@@ -51,21 +51,6 @@ spl_autoload_register(function($_class) {
         'services'
     ];
 
-    // if ($_class == 'news' || $  == 'newsitem')
-    // {
-    //     // exit(PATH_MODULES.DS.'news'.DS.'models'.DS.$_class.'.Model.php');
-    //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
-    //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
-    //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
-    // }
-
-    #
-    # Load module
-    // if (file_exists(PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php'))
-    // {
-    //     require_once PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php';
-    // }
-
     #
     # Load class & trait
 

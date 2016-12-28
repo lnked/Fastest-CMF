@@ -3,6 +3,19 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Database
+    |--------------------------------------------------------------------------
+    |
+    */
+    'DB_HOST'   =>  'localhost',
+    'DB_BASE'   =>  'celebro',
+    'DB_USER'   =>  'root',
+    'DB_PASS'   =>  'root',
+    'DB_PORT'   =>  '3306',
+    'DB_PREF'   =>  'db',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -212,7 +225,7 @@ return [
     | Caching adapter
     |--------------------------------------------------------------------------
     */
-    'CACHING_ADAPTER' => 'Memcached', // Redis | Couchbase | APC | MySQL | SQLite | PostgreSQL | Flysystem | Memory
+    'CACHING_ADAPTER' => 'Memcached', // Memcached | Redis | Couchbase | APC | MySQL | SQLite | PostgreSQL | Flysystem | Memory
 
     /*
     |--------------------------------------------------------------------------
