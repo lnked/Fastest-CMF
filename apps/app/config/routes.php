@@ -3,8 +3,6 @@
 // https://c9s.github.io/Pux/
 
 use Pux\Mux;
-// use Pux\Executor;
-// use Pux\RouteExecutor as Executor;
 
 $r = new Pux\Mux;
 
@@ -16,29 +14,33 @@ $r->get('/hello', function(){
     return ('hello');
 });
 
-$r->get('/news', ['NewsController', 'listAction']);
+$r->get('/news', ['newsModule', 'listAction']);
 
-$r->get('/news/:id', ['NewsController', 'itemAction'], [
+$r->get('/news/:id', ['newsModule', 'itemAction'], [
     'require' => [ 'id' => '\d+' ]
 ]);
 
 $r->get('/articles', function(){
-    return ('articles');
+    return 'articles';
 });
 
-$r->get('/articles/:id', function($id) {
-    return $id;
+$r->get('/articles/:category', function($category) {
+    return 'category: ' . $category;
 }, [
-    'require' => [ 'id' => '\d+', ]
+    'require' => [ 'category' => '\S+' ]
 ]);
 
-// $mux = new Pux\Mux;
-// $mux->mount( '/product' , $controller->expand() );
+$r->get('/articles/:category/:id', function($category, $id) {
+    return $category . ' as ' . $id;
+}, [
+    'require' => [ 'category' => '\S+', 'id' => '\d+' ]
+]);
 
-// $mux->dispatch('/product');       // ProductController->indexAction
-// $mux->dispatch('/product/add');   // ProductController->addAction
-// $mux->dispatch('/product/del');   // ProductController->delAction
+// $r->mount( '/product' , $controller->expand() );
+// $r->dispatch('/product');       // ProductController->indexAction
+// $r->dispatch('/product/add');   // ProductController->addAction
+// $r->dispatch('/product/del');   // ProductController->delAction
 
-$r->sort();
+// $r->sort();
 
 return $r;

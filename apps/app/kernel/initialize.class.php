@@ -10,11 +10,6 @@ class Initialize extends templateEngine
     public $page    = ['id' => 0];
     public $router  = null;
 
-    protected static $domain  = null;
-    protected static $request  = null;
-
-    protected $locale   = null;
-    
     protected $base_tpl = 'base';
 
     protected $template = null;
@@ -26,6 +21,10 @@ class Initialize extends templateEngine
     protected $controller = null;
     protected $action = null;
     protected $params = null;
+
+    protected $locale = null;
+    protected static $domain = null;
+    protected static $request = null;
 
     public function __construct()
     {
@@ -85,34 +84,49 @@ class Initialize extends templateEngine
                 fn_redirect(DS.ADMIN_DIR);
             }   
         }
+    }
 
-        // if (!$this->is_admin)
-        // {
-        //     if ($this->controller == 'news')
-        //     {
-        //         exit(__(PATH_MODULES));
-        //     }
-        // }
-        
-        // if (DEV_MODE)
-        // {
-        //     $cache->clearStorage();
-        // }
+    protected function loadModule($route = [])
+    {
+        if (DEV_MODE)
+        {
+            $this->clearStorage();
+        }
+     
+        $data = $route[2];
 
-        // if ($_class == 'news' || $  == 'newsitem')
-        // {
-        //     // exit(PATH_MODULES.DS.'news'.DS.'models'.DS.$_class.'.Model.php');
-        //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
-        //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
-        //     // echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
-        // }
+        if (is_object($data))
+        {
+            if (isset($route[3]['vars']) && isset($route[3]['variables']))
+            {
+                return call_user_func_array($data, array_intersect_key($route[3]['vars'], array_flip($route[3]['variables'])));
+            }
+            else
+            {
+                return call_user_func($data);
+            }
+        }
+        elseif (isset($data[0]) && isset($data[1]))
+        {
+            $controller = $data[0];
+            $action = $data[1];
 
-        #
-        # Load module
-        // if (file_exists(PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php'))
-        // {
-        //     require_once PATH_MODULES.DS.'news'.DS.'model'.DS.$_class.'.Model.php';
-        // }
+            $module = str_replace(['module', 'controller', 'model'], '', strtolower($controller));
+
+            if (file_exists(PATH_MODULES.DS.$module.DS.'model'.DS.$module.'.model.php'))
+            {
+                require PATH_MODULES.DS.$module.DS.'model'.DS.$module.'.model.php';    
+            }
+            
+            if (file_exists(PATH_MODULES.DS.$module.DS.'controller'.DS.'backend'.DS.$module.'.module.php'))
+            {
+                require PATH_MODULES.DS.$module.DS.'controller'.DS.'backend'.DS.$module.'.module.php';    
+            }
+            
+            return Pux\RouteExecutor::execute($route);
+        }
+
+        return false;
     }
 
     protected static function headers($cache = false)

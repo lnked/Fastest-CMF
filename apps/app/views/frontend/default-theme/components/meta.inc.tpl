@@ -15,7 +15,7 @@
     <meta content="address=no" name="format-detection">
     <meta content="telephone=no" name="format-detection">
     
-    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="stylesheet" href="/css/main.min.css">
     
     <!--[if IEMobile]>
         <meta http-equiv="cleartype" content="on">

@@ -1,5 +1,6 @@
 <?php
 
+// class Model extends Module
 class Model extends Initialize
 {
 	public $item;

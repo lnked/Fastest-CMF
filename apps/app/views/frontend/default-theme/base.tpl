@@ -9,7 +9,8 @@
         <a href="/news">Новости</a>
         <a href="/news/10">Новость элемент</a>
         <a href="/articles">Статьи</a>
-        <a href="/articles/10">Статьи элемент</a>
+        <a href="/articles/test">Статьи категория</a>
+        <a href="/articles/test/20">Статьи элемент категории</a>
         <a href="/cp">Админка</a>
     </nav>
 </header>

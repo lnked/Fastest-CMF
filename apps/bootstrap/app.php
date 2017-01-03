@@ -61,6 +61,11 @@ date_default_timezone_set(FASTEST_TIMEZONE);
 */
 $app = new Application();
 
+/*
+|--------------------------------------------------------------------------
+| Routing
+|--------------------------------------------------------------------------
+*/
 $app->router = include APP_ROOT.DS.'config'.DS.'routes.php';
 
 /*
