@@ -1,0 +1,18 @@
+{
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "brand": {
+        "@type": "Thing",
+        "name": ""
+    },
+    "name": "",
+    "image": "",
+    "description": "",
+    "productId": "upc:",
+    "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency" : "",
+        "lowPrice": "0.00",
+        "itemCondition": "new"
+    }
+}

@@ -22,17 +22,7 @@ class templateRender extends Renderer
 		$this->template->force_compile          = FORCE_COMPILE;
 		$this->template->error_reporting        = TEMPLATING_DEBUG ? E_ALL & ~E_NOTICE & ~E_WARNING : E_ALL & ~E_NOTICE;
 
-		$pluginsDir = [
-			APP_ROOT.DS.'functions'.DS.'smarty_plugins'
-		];
-
-		foreach ($pluginsDir as $d)
-		{
-			if (is_dir($d))
-			{
-				$this->template->addPluginsDir($d);
-			}
-		}
+		$this->template->addPluginsDir(APP_ROOT.DS.'functions'.DS.'smarty.plugins');
 	}
 
 	public function assign($key = '', $data = '', $cache = false)

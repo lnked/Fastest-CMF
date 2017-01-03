@@ -2,13 +2,16 @@
 
 class Initialize extends templateEngine
 {
-    use Tools, Singleton, Storage;
+    use Singleton, Tools, Storage {
+        Storage::__construct as private _storage;
+    }
 
-    public $domain  = null;
     public $path    = [];
     public $page    = ['id' => 0];
 
-    protected $request  = null;
+    protected static $domain  = null;
+    protected static $request  = null;
+
     protected $locale   = null;
     
     protected $base_tpl = 'base';
@@ -19,25 +22,26 @@ class Initialize extends templateEngine
 
     protected $is_admin   = false;
 
-    protected $csrf_token = null;
-    protected $csrf_param = 'authenticity_token';
-
     protected $controller = null;
     protected $action = null;
     protected $params = null;
 
     public function __construct()
     {
-        $this->domain   = $_SERVER['HTTP_HOST'];
-        $this->request  = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        $this->path     = preg_split('/\/+/', $this->request, -1, PREG_SPLIT_NO_EMPTY);
-        $this->locale   = $this->getLocale($this->request, $this->path);
-        $this->tpath    = $this->path;
+        self::$domain   = $_SERVER['HTTP_HOST'];
+        self::$request  = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
+        $this->path     = preg_split('/\/+/', self::$request, -1, PREG_SPLIT_NO_EMPTY);
+        $this->locale   = $this->getLocale(self::$request, $this->path);
+        $this->apath    = $this->path;
+
+        $this->_storage();
 
         $this->checkAdmin();
-        $this->initTemplate();
 
-        $this->storage();
+        $this->initMVC();
+        
+        $this->initTemplate();
 
         $this->csrfProtection();
     }
@@ -46,22 +50,22 @@ class Initialize extends templateEngine
     {
         if ($this->is_admin)
         {
-            array_shift($this->tpath);
+            array_shift($this->apath);
         }
 
-        if (isset($this->tpath[0]))
+        if (isset($this->apath[0]))
         {
-            $this->controller = $this->tpath[0];
+            $this->controller = $this->apath[0];
         }
 
-        if (isset($this->tpath[1]))
+        if (isset($this->apath[1]))
         {
-            $this->action = $this->tpath[1];
+            $this->action = $this->apath[1];
         }
 
-        if (count($this->tpath) > 2)
+        if (count($this->apath) > 2)
         {
-            $this->params = array_slice($this->tpath, 2, count($this->tpath));
+            $this->params = array_slice($this->apath, 2, count($this->apath));
         }
     }
     
@@ -69,7 +73,7 @@ class Initialize extends templateEngine
     {
         if ($this->controller == CAPTCHA_URL && !$this->action)
         {
-            return new Captcha();
+            return new Captcha;
         }
 
         if ($this->is_admin)
@@ -81,11 +85,16 @@ class Initialize extends templateEngine
             }   
         }
 
-        // exit(PATH_MODULES);
-
+        if (!$this->is_admin)
+        {
+            if ($this->controller == 'news')
+            {
+                exit(__(PATH_MODULES));
+            }
+        }
+        
         // if (DEV_MODE)
         // {
-        //     $cache = new Caching;
         //     $cache->clearStorage();
         // }
 
@@ -153,28 +162,7 @@ class Initialize extends templateEngine
 
     private function csrfProtection()
     {
-        if (!count($_POST) && defined('CSRF_PROTECTION') && CSRF_PROTECTION)
-        {
-            unset($_SESSION['csrf_param']);
-            unset($_SESSION[$this->csrf_param]);
-            
-            if (empty($_SESSION[$this->csrf_param]))
-            {
-                if (function_exists('mcrypt_create_iv'))
-                {
-                    $token = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
-                }
-                else
-                {
-                    $token = bin2hex(openssl_random_pseudo_bytes(32));
-                }
-
-                $_SESSION['csrf_param'] = $this->csrf_param;
-                $_SESSION[$this->csrf_param] = base64_encode($token);
-            }
-
-            $this->csrf_token = $_SESSION[$this->csrf_param];
-        }
+        $this->csrf = new CSRF;
     }
 
     private function checkAdmin()

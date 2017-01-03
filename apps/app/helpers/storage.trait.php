@@ -4,108 +4,111 @@
 
 trait Storage
 {
-    protected $client = null;
-    protected $server = 'localhost';
-    protected $secret = 11211;
+    protected static $server = 'localhost';
+    protected static $secret = 11211;
 
-    protected $cache = null;
-    protected $cache_path = '';
-    protected $cache_expire = 3600;
+    protected static $cache = null;
+    protected static $cache_path = '';
+    protected static $cache_expire = 3600;
 
-    public function storage()
+    public function __construct()
     {
         if (ENABLED_CACHING)
         {
             if (!empty($_REQUEST['server']))
             {
-                $this->server = $_REQUEST['server'];
+                self::$server = $_REQUEST['server'];
             }
 
-            $this->connect();
-
-            $this->cache_path = str_replace('/', '.', trim($this->request, '/'));
+            self::hash();
+            self::connect();
         }
     }
 
-    public function setCache($key = '', $value = '', $global = false)
+    public static function setCache($key = '', $value = '', $global = false)
     {
         if (!$global)
         {
-            $key .= $this->cache_path;
+            $key .= self::$cache_path;
         }
 
-        $this->cache->set($this->domain . $key, $value, time() + $this->cache_expire);
+        self::$cache->set(self::$domain . $key, $value, time() + self::$cache_expire);
     }
 
-    public function getCache($key = '', $global = false)
+    public static function getCache($key = '', $global = false)
     {
         if (!$global)
         {
-            $key .= $this->cache_path;
+            $key .= self::$cache_path;
         }
 
-        if (!($this->cache->get($this->domain . $key) === false))
+        if (!(self::$cache->get(self::$domain . $key) === false))
         {
-            return $this->cache->get($this->domain . $key);
+            return self::$cache->get(self::$domain . $key);
         }
 
         return false;
     }
 
-    public function clearStorage()
+    public static function clearStorage()
     {
-        $this->cache->flush();
+        self::$cache->flush();
     }
 
-    private function connect()
+    private static function hash()
+    {
+        self::$cache_path = str_replace('/', '.', trim(self::$request, '/'));
+    }
+
+    private static function connect()
     {
         switch(strtolower(CACHING_ADAPTER))
         {
             case 'memcached':
-                $this->client = new \Memcached();
-                $this->client->addServer($this->server, $this->secret);
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\Memcached($this->client);
+                $client = new \Memcached();
+                $client->addServer(self::$server, self::$secret);
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\Memcached($client);
             break;
             
             case 'redis':
-                $this->client = new \Redis();
-                $this->client->connect('127.0.0.1');
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\Redis($this->client);
+                $client = new \Redis();
+                $client->connect('127.0.0.1');
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\Redis($client);
             break;
             
             case 'couchbase':
                 $cluster = new \CouchbaseCluster('couchbase://localhost');
                 $bucket = $cluster->openBucket('default');
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\Couchbase($bucket);
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\Couchbase($bucket);
             break;
             
             case 'apc':
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\Apc();
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\Apc();
             break;
             
             case 'mysql':
-                $this->client = new \PDO('mysql:dbname='.DB_BASE.';host='.DB_HOST, DB_USER, DB_PASS);
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\MySQL($this->client);
+                $client = new \PDO('mysql:dbname='.DB_BASE.';host='.DB_HOST, DB_USER, DB_PASS);
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\MySQL($client);
             break;
             
             case 'sqlite':
-                $this->client = new \PDO('sqlite:cache.db');
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\SQLite($this->client);
+                $client = new \PDO('sqlite:cache.db');
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\SQLite($client);
             break;
             
             case 'postgresql':
-                $this->client = new \PDO('pgsql:user=postgres dbname=cache password=');
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\PostgreSQL($this->client);
+                $client = new \PDO('pgsql:user=postgres dbname=cache password=');
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\PostgreSQL($client);
             break;
             
             case 'memory':
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\MemoryStore();
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\MemoryStore();
             break;
             
             default:
                 $adapter = new \League\Flysystem\Adapter\Local(PATH_RUNTIME, LOCK_EX);
                 $filesystem = new \League\Flysystem\Filesystem($adapter);
-                $this->cache = new \MatthiasMullie\Scrapbook\Adapters\Flysystem($filesystem);
+                self::$cache = new \MatthiasMullie\Scrapbook\Adapters\Flysystem($filesystem);
             break;
         }
     }

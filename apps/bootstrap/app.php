@@ -1,5 +1,23 @@
 <?php
 
+// use Pagekit\Application as App;
+// use Pagekit\Module\Loader\AutoLoader;
+// use Pagekit\Module\Loader\ConfigLoader;
+// $loader = require $path.'/autoload.php';
+// $app = new App($config);
+// $app['autoloader'] = $loader;
+// $app['module']->register([
+//     'packages/*/*/index.php',
+//     'app/modules/*/index.php',
+//     'app/installer/index.php',
+//     'app/system/index.php'
+// ], $path);
+// $app['module']->addLoader(new AutoLoader($app['autoloader']));
+// $app['module']->addLoader(new ConfigLoader(require __DIR__.'/config.php'));
+// $app['module']->addLoader(new ConfigLoader(require $app['config.file']));
+// $app['module']->load('system');
+// $app->run();
+
 $t1 = microtime(true);
 
 session_start();
@@ -31,6 +49,16 @@ if (!defined('APPS_ROOT')) {
 |--------------------------------------------------------------------------
 */
 require FASTEST_ROOT.APPS_ROOT.DS.'bootstrap'.DS.'autoload.php';
+
+// $route = new Illuminate\Container\Container();
+
+// Illuminate\Support\Facades\Facade::setFacadeApplication($route);
+
+// $route->get('/user/{id}', function ($id) {
+//     exit(__('User ', $id));
+// });
+
+// exit;
 
 setlocale(LC_ALL, Tools::getLocale($_SERVER['REQUEST_URI']));
 

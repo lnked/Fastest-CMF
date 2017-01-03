@@ -7,19 +7,20 @@ final class Application extends Initialize
         parent::__construct();
     }
 
-    private function initialize()
-    {
-    }
-
     public function launch()
     {
         if (count($_POST))
         {
-            exit(__($_POST, $_SESSION[$this->csrf_param]));
+            if ($this->csrf->validate($_POST))
+            {
+                exit(__("<b style='color: green'>valid</b>", $_POST));
+            }
+            else
+            {
+                exit(__("<b style='color: red'>invalid</b>", $_POST));
+            }
         }
 
-        $this->initMVC();
-        
         $this->initHooks();
 
         $app = [
@@ -29,9 +30,7 @@ final class Application extends Initialize
             'params'        => $this->params,
             'content'       => $this->getContent()
         ];
-
-        $this->initialize();
-
+        
         $this->template->assign('app', $app);
     }
     

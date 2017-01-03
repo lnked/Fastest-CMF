@@ -47,12 +47,14 @@
             #}
 
         </nav>
-
+        
+        {#
         <a href="/{{ ADMIN_DIR }}/dashboard" class="sidebar__ico a-link">
             <svg role="image">
                 <use xlink:href="#dashboard"/>
             </svg>
         </a>
+        #}
 
         <a href="/cp/site/pages" class="sidebar__ico a-link">
             <svg role="image">
@@ -60,6 +62,7 @@
             </svg>
         </a>
         
+        {#
         <a href="/cp/site/menu" class="sidebar__ico a-link">
             <svg role="image">
                 <use xlink:href="#sitemap"/>
@@ -77,8 +80,7 @@
                 <use xlink:href="#todo"/>
             </svg>
         </a>
-
-
+        #}
 
         {% if app.controller == 'marketing' %}
         <nav class="menu" role="navigation">

@@ -5,9 +5,8 @@
     {% endautoescape %}
 
     <form action="" method="POST" enctype="multipart/form-data">
-        
-        <input type="hidden" name="csrf-param" value="{{ session.csrf_param }}">
-        <input type="hidden" name="csrf-token" value="{{ session[session.csrf_param] }}">
+        <input type="hidden" name="csrf_param" value="{{ session.csrf_param }}">
+        <input type="hidden" name="authenticity_token" value="{{ session[session.csrf_param] }}">
 
         <label class="f-label">
             <input type="text" class="f-input">
