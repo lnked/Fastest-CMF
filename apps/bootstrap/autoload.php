@@ -53,7 +53,6 @@ spl_autoload_register(function($_class) {
 
     #
     # Load class & trait
-
     foreach ($paths as $path)
     {
         if (file_exists(APP_ROOT.DS.$path.DS.$_class.'.class.php'))

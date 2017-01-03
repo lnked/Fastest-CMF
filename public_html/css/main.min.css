@@ -1,7 +1,12 @@
 nav {
     margin-bottom: 15px;
 }
+
 nav a {
     display: inline-block;
     margin-right: 10px;
+}
+
+nav strong a {
+    color: red;
 }

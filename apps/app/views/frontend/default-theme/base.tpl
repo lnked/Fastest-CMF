@@ -11,7 +11,7 @@
         <a href="/articles">Статьи</a>
         <a href="/articles/test">Статьи категория</a>
         <a href="/articles/test/20">Статьи элемент категории</a>
-        <a href="/cp">Админка</a>
+        <strong><a href="/cp">Админка</a></strong>
     </nav>
 </header>
 
