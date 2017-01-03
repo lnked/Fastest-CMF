@@ -50,16 +50,6 @@ if (!defined('APPS_ROOT')) {
 */
 require FASTEST_ROOT.APPS_ROOT.DS.'bootstrap'.DS.'autoload.php';
 
-// $route = new Illuminate\Container\Container();
-
-// Illuminate\Support\Facades\Facade::setFacadeApplication($route);
-
-// $route->get('/user/{id}', function ($id) {
-//     exit(__('User ', $id));
-// });
-
-// exit;
-
 setlocale(LC_ALL, Tools::getLocale($_SERVER['REQUEST_URI']));
 
 date_default_timezone_set(FASTEST_TIMEZONE);
@@ -70,6 +60,8 @@ date_default_timezone_set(FASTEST_TIMEZONE);
 |--------------------------------------------------------------------------
 */
 $app = new Application();
+
+$app->router = include APP_ROOT.DS.'config'.DS.'routes.php';
 
 /*
 |--------------------------------------------------------------------------

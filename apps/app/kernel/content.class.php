@@ -2,7 +2,9 @@
 
 class Content
 {
-    use Singleton, Tools;
+    use Singleton, Tools, Storage {
+        Storage::__construct as private _storage;
+    }
 
     public function __construct() {}
 

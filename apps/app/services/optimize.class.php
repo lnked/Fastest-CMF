@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-class Caching extends Initialize
+class Optimize extends Initialize
 {
-    use Singleton, Tools;
+    use Singleton;
 
     public function __construct()
     {

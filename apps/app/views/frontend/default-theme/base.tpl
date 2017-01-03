@@ -1,30 +1,31 @@
-<!DOCTYPE html>
 {strip}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{$app.title}</title>
-</head>
-<body>
+{include file="./components/meta.inc.tpl"}
 
-    <header>
-        <h1>Header</h1>
-    </header>
+<header>
+    <h1>Header</h1>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/hello">Приветствие</a>
+        <a href="/news">Новости</a>
+        <a href="/news/10">Новость элемент</a>
+        <a href="/articles">Статьи</a>
+        <a href="/articles/10">Статьи элемент</a>
+        <a href="/cp">Админка</a>
+    </nav>
+</header>
+
+<section>
+    <aside>
+        ASIDE
+    </aside>
     
-    <section>
-        <aside>
-            ASIDE
-        </aside>
-        
-        <article>
-            <a href="/cp">Админка</a>
-        </article>
-    </section>
+    <article>
+    </article>
+</section>
 
-    <footer>
-        FOOTER
-    </footer>
+<footer>
+    FOOTER
+</footer>
 
-</body>
-</html>
+{include file="./components/scripts.inc.tpl"}
 {/strip}

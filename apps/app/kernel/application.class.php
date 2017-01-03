@@ -38,6 +38,20 @@ final class Application extends Initialize
     {
         $this->headers();
 
+        $route = $this->router->dispatch(self::$request);
+
+        if (isset($route[2]))
+        {
+            $result = Pux\RouteExecutor::execute($route);
+
+            var_dump( $result );
+
+            // exit(__($route[2] ));
+            // exit(__($route[2], $route[2]['parameter'] ));
+            // $data = call_user_func_array($route[2], $route[2]->parameter);
+            // __($data);
+        }
+
         $this->template->display($this->base_tpl);
     }
 }

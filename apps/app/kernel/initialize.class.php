@@ -8,6 +8,7 @@ class Initialize extends templateEngine
 
     public $path    = [];
     public $page    = ['id' => 0];
+    public $router  = null;
 
     protected static $domain  = null;
     protected static $request  = null;
@@ -85,13 +86,13 @@ class Initialize extends templateEngine
             }   
         }
 
-        if (!$this->is_admin)
-        {
-            if ($this->controller == 'news')
-            {
-                exit(__(PATH_MODULES));
-            }
-        }
+        // if (!$this->is_admin)
+        // {
+        //     if ($this->controller == 'news')
+        //     {
+        //         exit(__(PATH_MODULES));
+        //     }
+        // }
         
         // if (DEV_MODE)
         // {
