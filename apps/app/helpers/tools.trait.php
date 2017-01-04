@@ -2,7 +2,19 @@
 
 trait Tools
 {
-	
+    public static function getTranslate($text = '', $lang = 'ru-en')
+    {
+        $translate_url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=' . TRANSLATE_API . '&lang=' . $lang . '&text=' . $text;
+        $translate = json_decode(file_get_contents($translate_url), true);
+        
+        if (isset($translate['text'][0]))
+        {
+            return $translate['text'][0];
+        }
+
+        return $text;
+    }
+
 	/**
 	 * Helper function
 	 * 
@@ -13,18 +25,18 @@ trait Tools
 	 * @param string  $children   children index
 	 * @return array
 	 */
-	public static function makeTree($tree = array(), $pid = 0, $parent = 'pid', $key = 'id', $children = 'tree')
+	public static function makeTree($tree = [], $pid = 0, $parent = 'pid', $key = 'id', $children = 'tree')
 	{
-		$result = array();
+		$result = [];
 
 		if (!empty($tree))
 		{
-			$m = array();
+			$m = [];
 
 			foreach ($tree as $e)
 			{
-				isset($m[$e[$parent]]) ?: $m[$e[$parent]] = array();
-				isset($m[$e[$key]]) ?: $m[$e[$key]] = array();
+				isset($m[$e[$parent]]) ?: $m[$e[$parent]] = [];
+				isset($m[$e[$key]]) ?: $m[$e[$key]] = [];
 
 				$m[$e[$parent]][] = array_merge($e, array($children => &$m[$e[$key]]));
 			}
@@ -51,7 +63,7 @@ trait Tools
 		return $content;
 	}
 
-	public static function base_url($path = array(), $length = 1, $start = 0)
+	public static function base_url($path = [], $length = 1, $start = 0)
 	{
 		$baseurl = '';
 
@@ -102,7 +114,7 @@ trait Tools
 	 *
 	 * @return bool
 	 */
-	public static function is_assoc($arr = array())
+	public static function is_assoc($arr = [])
 	{
 		return array_keys($arr) !== range(0, count($arr) - 1);
 	}
@@ -650,7 +662,7 @@ trait Tools
 	// 	}
 	// }
 
-	// function recursiveBC($parent, $result = array(), $base = '', $fields = array(), $needle = 'parent', $stop = 0)
+	// function recursiveBC($parent, $result = [], $base = '', $fields = [], $needle = 'parent', $stop = 0)
 	// {
 	//     if (!empty($fields))
 	//     {

@@ -3,7 +3,7 @@
 final class CSRF
 {
     protected $csrf_token = null;
-    protected $csrf_param = 'authenticity_token';
+    protected $csrf_param = '_csrf';
 
     public function __construct()
     {

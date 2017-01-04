@@ -21,17 +21,32 @@ $r->get('/news/:id', ['newsModule', 'itemAction'], [
 ]);
 
 $r->get('/articles', function(){
-    return 'articles';
+    return [
+        'template'  =>  'list'
+    ];
 });
 
 $r->get('/articles/:category', function($category) {
+
+    return [
+        'article'   =>  $category,
+        'template'  =>  'list'
+    ];
+    
     return 'category: ' . $category;
 }, [
     'require' => [ 'category' => '\S+' ]
 ]);
 
 $r->get('/articles/:category/:id', function($category, $id) {
-    return $category . ' as ' . $id;
+
+    return [
+        'article'   =>  $id,
+        'template'  =>  'list'
+    ];
+
+    // return $category . ' as ' . $id;
+
 }, [
     'require' => [ 'category' => '\S+', 'id' => '\d+' ]
 ]);

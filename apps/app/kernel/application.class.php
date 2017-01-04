@@ -30,22 +30,13 @@ final class Application extends Initialize
             'params'        => $this->params,
             'content'       => $this->getContent()
         ];
-        
+
         $this->template->assign('app', $app);
     }
     
     public function terminate()
     {
         $this->headers();
-
-        $route = $this->router->dispatch(self::$request);
-
-        if (isset($route[2]))
-        {
-            $result = $this->loadModule($route);
-
-            var_dump( $result );
-        }
 
         $this->template->display($this->base_tpl);
     }

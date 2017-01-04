@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-class Initialize extends templateEngine
+class Initialize extends Content
 {
     use Singleton, Tools, Storage {
         Storage::__construct as private _storage;
@@ -84,49 +84,6 @@ class Initialize extends templateEngine
                 fn_redirect(DS.ADMIN_DIR);
             }   
         }
-    }
-
-    protected function loadModule($route = [])
-    {
-        if (DEV_MODE)
-        {
-            $this->clearStorage();
-        }
-     
-        $data = $route[2];
-
-        if (is_object($data))
-        {
-            if (isset($route[3]['vars']) && isset($route[3]['variables']))
-            {
-                return call_user_func_array($data, array_intersect_key($route[3]['vars'], array_flip($route[3]['variables'])));
-            }
-            else
-            {
-                return call_user_func($data);
-            }
-        }
-        elseif (isset($data[0]) && isset($data[1]))
-        {
-            $controller = $data[0];
-            $action = $data[1];
-
-            $module = str_replace(['module', 'controller', 'model'], '', strtolower($controller));
-
-            if (file_exists(PATH_MODULES.DS.$module.DS.'model'.DS.$module.'.model.php'))
-            {
-                require PATH_MODULES.DS.$module.DS.'model'.DS.$module.'.model.php';    
-            }
-            
-            if (file_exists(PATH_MODULES.DS.$module.DS.'controller'.DS.'backend'.DS.$module.'.module.php'))
-            {
-                require PATH_MODULES.DS.$module.DS.'controller'.DS.'backend'.DS.$module.'.module.php';    
-            }
-            
-            return Pux\RouteExecutor::execute($route);
-        }
-
-        return false;
     }
 
     protected static function headers($cache = false)

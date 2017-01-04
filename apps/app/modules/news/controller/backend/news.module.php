@@ -4,11 +4,26 @@ final class newsModule extends newsItem
 {
     public function listAction()
     {
-        return 'news list';
+        $news = [
+            ['item' => 1],
+            ['item' => 2]
+        ];
+
+        return [
+            'news'      =>  $news,
+            'template'  =>  'index'
+        ];
     }
 
     public function itemAction($id)
-    { 
-        return "news item id: $id";
+    {
+        $news = [
+            'item' => $id
+        ];
+
+        return [
+            'news'      =>  $news,
+            'template'  =>  'item'
+        ];
     }
 }

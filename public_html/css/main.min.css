@@ -1,3 +1,17 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+header {
+    padding: 20px;
+}
+
 nav {
     margin-bottom: 15px;
 }
@@ -9,4 +23,46 @@ nav a {
 
 nav strong a {
     color: red;
+}
+
+nav a.is-current {
+    color: #598983;
+    cursor: default;
+    text-decoration: none;
+}
+
+main {
+    overflow: hidden;
+    min-height: 100%    
+}
+
+section {
+    clear: both;
+    padding: 20px;
+}
+
+aside {
+    float: left;
+    width: 150px;
+    margin-right: -150px;
+    position: relative;
+    z-index: 10;
+}
+
+article {
+    width: 100%;
+    float: left;
+    padding-left: 160px;
+}
+
+.content {
+    padding: 20px;
+    background-color: #d2d2d2;
+}
+
+footer {
+    clear: both;
+    height: 50px;
+    padding: 0 20px;
+    margin-top: -50px;
 }

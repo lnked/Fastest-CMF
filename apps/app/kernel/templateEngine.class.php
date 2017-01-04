@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-class templateEngine extends Content
+class templateEngine
 {
     protected $template = null;
 

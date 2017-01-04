@@ -1,28 +1,34 @@
 {strip}
 {include file="./components/meta.inc.tpl"}
 
-<header>
-    <h1>Header</h1>
-    <nav>
-        <a href="/">Главная</a>
-        <a href="/hello">Приветствие</a>
-        <a href="/news">Новости</a>
-        <a href="/news/10">Новость элемент</a>
-        <a href="/articles">Статьи</a>
-        <a href="/articles/test">Статьи категория</a>
-        <a href="/articles/test/20">Статьи элемент категории</a>
-        <strong><a href="/cp">Админка</a></strong>
-    </nav>
-</header>
+<main>
+    <header>
+        <nav>
+            <a href="/"{if !$app.controller} class="is-current"{/if}>Главная</a>
+            <a href="/hello"{if $app.controller == 'hello'} class="is-current"{/if}>Приветствие</a>
+            <a href="/news"{if $app.controller == 'news' && !isset($app.action)} class="is-current"{/if}>Новости</a>
+            <a href="/news/10"{if $app.controller == 'news' && isset($app.action) && $app.action == 10} class="is-current"{/if}>Новость элемент</a>
+            <a href="/articles"{if $app.controller == 'articles' && !isset($app.action)} class="is-current"{/if}>Статьи</a>
+            <a href="/articles/test"{if $app.controller == 'articles' && isset($app.action) && $app.action == 'test' && !isset($app.params)} class="is-current"{/if}>Статьи категория</a>
+            <a href="/articles/test/20"{if $app.controller == 'articles' && isset($app.action) && $app.action == 'test' && isset($app.params) && in_array(20, $app.params)} class="is-current"{/if}>Статьи элемент категории</a>
+            <strong><a href="/cp">Админка</a></strong>
+        </nav>
+    </header>
 
-<section>
-    <aside>
-        ASIDE
-    </aside>
-    
-    <article>
-    </article>
-</section>
+    <section>
+        <aside>
+            
+        </aside>
+        
+        <article>
+            <div class="content">
+                <pre>
+                    {$app.content|print_r}
+                </pre>
+            </div>
+        </article>
+    </section>
+</main>
 
 <footer>
     FOOTER

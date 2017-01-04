@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-class Content
+class Content extends templateEngine
 {
     use Singleton, Tools, Storage {
         Storage::__construct as private _storage;
@@ -10,56 +10,75 @@ class Content
 
     protected function getContent()
     {
-        if ($this->is_admin)
+        $route = $this->router->dispatch(static::$request);
+        
+        if (isset($route[2]))
         {
-            // exit(__(
-            //     'controller: ', $this->colored($this->controller),
-            //     'action: ', $this->colored($this->action),
-            //     'params: ', $this->colored($this->params)
-            // ));
-        }
+            $response = $this->loadModule($route);
 
-        if (!empty($this->action))
-        {
-            $_class = $this->action;
-            
-            // if ($_class == 'news')
-            // {
-            //     echo $_class, ': ', PATH_MODULES.DS.'models'.DS.$_class.'.Model.php', '<br><br>';
-            //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php', '<br><br>';
-            //     echo $_class, ': ', PATH_MODULES.DS.'controller'.DS.'frontend'.DS.$_class.'.Controller.php', '<br><br>';
-            // }
-
-            // if (file_exists(PATH_MODULES.DS.$_class.DS.'controller'.DS.'models'.DS.$_class.'.Model.php'))
-            // {
-            //     require_once PATH_MODULES.DS.$_class.DS.'controller'.DS.'models'.DS.$_class.'.Model.php';
-            // }
-            
-            if (file_exists(PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php'))
+            if (!isset($response['module']))
             {
-                require_once PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php';
+                return $response;
             }
 
-            // exit(PATH_MODULES.DS.$_class.DS.'controller'.DS.'backend'.DS.$_class.'.Controller.php');
+            $module = $response['module'];
+            $template = $response['template'];
 
-            if (class_exists($_class))
+            if ($this->is_admin)
             {
-                $module = new $_class;
-                // exit(__('load: ', $controller, $module));
+                $folder = 'backend';
+            }
+            else
+            {
+                $folder = 'frontend';
             }
 
-            // http://fastest.dev/cp/site/news/edit/10
+            return $this->template->fetch(PATH_MODULES.DS.$module.DS.'views'.DS.$folder.DS.$template);
+        }
+    }
 
-            // site
-            // news
-            // Array
-            // (
-            //     [0] => edit
-            //     [1] => 10
-            // )
+    protected function loadModule($route = [])
+    {
+        if (DEV_MODE)
+        {
+            $this->clearStorage();
+        }
+     
+        $data = $route[2];
+
+        if (is_object($data))
+        {
+            if (isset($route[3]['vars']) && isset($route[3]['variables']))
+            {
+                $response = call_user_func_array($data, array_intersect_key($route[3]['vars'], array_flip($route[3]['variables'])));
+            }
+            else
+            {
+                $response = call_user_func($data);
+            }
+        }
+        elseif (isset($data[0]) && isset($data[1]))
+        {
+            $controller = $data[0];
+            $action = $data[1];
+
+            $module = str_replace(['module', 'controller', 'model'], '', strtolower($controller));
+
+            if (file_exists(PATH_MODULES.DS.$module.DS.'model'.DS.$module.'.model.php'))
+            {
+                require PATH_MODULES.DS.$module.DS.'model'.DS.$module.'.model.php';
+            }
+            
+            if (file_exists(PATH_MODULES.DS.$module.DS.'controller'.DS.'backend'.DS.$module.'.module.php'))
+            {
+                require PATH_MODULES.DS.$module.DS.'controller'.DS.'backend'.DS.$module.'.module.php';
+            }
+            
+            $response = Pux\RouteExecutor::execute($route);
+            $response['module'] = $module;
         }
 
-        return $this->template->fetch(PATH_MODULES.DS.'news'.DS.'views'.DS.'backend/index');
+        return $response;
     }
 
     protected function loadController()
@@ -145,18 +164,5 @@ class Content
                 }
             }
         }
-    }
-
-    protected function getTranslate($text = '', $lang = 'ru-en')
-    {
-        $translate_url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=' . TRANSLATE_API . '&lang=' . $lang . '&text=' . $text;
-        $translate = json_decode(file_get_contents($translate_url), true);
-
-        if (isset($translate['text'][0]))
-        {
-            return $translate['text'][0];
-        }
-
-        return $text;
     }
 }

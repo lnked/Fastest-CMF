@@ -9,6 +9,7 @@
     <meta content="skype_toolbar_parser_compatible" name="skype_toolbar">
     <meta content="true" name="HandheldFriendly">
     <meta content="320" name="MobileOptimized">
+    <meta content="Fastest CMF" name="generator">
 
     <meta content="date=no" name="format-detection">
     <meta content="email=no" name="format-detection">
