@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- (c) lnk. Celebro Studio | http://celebro.ru -->
 {strip}
-<html lang="ru" class="no-js" itemscope="itemscope" xmlns="http://www.w3.org/1999/xhtml" itemtype="http://schema.org/WebPage">
+<html lang="ru" class="no-js" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">

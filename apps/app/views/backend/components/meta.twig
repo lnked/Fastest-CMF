@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <!-- (c) lnk. CELEBRO Studio | http://celebro.ru -->
-<html lang="ru" class="no-js" itemscope="itemscope" xmlns="http://www.w3.org/1999/xhtml" itemtype="http://schema.org/WebPage">
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="no-cache" http-equiv="cache-control">
-    <meta content="no-cache" http-equiv="pragma">
-    <meta content="320" name="MobileOptimized">
-    <meta content="true" name="HandheldFriendly">
-    <meta content="notranslate" name="google">
-    
     <!-- Update for history api -->
     <base href="http://fastest.dev/">
 
+    <title itemprop="name">{{ app.title }}</title>
+
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+    <meta content="320" name="MobileOptimized">
+    <meta content="true" name="HandheldFriendly">
+    <meta content="on" http-equiv="cleartype">
+    <meta content="notranslate" name="google">
+    
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/{{ ADMIN_DIR }}/css/main.min.css">
 
@@ -45,8 +46,5 @@
     <!--[if lt IE 9]>
         <link rel="icon" type="image/png" href="/{{ ADMIN_DIR }}/favicon/{{ ADMIN_DIR }}/favicon-16x16.png" sizes="16x16">
     <![endif]-->
-
-    <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
-    <title itemprop="name">{{ app.title }}</title>
 </head>
 <body>
