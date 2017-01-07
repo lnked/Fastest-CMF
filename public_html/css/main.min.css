@@ -1,7 +1,19 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+}
+
+main {
+    overflow: hidden;
+    min-height: 100%;
+    padding: 0 20px;
 }
 
 body {
@@ -9,7 +21,7 @@ body {
 }
 
 header {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 nav {
@@ -18,7 +30,10 @@ nav {
 
 nav a {
     display: inline-block;
-    margin-right: 10px;
+}
+
+nav a:not(:last-child) {
+    margin-right: 15px;
 }
 
 nav strong a {
@@ -31,14 +46,9 @@ nav a.is-current {
     text-decoration: none;
 }
 
-main {
-    overflow: hidden;
-    min-height: 100%    
-}
-
 section {
     clear: both;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 aside {

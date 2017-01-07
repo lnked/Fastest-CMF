@@ -11,7 +11,7 @@
             <a href="/articles"{if $app.controller == 'articles' && !isset($app.action)} class="is-current"{/if}>Статьи</a>
             <a href="/articles/test"{if $app.controller == 'articles' && isset($app.action) && $app.action == 'test' && !isset($app.params)} class="is-current"{/if}>Статьи категория</a>
             <a href="/articles/test/20"{if $app.controller == 'articles' && isset($app.action) && $app.action == 'test' && isset($app.params) && in_array(20, $app.params)} class="is-current"{/if}>Статьи элемент категории</a>
-            <strong><a href="/cp">Админка</a></strong>
+            <strong><a href="/cp" target="_blank">Админка</a></strong>
         </nav>
     </header>
 
@@ -23,7 +23,11 @@
         <article>
             <div class="content">
                 <pre>
+                {if is_array($app.content)}
                     {$app.content|print_r}
+                {else}
+                    {$app.content}
+                {/if}
                 </pre>
             </div>
         </article>

@@ -35,6 +35,10 @@ class Content extends templateEngine
 
             return $this->template->fetch(PATH_MODULES.DS.$module.DS.'views'.DS.$folder.DS.$template);
         }
+        else
+        {
+            return $this->template->fetch(PATH_TEMPLATES.DS.'backend'.DS.'components'.DS.'demo');
+        }
     }
 
     protected function loadModule($route = [])

@@ -8,4 +8,4 @@
 | @license http://cms.celebro.ru/license.txt
 |--------------------------------------------------------------------------
 */
-require_once __DIR__ . "/../apps/bootstrap/app.php";
+require __DIR__."/../apps/bootstrap/app.php";

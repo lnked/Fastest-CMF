@@ -56,18 +56,20 @@ class templateRender extends Renderer
 
 	            extract($this->data);
 
-				require_once $file;
+				include($file);
 				
 				$output = ob_get_contents();
 				
-				ob_end_clean();
-				
-				if ($this->strip)
-				{
-					$output = preg_replace("#[\n\t]#", '', $output);
-				}
+                // ob_end_clean();
 
-				echo $output;
+                // if ($this->strip)
+                // {
+                //     $output = $this->_strip($output);
+                // }
+
+                // echo $output;
+
+                echo ($this->strip) ? $this->_strip(ob_get_clean()) : ob_get_clean();
 		    }
 		    else
 		    {
@@ -79,5 +81,22 @@ class templateRender extends Renderer
 		{
 		    echo $e->getMessage();
 		}
+    }
+
+    private function xss($data)
+    {
+        if (is_array($data)) {
+            $escaped = [];
+            foreach ($data as $key => $value) {
+                $escaped[$key] = $this->xss($value);
+            }
+            return $escaped;
+        }
+        return htmlspecialchars($data, ENT_QUOTES);
+    }
+
+    private function _strip($data)
+    {
+        return preg_replace("#[\n\t]#", '', $output);
     }
 }

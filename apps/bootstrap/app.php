@@ -68,7 +68,7 @@ $app = new Application();
 | Routing
 |--------------------------------------------------------------------------
 */
-$app->router = include APP_ROOT.DS.'config'.DS.'routes.php';
+$app->router = require APP_ROOT.DS.'config'.DS.'routes.php';
 
 /*
 |--------------------------------------------------------------------------

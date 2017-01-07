@@ -1,4 +1,9 @@
 <div class="box">
+    {% include './filter.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+</div>
+
+{#
+<div class="box">
     
     <div class="form__row">
         <select name="">
@@ -31,7 +36,8 @@
     </div>
 
 </div>
-
+#}
+{#
 <div class="box">
     <ul class="breadcrumb">
         <li class="breadcrumb__item">
@@ -51,7 +57,8 @@
         </li>
     </ul>
 </div>
-
+#}
+{# 
 <div class="box">
     <ul class="tab">
         <li class="tab-item">
@@ -76,7 +83,8 @@
         </li>
     </ul>
 </div>
-
+#}
+{# 
 <div class="box">
     <ul class="tab">
         <li class="tab-item _block">
@@ -144,6 +152,7 @@
 </div>
 
 <div class="loading"></div>
+#}
 
 <!-- 
 <div class="modal modal-sm">
@@ -190,7 +199,7 @@
     </div>
 </div>
 -->
-
+{# 
 <div class="modal active1">
     <div class="modal-overlay"></div>
     <div class="modal-wrapper">
@@ -219,9 +228,10 @@
         </div>
     </div>
 </div>
+ #}
 
 <div class="box">
-
+{# 
     <span class="label label_default">Default</span>
     <span class="label label_primary">Primary</span>
     <span class="label label_success">Success</span>
@@ -308,31 +318,42 @@
         <div class="progress-value"></div>
         <div class="progress-bg"><div class="progress-bar"></div></div>
     </div>
-
-
+ #}
     <table class="table">
+        <colgroup>
+            <col width="44">
+            <col>
+        </colgroup>
         <thead>
             <tr>
                 <th>#</th>
                 <th>Widgets Sold</th>
+                <th class="is-switcher">
+                    <div class="table-switcher j-switcher">
+                        <i class="table-switcher__dot"></i>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th>1</th>
-                <td>5</td>
+                <td colspan="2">5</td>
             </tr>
             <tr>
                 <th>2</th>
-                <td>10</td>
+                <td colspan="2">10</td>
             </tr>
             <tr>
                 <th>3</th>
-                <td>500</td>
+                <td colspan="2">500</td>
             </tr>
         </tbody>
     </table>
-    
+
+    <div></div>
+
+    {# 
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -403,4 +424,5 @@
             </tbody>
         </table>
     </div>
+    #}
 </div>

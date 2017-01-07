@@ -19,7 +19,57 @@ module.exports.tasks = {
         bower: {
             config: './.bowerrc',
             path: src + 'vendors',
-            json: './bower.json'
+            json: './bower.json',
+            overrides: {
+                "jquery": {
+                    "main": "dist/jquery.min.js"
+                },
+                "axios": {
+                    "main": "dist/axios.min.js"
+                },
+                "trix": {
+                    "main": "dist/trix.js"
+                },
+                "tablesort": {
+                    "main": "vendor/assets/scripts/tablesort.js"
+                },
+                "Split.js": {
+                    "main": "split.min.js"
+                },
+                "mousetrap": {
+                    "main": "mousetrap.min.js"
+                },
+                "underscore": {
+                    "main": "dist/underscore-min.js"
+                },
+                "gsap": {
+                    "main": [
+                        "src/minified/TweenLite.min.js",
+                        "src/minified/TimelineLite.min.js"
+                    ]
+                },
+                "svg4everybody": {
+                    "main": "dist/svg4everybody.min.js"
+                },
+                "Template7": {
+                    "main": "dist/template7.min.js"
+                },
+                "react": {
+                    "main": [
+                        "react.min.js",
+                        "react-dom.min.js"
+                    ]
+                },
+                "zepto": {
+                    "main": "zepto.min.js"
+                },
+                "cookie": {
+                    "main": "cookie.min.js"
+                },
+                "reflux": {
+                    "main": "dist/reflux.min.js"
+                }
+            }
         }
     },
 

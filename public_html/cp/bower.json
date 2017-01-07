@@ -25,6 +25,8 @@
     "isMobile": "0.4.1",
     "cookie": "1.2.1",
     "jquery": "1.11.3",
-    "chosen": "1.6.2"
+    "chosen": "1.6.2",
+    "trix": "0.10.0",
+    "Split.js": "1.2.0"
   }
 }

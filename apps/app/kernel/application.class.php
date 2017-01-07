@@ -23,6 +23,38 @@ final class Application extends Initialize
 
         $this->initHooks();
 
+        // use Nette\Http;
+
+        // https://doc.nette.org/en/2.4/
+        // https://github.com/nette/http
+
+        // $input = $request->only(['username', 'password']);
+
+        // $input = $request->only('username', 'password');
+
+        // $input = $request->except(['credit_card']);
+
+        // $input = $request->except('credit_card');
+        // Determining If An Input Value Is Present
+
+        // if ($request->has('name')) {
+        //     //
+        // }
+
+        // Without Query String...
+        // $url = $request->url();
+
+        // With Query String...
+        // $url = $request->fullUrl();
+
+        // $uri = $request->path();
+        // if ($request->is('admin/*')) {
+        // $url = $request->url();
+        // $method = $request->method();
+        // if ($request->isMethod('post')) {
+        //     //
+        // }
+
         $app = [
             'title'         => 'Fastest CMS',
             'controller'    => $this->controller,
