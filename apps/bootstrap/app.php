@@ -1,23 +1,5 @@
 <?php
 
-// use Pagekit\Application as App;
-// use Pagekit\Module\Loader\AutoLoader;
-// use Pagekit\Module\Loader\ConfigLoader;
-// $loader = require $path.'/autoload.php';
-// $app = new App($config);
-// $app['autoloader'] = $loader;
-// $app['module']->register([
-//     'packages/*/*/index.php',
-//     'app/modules/*/index.php',
-//     'app/installer/index.php',
-//     'app/system/index.php'
-// ], $path);
-// $app['module']->addLoader(new AutoLoader($app['autoloader']));
-// $app['module']->addLoader(new ConfigLoader(require __DIR__.'/config.php'));
-// $app['module']->addLoader(new ConfigLoader(require $app['config.file']));
-// $app['module']->load('system');
-// $app->run();
-
 $t1 = microtime(true);
 
 session_start();
@@ -88,19 +70,6 @@ $app->launch();
 $app->terminate();
 
 session_write_close();
-
-// // Message at level 'info'
-// Rollbar::report_message('testing 123', 'info');
-
-// // Catch an exception and send it to Rollbar
-// try {
-//     throw new Exception('test exception');
-// } catch (Exception $e) {
-//     Rollbar::report_exception($e);
-// }
-
-// // Will also be reported by the exception handler
-// throw new Exception('test 2');
 
 $t2 = microtime(true);
 
