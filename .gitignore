@@ -4,6 +4,7 @@
 /____
 /apps/vendor
 /apps/runtime
+/public_html/cp/frontend/vendors
 Homestead.json
 Homestead.yaml
 

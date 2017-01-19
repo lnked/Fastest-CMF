@@ -1,0 +1,299 @@
+@require '../_common/styles/global'
+
+.sh-news
+    display flex
+    padding-top 205px
+    padding-bottom 20px
+    font-family Formular
+    @media (min-width: $screen.large)
+        padding-top 275px
+    @media (max-width: $screen._medium)
+        padding-top 175px
+        outline 1px solid red
+    @media (max-width: $screen.tablet)
+        padding-top 95px
+    
+    &__filter
+        position fixed
+        @extend .sh__col
+        @extend .sh__col--left
+        line-height .94
+        &[class*=app-animate--random]
+            animation-delay .3s
+        &.app-animate--slide-in-up
+            animation-name: appEffectSlideInUp--news
+        &.app-animate--ready
+            animation-duration: .7s
+        &:before
+        &:after
+            content ''
+            display block
+            width 100%
+            height 1px
+            background-color #151515
+            margin-bottom 20px
+        &:after
+            position absolute
+            left 0
+            bottom 0
+            display none
+            width 100%
+            margin-bottom 0
+        a
+            display flex
+            align-items center
+            font-size 48px
+            font-weight 700
+            letter-spacing -4px
+            transition opacity .3s ease
+            backface-visibility hidden
+            padding-left 40px
+            &:hover
+                opacity .5
+        &--active
+            a
+                opacity .5
+                &:hover
+                    opacity 1
+        // @media (max-width: $screen._medium)
+        //     width 100%
+        //     position static
+        //     padding-left 20px
+        //     padding-right 20px
+        //     border 1px solid red
+        //     &:before
+        //         display none
+        //     &:after
+        //         display block
+        //     a
+        //         font-size 18px
+        //         letter-spacing initial
+        //         padding-left 100px
+
+        // @media (max-width: $screen.desktop)
+        //     position relative
+        //     display flex
+        //     justify-content flex-end
+        //     width calc(100% - 90px)
+        //     left 45px
+        //     padding 0
+        //     padding-bottom 20px
+        //     overflow hidden
+        //     &:after
+        //         display block
+        //     &:before
+        //         display none
+        //     a
+        //         font-size 18px
+        //         letter-spacing initial
+        //         padding-left 100px
+        //     div:not(:last-child)
+        //         padding-right 100px
+        @media (max-width: $screen.tablet)
+            left 30px
+            width calc(100% - 60px)
+            padding-bottom 30px
+            a
+                font-size 14px
+                &:first-child
+                    padding-left 110px
+                &:not(:first-child)
+                    padding-left 85px
+    &__link
+        display flex
+        &--active
+            opacity 1!important
+    &__tags
+        line-height 50px
+        // @media (max-width: $screen._medium)
+        //     display flex
+        //     overflow-y hidden
+        //     overflow-x auto
+    &__heading
+        position absolute
+        left 25px
+        top 30px
+        transform rotate(-90deg) translateX(-100%)
+        transform-origin left top
+        font-size 14px
+        font-weight 500
+        @media (min-width: $screen.large)
+            top 25px
+            left 30px
+        @media (max-width: $screen.desktop)
+            display none
+    &__list
+        @extend .sh__col
+        @extend .sh__col--right
+        // margin-left calc(40% - 5px)
+        // @media (max-width: $screen.desktop)
+        //     grid(1, 0px)
+        //     width 100%
+        //     margin-left 0
+        //     padding-left 45px
+        //     padding-right 45px
+        //     padding-top 20px
+        // @media (max-width: $screen.tablet)
+        //     padding-top 10px
+        //     padding 10px 30px 0 30px
+    &__el
+        display flex
+        flex-wrap wrap
+        width 100%
+        opacity 1
+        transition opacity .3s ease
+        &[class*=app-animate--random]
+            animation-delay .3s
+        &.app-animate--slide-in-up
+            animation-name: appEffectSlideInUp--news
+        &.app-animate--ready
+            animation-duration: .7s
+        &:hover
+            .sh-news__header
+            .sh-news__date
+                opacity .5
+        &.ng-leave
+            animation appEffectSlideOutUp--news .7s 0s!important
+            transition none!important
+        &:not(:last-child)
+            margin-bottom 45px
+            padding-bottom 50px
+            border-bottom: 1px solid #151515
+            @media (max-width: $screen.desktop)
+                margin-bottom 20px
+                padding-bottom 30px
+            @media (max-width: $screen.tablet)
+                margin-bottom 10px
+                padding-bottom 15px
+        &:nth-child(3n+1)
+            .sh-news__image
+                width 100%
+                &:before
+                    padding-top 48%
+            .sh-news__date
+                width 15%
+                @media (max-width: $screen.desktop)
+                    width 100%
+            .sh-news__header
+                width 85%
+                @media (max-width: $screen.desktop)
+                    width 100%
+        &:nth-child(3n+2)
+            .sh-news__image
+                width 50%
+                &:before
+                    padding-top 100%
+                    @media (max-width: $screen.desktop)
+                        padding-top 75%
+                @media (max-width: $screen.desktop)
+                    width 55%
+                @media (max-width: $screen.tablet)
+                    width 100%
+            .sh-news__date
+                width 50%
+                padding-left 30px
+                @media (max-width: $screen.desktop)
+                    padding-left 0px
+                    width 55%
+                @media (max-width: $screen.tablet)
+                    width 100%
+            .sh-news__header
+                width 50%
+                @media (max-width: $screen.desktop)
+                    width 55%
+                @media (max-width: $screen.tablet)
+                    width 100%
+        &:nth-child(3n+3)
+            @media (max-width: $screen.desktop)
+                justify-content flex-end
+            .sh-news__image
+                order 2
+                width 50%
+                &:before
+                    padding-top 100%
+                    @media (max-width: $screen.desktop)
+                        padding-top 75%
+                @media (max-width: $screen.desktop)
+                    order 1
+                    width 55%
+                @media (max-width: $screen.tablet)
+                    width 100%
+            .sh-news__date
+                order 1
+                width 50%
+                @media (max-width: $screen.desktop)
+                    order 2
+                    width 55%
+                @media (max-width: $screen.tablet)
+                    width 100%
+            .sh-news__header
+                order 3
+                margin-left 50%
+                @media (max-width: $screen.desktop)
+                    width 55%
+                    margin-left 0
+                @media (max-width: $screen.tablet)
+                    width 100%
+    &__image
+        margin-bottom 35px
+        background no-repeat center
+        background-color #fff
+        background-size cover
+        &:before
+            content ''
+            display block
+        @media (max-width: $screen.desktop)
+            margin-bottom 20px
+        @media (max-width: $screen.tablet)
+            margin-bottom 15px
+    &__info
+        display flex
+        width 100%
+    &__date
+        display flex
+        width 15%
+        padding-top 10px
+        font-weight 500
+        font-size 14px
+        transition opacity .3s ease
+        @media (max-width: $screen.desktop)
+            font-size 15px
+            margin-bottom 5px
+        @media (max-width: $screen.tablet)
+            margin-bottom 10px
+        span
+            max-width 100px
+            @media (max-width: $screen.desktop)
+                max-width none
+    &__header
+        font-size 48px
+        line-height .94
+        font-weight 700
+        transition opacity .3s ease
+        @media (max-width: $screen.desktop)
+            font-weight 700
+            font-size 35px
+            line-height 1
+        @media (max-width: $screen.tablet)
+            font-size 28px
+            line-height .93
+
+@keyframes appEffectSlideInUp--news
+  0%
+        transform translateY(160px)
+        transform-style flat
+        opacity 0
+  100%
+        transform translateY(0)
+        transform-style flat
+        opacity 1
+
+@keyframes appEffectSlideOutUp--news
+  0%
+        transform translateY(0)
+        transform-style flat
+        opacity 1
+  100%
+        transform translateY(-160px)
+        transform-style flat
+        opacity 0

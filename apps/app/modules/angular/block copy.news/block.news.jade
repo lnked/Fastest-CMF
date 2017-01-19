@@ -1,0 +1,29 @@
+- require('./block.news.styl')
+
+.sh-news(ng-if='!$root.preload')
+    .sh-news__filter.sh__left(
+        ng-class='{"sh-news__filter--active": newsCtrl.tagSelected}'
+        app-animate-random='slide-in-up'
+    )
+        .sh-news__heading SmartHeart®
+        .sh-news__tags
+            a.sh-news__link(
+                href=''
+                ng-repeat='tag in newsCtrl.tags track by $index'
+                ng-class='{"sh-news__link--active": newsCtrl._checkIfTagIsActive(tag.attributes.Category)}'
+                ng-click='newsCtrl._emit(tag.attributes.Category)'
+            )
+                span(ng-bind='::tag.attributes.Category')
+        
+    .sh-news__list.sh__right
+        a.sh-news__el.sh-news__el--large(
+            ng-repeat='article in newsCtrl.news track by $index'
+            href=''
+            ui-sref='root.article({slug: article.attributes.slug})'
+            app-animate-random='slide-in-up'
+        )
+            .sh-news__image.sh-scroll-animate(ng-style='{"background-image": "url({{::article.attributes.ImagePreview._url}})"}')
+            .sh-news__date.sh-scroll-animate
+                span(ng-if='!$root.isMobile') {{ ::article.attributes.Date | amDateFormat: "DD MMMM YYYY" }}
+                span(ng-if='$root.isMobile') {{ ::article.attributes.Date | amDateFormat: "DD.MM.YYYY" }}
+            .sh-news__header.sh-scroll-animate(ng-bind='::article.attributes.Header')

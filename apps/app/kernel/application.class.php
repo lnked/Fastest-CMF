@@ -1,5 +1,7 @@
 <?php declare(strict_types = 1);
 
+use DebugBar\StandardDebugBar;
+
 final class Application extends Initialize
 {
     public function __construct()
@@ -69,6 +71,13 @@ final class Application extends Initialize
     public function terminate()
     {
         $this->headers();
+
+        $debugbar = new StandardDebugBar();
+        $debugbarRenderer = $debugbar->getJavascriptRenderer();
+        $debugbarRenderer->setBaseUrl('/Resources');
+
+        $this->template->assign('render_head', $debugbarRenderer->renderHead());
+        $this->template->assign('render_footer', $debugbarRenderer->render());
 
         $this->template->display($this->base_tpl);
     }

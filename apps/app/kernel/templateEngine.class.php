@@ -37,6 +37,11 @@ class templateEngine
         $this->template->assign($key, $value, $cache);
     }
 
+    protected function render()
+    {
+        return call_user_func_array(["templateEngine", "fetch"], func_get_args());
+    }
+
     protected function fetch($template = '', $cache_id = '', $compile_id = '')
     {
         return $this->template->fetch($template);
