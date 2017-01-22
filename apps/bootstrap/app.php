@@ -41,6 +41,9 @@ date_default_timezone_set(FASTEST_TIMEZONE);
 // installs global error and exception handlers
 Rollbar::init(['access_token' => '6b18dcd7c7094d4eb601264ec922fda6']);
 
+$environment = (new josegonzalez\Dotenv\Loader(PATH_CONFIG.DS.'.env'))->parse()->putenv(true);
+// exit(getenv('DB_USER'));
+
 /*
 |--------------------------------------------------------------------------
 | Application
@@ -53,7 +56,7 @@ $app = new Application();
 | Routing
 |--------------------------------------------------------------------------
 */
-$app->router = require APP_ROOT.DS.'config'.DS.'routes.php';
+$app->router = require PATH_CONFIG.DS.'routes.php';
 
 /*
 |--------------------------------------------------------------------------

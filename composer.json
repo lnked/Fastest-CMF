@@ -35,7 +35,8 @@
         "ezyang/htmlpurifier": "^4.8",
         "symfony/http-foundation": "^3.2",
         "symfony/console": "^3.2",
-        "maximebf/debugbar": "^1.13"
+        "maximebf/debugbar": "^1.13",
+        "josegonzalez/dotenv": "^3.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
