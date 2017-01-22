@@ -27,6 +27,9 @@ final class galleryController extends galleryModel
             10
         );
 
+        $list = Q("SELECT * FROM `#_module_gallery`")->all();
+        exit(__($list));
+
         $gallery = [
             ['item' => 1],
             ['item' => 2]

@@ -42,7 +42,11 @@ date_default_timezone_set(FASTEST_TIMEZONE);
 Rollbar::init(['access_token' => '6b18dcd7c7094d4eb601264ec922fda6']);
 
 $environment = (new josegonzalez\Dotenv\Loader(PATH_CONFIG.DS.'.env'))->parse()->putenv(true);
-// exit(getenv('DB_USER'));
+
+QF('mysqli://'.getenv('DB_USER').':'.getenv('DB_PASS').'@'.getenv('DB_HOST').':'.getenv('DB_PORT').'/'.getenv('DB_BASE').'?encoding=utf8')
+    ->connect()
+    ->alias('default')
+    ->tablePrefix(getenv('DB_PREF'));
 
 /*
 |--------------------------------------------------------------------------

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8f836ceb83905c7f9b6ce3511abf4f8e",
-    "content-hash": "23f0b87f4566fafe9d5a858915a1dcc0",
+    "hash": "e3cd2eaecdfd899929786e73445796c3",
+    "content-hash": "ff7f0bd48d3fe4caf76f8db138f08b2a",
     "packages": [
         {
             "name": "corneltek/pux",
@@ -1038,6 +1038,54 @@
                 "storage"
             ],
             "time": "2016-10-19 20:38:46"
+        },
+        {
+            "name": "lnked/q",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lnked/Q.git",
+                "reference": "f7da5048200575f84015957fdc48189667dff166"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lnked/Q/zipball/f7da5048200575f84015957fdc48189667dff166",
+                "reference": "f7da5048200575f84015957fdc48189667dff166",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Q.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "im4LF",
+                    "homepage": "https://github.com/im4LF/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "ed",
+                    "email": "ed.proff@gmail.com",
+                    "homepage": "https://github.com/lnked/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "a query builder library for PHP",
+            "homepage": "http://github.com/lnked/Q",
+            "keywords": [
+                "mysql",
+                "query builder"
+            ],
+            "time": "2017-01-22 20:05:30"
         },
         {
             "name": "m1/env",
@@ -2146,16 +2194,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.5",
+            "version": "5.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "50fd2be8f3e23e91da825f36f08e5f9633076ffe"
+                "reference": "caf8141b89691498d91aaac6c82e9cd5f685ae86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/50fd2be8f3e23e91da825f36f08e5f9633076ffe",
-                "reference": "50fd2be8f3e23e91da825f36f08e5f9633076ffe",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/caf8141b89691498d91aaac6c82e9cd5f685ae86",
+                "reference": "caf8141b89691498d91aaac6c82e9cd5f685ae86",
                 "shasum": ""
             },
             "require": {
@@ -2167,7 +2215,7 @@
                 "myclabs/deep-copy": "~1.3",
                 "php": "^5.6 || ^7.0",
                 "phpspec/prophecy": "^1.6.2",
-                "phpunit/php-code-coverage": "^4.0.3",
+                "phpunit/php-code-coverage": "^4.0.4",
                 "phpunit/php-file-iterator": "~1.4",
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": "^1.0.6",
@@ -2224,7 +2272,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-28 07:18:51"
+            "time": "2017-01-22 08:39:59"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3821,7 +3869,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "smarty/smarty": 20
+        "smarty/smarty": 20,
+        "lnked/q": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

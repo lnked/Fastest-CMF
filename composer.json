@@ -36,7 +36,8 @@
         "symfony/http-foundation": "^3.2",
         "symfony/console": "^3.2",
         "maximebf/debugbar": "^1.13",
-        "josegonzalez/dotenv": "^3.0"
+        "josegonzalez/dotenv": "^3.0",
+        "lnked/q": "dev-master"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
