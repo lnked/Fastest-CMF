@@ -87,7 +87,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'PATH_TEMPLATES' => FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'views',
+    'PATH_TEMPLATES' => FASTEST_ROOT.APPS_ROOT.DS.'app'.DS.'layouts',
     
     /*
     |--------------------------------------------------------------------------
