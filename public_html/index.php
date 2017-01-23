@@ -10,6 +10,9 @@
 */
 require __DIR__."/../apps/bootstrap/app.php";
 
+// https://guides.kontur.ru/
+// https://guides.kontur.ru/controls/menu-button/
+
 // ng serve --host 0.0.0.0 --port 4201 --live-reload-port 49153
 
 
