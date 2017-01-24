@@ -23,7 +23,8 @@
         <meta http-equiv="imagetoolbar" content="false">
     <![endif]-->
     
-    {$render_head}
+    {$render.meta}
+    {$render.head}
 
     <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
     <title itemprop="name">{$app.title}</title>

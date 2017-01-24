@@ -958,16 +958,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.32",
+            "version": "1.0.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab"
+                "reference": "5c7f98498b12d47f9de90ec9186a90000125777c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
-                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/5c7f98498b12d47f9de90ec9186a90000125777c",
+                "reference": "5c7f98498b12d47f9de90ec9186a90000125777c",
                 "shasum": ""
             },
             "require": {
@@ -1037,7 +1037,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-19 20:38:46"
+            "time": "2017-01-23 10:32:09"
         },
         {
             "name": "lnked/q",
@@ -1045,12 +1045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lnked/Q.git",
-                "reference": "f7da5048200575f84015957fdc48189667dff166"
+                "reference": "7b76a92b29e28de6b65551fd839e765cd42f9db0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lnked/Q/zipball/f7da5048200575f84015957fdc48189667dff166",
-                "reference": "f7da5048200575f84015957fdc48189667dff166",
+                "url": "https://api.github.com/repos/lnked/Q/zipball/7b76a92b29e28de6b65551fd839e765cd42f9db0",
+                "reference": "7b76a92b29e28de6b65551fd839e765cd42f9db0",
                 "shasum": ""
             },
             "require": {
@@ -1085,7 +1085,7 @@
                 "mysql",
                 "query builder"
             ],
-            "time": "2017-01-22 20:05:30"
+            "time": "2017-01-22 20:43:07"
         },
         {
             "name": "m1/env",

@@ -1,5 +1,5 @@
 {strip}
-{$render_footer}
+{$render.footer}
 </body>
 </html>
 {/strip}
