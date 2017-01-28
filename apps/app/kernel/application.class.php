@@ -74,7 +74,7 @@ final class Application extends Initialize
     {
         $this->headers();
 
-        Q("SELECT * FROM `db_site__structure`")->all();
+        // Q("SELECT * FROM `db_site__structure`")->all();
 
         $debugbar = new StandardDebugBar();
         $debugbarRenderer = $debugbar->getJavascriptRenderer();

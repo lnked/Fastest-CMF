@@ -20,7 +20,7 @@
         "fzaninotto/faker": "^1.6",
         "phpoffice/phpexcel": "^1.8",
         "fabpot/goutte": "^3.1",
-        "phpunit/phpunit": "^5.5",
+        "phpunit/phpunit": "^5.7",
         "imagine/imagine": "^0.6.3",
         "machuga/authority": "^2.2",
         "monolog/monolog": "^1.21",
@@ -37,7 +37,8 @@
         "symfony/console": "^3.2",
         "maximebf/debugbar": "^1.13",
         "josegonzalez/dotenv": "^3.0",
-        "lnked/q": "dev-master"
+        "lnked/q": "dev-master",
+        "mobiledetect/mobiledetectlib": "^2.8"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
