@@ -6,8 +6,6 @@ class Module extends Initialize
 
 	public $caching		= 	1;
 	public $limit		= 	12;
-	public $csrf_token 	= 	null;
-	public $csrf_param 	= 	null;
 	public $module_root = 	null;
 	public $module		= 	[];
 	public $arguments 	= 	[];
@@ -57,36 +55,6 @@ class Module extends Initialize
 		}
 
 		return $count;
-	}
-
-	public function setCSRF($token = '', $param = '')
-	{
-		$this->csrf_token = $token;
-		$this->csrf_param = $param;
-	}
-
-	protected function checkCSRF($post = [])
-	{
-		if (!defined('CSRF_PROTECTION') || !CSRF_PROTECTION)
-		{
-			return true;
-		}
-
-		if (isset($post[$this->csrf_param]))
-		{
-			$token = $post[$this->csrf_param];
-
-			if (!hash_equals($token, $this->csrf_token))
-			{
-				echo 'not valid', '<br>';
-			}
-
-			echo $token, '<br>as', '<br>', $this->csrf_token;
-		}
-
-		__debug($post, '1');
-
-		return false;
 	}
 
 	public function listAction($fields = [], $where = [], $group = [], $order = [], $limit = [0, 10])

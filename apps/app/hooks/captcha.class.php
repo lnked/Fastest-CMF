@@ -70,6 +70,8 @@ final class Captcha
             header("Content-Type: image/x-png");
             imagepng($this->captcha);
         }
+
+        exit;
     }
 
     public function checkCaptcha($keystring = '')

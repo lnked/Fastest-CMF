@@ -38,7 +38,37 @@ final class CSRF
 
         return false;
     }
- 
+
+    // public function setCSRF($token = '', $param = '')
+    // {
+    //     $this->csrf_token = $token;
+    //     $this->csrf_param = $param;
+    // }
+
+    // protected function checkCSRF($post = [])
+    // {
+    //     if (!defined('CSRF_PROTECTION') || !CSRF_PROTECTION)
+    //     {
+    //         return true;
+    //     }
+
+    //     if (isset($post[$this->csrf_param]))
+    //     {
+    //         $token = $post[$this->csrf_param];
+
+    //         if (!hash_equals($token, $this->csrf_token))
+    //         {
+    //             echo 'not valid', '<br>';
+    //         }
+
+    //         echo $token, '<br>as', '<br>', $this->csrf_token;
+    //     }
+
+    //     __debug($post, '1');
+
+    //     return false;
+    // }
+
     private function generate()
     {
         if (function_exists('random_bytes'))
