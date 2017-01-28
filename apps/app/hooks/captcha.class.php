@@ -70,37 +70,35 @@ final class Captcha
             header("Content-Type: image/x-png");
             imagepng($this->captcha);
         }
+    }
 
-        exit(__($this->length, $this->keystring));
+    public function checkCaptcha($keystring = '')
+    {
+        if ($keystring)
+        {
+            if (isset($_SESSION['captcha_keystring']) && $_SESSION['captcha_keystring'] === $keystring)
+            {
+                return true;
+            }
 
-        // if ($_REQUEST[session_name()])
-        // {
-        
-        // }
+            // unset($_SESSION['captcha_keystring']);
+        }
 
-        // example
-
-        // if(count($_POST)>0){
-        //     if(isset($_SESSION['captcha_keystring']) && $_SESSION['captcha_keystring'] === $_POST['keystring']){
-        //         echo "Correct";
-        //     }else{
-        //         echo "Wrong";
-        //     }
-        // }
-        // unset($_SESSION['captcha_keystring']);
-
-        exit(" CAPTCHA_KEYSTRING : " . $this->alphabet_length );
+        return false;
     }
 
     private function drawText()
     {
-        while(true) {
-            // generating random keystring
-            while(true){
-                $this->keystring='';
+        while(true)
+        {
+            while(true)
+            {
+                $this->keystring = '';
+
                 for($i=0;$i<$this->length;$i++){
                     $this->keystring.=$this->allowed_symbols{mt_rand(0,strlen($this->allowed_symbols)-1)};
                 }
+
                 if (!preg_match('/cp|cb|ck|c6|c9|rn|rm|mm|co|do|cl|db|qp|qb|dp/', $this->keystring)) break;
             }
 

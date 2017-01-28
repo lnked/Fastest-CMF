@@ -6,8 +6,8 @@ class templateEngine
 
     public function __construct($driver = 'smarty', $dir = '', $theme = '')
     {
-        $driver = strtolower($driver);
-        
+        $this->driver = strtolower($driver);
+
         if (!$theme)
         {
             $theme = FRONTEND_THEME;
@@ -15,17 +15,22 @@ class templateEngine
 
         if (strstr($dir, '#'))
         {
-            $dir = str_replace('#', $theme, $dir);
+            $this->dir = str_replace('#', $theme, $dir);
         }
 
-        if (file_exists(PATH_TEMPLATING.DS.$driver.'.templateEngine.php'))
+        $this->init();
+    }
+
+    protected function init()
+    {
+        if (file_exists(PATH_TEMPLATING.DS.$this->driver.'.templateEngine.php'))
         {
             if (!class_exists('templateRender'))
             {
-                include_once PATH_TEMPLATING.DS.$driver.'.templateEngine.php';
+                include_once PATH_TEMPLATING.DS.$this->driver.'.templateEngine.php';
 
                 $this->template = new templateRender([
-                    PATH_TEMPLATES.DS.$dir,
+                    PATH_TEMPLATES.DS.$this->dir,
                     PATH_TEMPLATES.DS.PATH_COMMON
                 ]);
             }
