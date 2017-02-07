@@ -45,7 +45,7 @@
 
 class templateRender extends Renderer
 {
-    protected $extension = '.xsl';
+    // protected $extension = '.xsl';
 
 	public function __construct($dir = '')
 	{

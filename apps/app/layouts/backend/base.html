@@ -1,39 +1,39 @@
 {% spaceless %}
-{% include 'components/meta.twig' %}
+{% include 'components/meta.html' %}
 {% include 'svgstore.html' %}
 
-{% include 'components/popup.twig' %}
+{% include 'components/popup.html' %}
 {% include 'components/preloader.html' %}
 
-{% include 'components/sidebar.twig' %}
+{% include 'components/sidebar.html' %}
 
 <main class="wrapper" id="wrapper">
     
-    {% include 'components/header.twig' %}
+    {% include 'components/header.html' %}
     
     <div class="wrapper__row clearfix" id="container">
         <div class="a-update">
             {% if app.controller == 'site' and app.action == 'pages' %}
-                {% include 'components/helper.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+                {% include 'components/helper.html' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
             {% endif %}
 
             {% if app.controller == 'site' and app.action == 'pages' %}
-                {% include 'components/services.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+                {% include 'components/services.html' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
             {% endif %}
             
             {#
             {% if app.controller == 'site' and app.action == 'pages' %}
-                {% include 'components/section.twig' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
+                {% include 'components/section.html' ignore missing with {'ADMIN_DIR': ADMIN_DIR} only %}
             {% endif %}
             #}
 
             <div class="wrapper__pusher">
-                {% include 'components/content.twig' %}
+                {% include 'components/content.html' %}
             </div>
         </div>
     </div>
 
 </main>
 
-{% include 'components/scripts.twig' %}
+{% include 'components/scripts.html' %}
 {% endspaceless %}

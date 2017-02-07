@@ -17,6 +17,9 @@ class templateEngine
         {
             $this->dir = str_replace('#', $theme, $dir);
         }
+        else {
+            $this->dir = $dir;
+        }
 
         $this->init();
     }

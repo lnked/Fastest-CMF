@@ -2,7 +2,7 @@
 
 class templateRender extends Renderer
 {
-    protected $extension = '.phtml';
+    // protected $extension = '.phtml';
 
 	public function __construct($dir = '')
 	{

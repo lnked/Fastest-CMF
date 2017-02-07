@@ -38,7 +38,8 @@
         "maximebf/debugbar": "^1.13",
         "josegonzalez/dotenv": "^3.0",
         "lnked/q": "dev-master",
-        "mobiledetect/mobiledetectlib": "^2.8"
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "phpmd/phpmd": "^2.6"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

@@ -88,9 +88,12 @@ class Initialize extends Content
 
     protected static function headers($cache = false)
     {
+        header('Content-Type: text/html; charset=utf-8');
+        header('X-Powered-By: Fastest CMF');
+
         header("Last-Modified: " . gmdate('D, d M Y H:i:s', (time() - 3600)) . " GMT");
         header("Cache-control: public");
-        
+
         if ($cache)
         {
             header("Cache-control: max-age=31536000");

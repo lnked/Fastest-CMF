@@ -2,7 +2,7 @@
 
 class templateRender extends Renderer
 {
-    protected $extension = '.twig';
+    // protected $extension = '.twig';
 
 	public function __construct($templateDir = '')
 	{

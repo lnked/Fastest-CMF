@@ -1,5 +1,5 @@
 {strip}
-{include file="./components/meta.inc.tpl"}
+{include file="./components/meta.inc.html"}
 
 <main>
     <header>
@@ -8,8 +8,8 @@
             
             <a href="/hello"{if $app.controller == 'hello'} class="is-current"{/if}>Приветствие</a>
             
-            <a href="/gallery"{if $app.controller == 'gallery' && !isset($app.action)} class="is-current"{/if}>Галерея</a>
-            <a href="/gallery/10"{if $app.controller == 'gallery' && isset($app.action) && $app.action == 10} class="is-current"{/if}>Галерея элемент</a>
+            <a href="/gallery"{if $app.controller == 'gallery' && !isset($app.action)} class="is-current"{/if} style="color: violet">Галерея</a>
+            <a href="/gallery/10"{if $app.controller == 'gallery' && isset($app.action) && $app.action == 10} class="is-current"{/if} style="color: violet">Галерея элемент</a>
             
             <a href="/news"{if $app.controller == 'news' && !isset($app.action)} class="is-current"{/if}>Новости</a>
             <a href="/news/10"{if $app.controller == 'news' && isset($app.action) && $app.action == 10} class="is-current"{/if}>Новость элемент</a>
@@ -45,5 +45,5 @@
     FOOTER
 </footer>
 
-{include file="./components/scripts.inc.tpl"}
+{include file="./components/scripts.inc.html"}
 {/strip}
