@@ -16,7 +16,7 @@ class Initialize extends Content
     protected $template_dir = null;
     protected $template_driver = null;
 
-    protected $is_admin   = false;
+    protected $is_admin = false;
 
     protected $controller = null;
     protected $action = null;

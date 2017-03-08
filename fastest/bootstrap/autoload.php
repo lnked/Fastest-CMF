@@ -41,6 +41,8 @@ if (DEV_MODE)
 # Autoload
 #
 spl_autoload_register(function($_class) {
+    clearstatcache(true);
+
     $_class = strtolower($_class);
 
     $paths = [
@@ -59,8 +61,7 @@ spl_autoload_register(function($_class) {
         {
             require_once APP_ROOT.DS.$path.DS.$_class.'.class.php';
         }
-        
-        if (file_exists(APP_ROOT.DS.$path.DS.$_class.'.trait.php'))
+        elseif (file_exists(APP_ROOT.DS.$path.DS.$_class.'.trait.php'))
         {
             require_once APP_ROOT.DS.$path.DS.$_class.'.trait.php';
         }

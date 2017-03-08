@@ -10,6 +10,10 @@ $r->get('/', function(){
     return ('main');
 });
 
+$r->get('/cp', function(){
+    return ('admin');
+});
+
 $r->get('/hello', function(){
     return ('hello');
 });
