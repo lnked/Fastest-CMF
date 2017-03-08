@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="251" viewBox="0 0 250 251" xmlns:xlink="http://www.w3.org/1999/xlink" style="background:#e1e1e1">
+  <defs>
+    <rect id="a" width="250" height="250" y=".365"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="b" fill="white">
+      <use xlink:href="#a"/>
+    </mask>
+    <use fill="#FCFCFC" xlink:href="#a"/>
+    <text fill="#4B4FB4" mask="url(#b)" font-family="Montserrat-Medium, Montserrat" font-size="177" font-weight="400">
+      <tspan x="73.904" y="190">F</tspan>
+    </text>
+  </g>
+</svg>

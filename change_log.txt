@@ -1,8 +1,0 @@
-===== 3.1.31 ===== (14.12.2016)
-    23.11.2016
-        - move template object cache into static variables
-    
-    19.11.2016
-        - bugfix inheritance root child templates containing nested
-        - change version checking
-    

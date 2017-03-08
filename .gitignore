@@ -2,8 +2,8 @@
 .env
 /.idea
 /____
-/apps/vendor
-/apps/runtime
+/fastest/vendor
+/fastest/runtime
 /public_html/cp/frontend/vendors
 Homestead.json
 Homestead.yaml
