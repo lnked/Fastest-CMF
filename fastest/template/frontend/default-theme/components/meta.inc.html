@@ -1,6 +1,6 @@
+{% spaceless %}
 <!DOCTYPE html>
 <!-- (c) lnk. Celebro Studio | http://celebro.ru -->
-{strip}
 <html lang="ru" class="no-js" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
     <meta content="email=no" name="format-detection">
     <meta content="address=no" name="format-detection">
     <meta content="telephone=no" name="format-detection">
-    
+
     <link rel="stylesheet" href="/css/main.min.css">
     
     <!--[if IEMobile]>
@@ -23,11 +23,11 @@
         <meta http-equiv="imagetoolbar" content="false">
     <![endif]-->
     
-    {$render.meta}
-    {$render.head}
+    {{ render.meta }}
+    {{ render.head }}
 
     <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
-    <title itemprop="name">{$app.title}</title>
+    <title itemprop="name">{{ app.title }}</title>
 </head>
 <body>
-{/strip}
+{% endspaceless %}

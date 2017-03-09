@@ -8,7 +8,7 @@ class templateRender extends Renderer
 	{
 		$loader = new Twig_Loader_Filesystem($templateDir);
         
-        $loader->addPath(FASTEST_ROOT.PUBLIC_ROOT.DS.ADMIN_DIR.DS.'frontend'.DS);
+        // $loader->addPath(FASTEST_ROOT.PUBLIC_ROOT.DS.ADMIN_DIR.DS.'frontend'.DS);
 
         $this->template = new Twig_Environment($loader, [
         	'cache'             =>	PATH_RUNTIME,
@@ -30,6 +30,7 @@ class templateRender extends Renderer
 
         $this->template->addExtension(new Twig_Extension_Escaper('html'));
         $this->template->addExtension(new Twig_Extension_Optimizer(Twig_NodeVisitor_Optimizer::OPTIMIZE_FOR));
+        $this->template->addExtension(new Twig_Extension_Debug());
 
         $lexer = new Twig_Lexer($this->template, [
         	'tag_comment'   => ['{#', '#}'],

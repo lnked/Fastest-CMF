@@ -1,0 +1,50 @@
+{% spaceless %}
+{% include './components/meta.inc.html' only %}
+
+<main>
+    <header>
+        <nav>
+            <a href="/"{% if app.controller is null %} class="is-current"{% endif %}>Главная</a>
+            <a href="/hello"{% if app.controller == 'hello' %} class="is-current"{% endif %}>Приветствие</a>
+            
+            <a href="/gallery"{% if app.controller == 'gallery' and app.action is null %} class="is-current"{% endif %} style="color: violet">Галерея</a>
+            <a href="/gallery/10"{% if app.controller == 'gallery' and app.action is defined and app.action == 10 %} class="is-current"{% endif %} style="color: violet">Галерея элемент</a>
+
+
+            <a href="/news"{% if app.controller == 'news' and app.action is null %} class="is-current"{% endif %}>Новости</a>
+            <a href="/news/10"{% if app.controller == 'news' and app.action is defined and app.action == 10 %} class="is-current"{% endif %}>Новость элемент</a>
+            
+            
+            <a href="/articles"{% if app.controller == 'articles' and app.action is null %} class="is-current"{% endif %}>Статьи</a>
+            <a href="/articles/test"{% if app.controller == 'articles' and app.action is defined and app.action == 'test' and app.params is null %} class="is-current"{% endif %}>Статьи категория</a>
+            <a href="/articles/test/20"{% if app.controller == 'articles' and app.action is defined and app.action == 'test' and app.params is defined and 20 in app.params %} class="is-current"{% endif %}>Статьи элемент категории</a>
+             
+            {# <strong><a href="/cp" target="_blank">Админка</a></strong> #}
+        </nav>
+    </header>
+
+    <section>
+        <aside>
+            
+        </aside>
+        
+        <article>
+            <div class="content">
+                <pre>
+                {% if app.content is iterable %}
+                    {{ dump(app.content) }}
+                {% else %}
+                    {{ app.content }}
+                {% endif %}
+                </pre>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer>
+    FOOTER
+</footer>
+
+{% include './components/scripts.inc.html' only %}
+{% endspaceless %}
