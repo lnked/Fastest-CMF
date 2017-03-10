@@ -2,30 +2,33 @@
 
 $t1 = microtime(true);
 
-session_start();
+// Make sure this is PHP 5.3 or later
+// -----------------------------------------------------------------------------
+if (!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 50300)
+{
+    exit('Fastest-CMF requires PHP 5.3.0 or later, but you&rsquo;re running '.PHP_VERSION.'. Please talk to your host/IT department about upgrading PHP or your server.');
+}
+
+// Check for this early because Craft uses it before the requirements checker gets a chance to run.
+if (!extension_loaded('mbstring') || (extension_loaded('mbstring') && ini_get('mbstring.func_overload') == 1))
+{
+    exit('Fastest-CMF requires the <a href="http://php.net/manual/en/book.mbstring.php" target="_blank">PHP multibyte string</a> extension in order to run. Please talk to your host/IT department about enabling it on your server.');
+}
 
 /**
  * define shorthand directory separator constant
  */
-if (!defined('DS')) {
-    define('DS', DIRECTORY_SEPARATOR);
-}
+defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 
 /**
  * Root directory
  */
-if (!defined('FASTEST_ROOT')) {
-    define('FASTEST_ROOT', dirname(getcwd()) . DS);
-}
+defined('FASTEST_ROOT') || define('FASTEST_ROOT', dirname(getcwd()) . DS);
 
 /**
  * Apps root
  */
-if (!defined('APPS_ROOT')) {
-    define('APPS_ROOT', 'fastest');
-}
-
-$_SESSION['sql'] = 0;
+defined('APPS_ROOT') || define('APPS_ROOT', 'fastest');
 
 /*
 |--------------------------------------------------------------------------

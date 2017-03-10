@@ -4,15 +4,16 @@ class newsItem extends Model
 {
     public $news;
 
-    public function __construct($news = [])
-    {
-        if (!empty($news))
-        {
-            $this->news = $this->convertToObject(
-                array_intersect_key($news, array_flip($this->sample))
-            );
-        }
-    }
+    // public function __construct($news = [])
+    // {
+    //     // parent::__construct();
+    //     // if (!empty($news))
+    //     // {
+    //     //     $this->news = $this->convertToObject(
+    //     //         array_intersect_key($news, array_flip($this->sample))
+    //     //     );
+    //     // }
+    // }
 
     public function getId()
     {

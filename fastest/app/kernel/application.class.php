@@ -1,9 +1,5 @@
 <?php declare(strict_types = 1);
 
-use DebugBar\StandardDebugBar;
-use DebugBar\DataCollector\PDO\TraceablePDO;
-use DebugBar\DataCollector\PDO\PDOCollector;
-
 final class Application extends Initialize
 {
     public function __construct()
@@ -59,65 +55,24 @@ final class Application extends Initialize
         //     //
         // }
 
-        $app = [
-            'title'         => 'Fastest CMS',
-            'controller'    => $this->controller,
-            'action'        => $this->action,
-            'params'        => $this->params,
-            'content'       => $this->getContent()
-        ];
-
-        $this->template->assign('app', $app);
+        $this->app->title = 'Fastest CMS';
+        $this->app->controller = $this->controller;
+        $this->app->action = $this->action;
+        $this->app->params = $this->params;
+        $this->app->content = $this->getContent();
     }
     
     public function terminate()
     {
         $this->headers();
 
-        // Q("SELECT * FROM `db_site__structure`")->all();
+        $this->addMetaTag('generator', 'Fastest CMF');
+        $this->addMetaTag('yandex-verification', '50ce195670bd0ab0');
 
-        $debugbar = new StandardDebugBar();
-        $debugbarRenderer = $debugbar->getJavascriptRenderer();
-        $debugbarRenderer->setBaseUrl('/Resources');
-        
-        try {
-            throw new Exception('Something failed!');
-        } catch (Exception $e) {
-            $debugbar['exceptions']->addException($e);
-        }
+        # Debugger
+        $this->initDebugger(true);
 
-        $debugbar['messages']->addMessage('hello');
-        $debugbar['time']->startMeasure('op1', 'sleep 500');
-        usleep(300);
-        $debugbar['time']->startMeasure('op2', 'sleep 400');
-        usleep(200);
-        $debugbar['time']->stopMeasure('op1');
-        usleep(200);
-        $debugbar['time']->stopMeasure('op2');
-        $debugbar['messages']->addMessage('world', 'warning');
-        $debugbar['messages']->addMessage(array('toto' => array('titi', 'tata')));
-        $debugbar['messages']->addMessage('oups', 'error');
-        $debugbar['time']->startMeasure('render');
-
-        $pdo = new TraceablePDO(new PDO('sqlite::memory:'));
-        $debugbar->addCollector(new PDOCollector($pdo));
-        $pdo->exec('create table users (name varchar)');
-        $stmt = $pdo->prepare('insert into users (name) values (?)');
-        $stmt->execute(array('foo'));
-        $stmt->execute(array('bar'));
-        $users = $pdo->query('select * from users')->fetchAll();
-        $stmt = $pdo->prepare('select * from users where name=?');
-        $stmt->execute(array('foo'));
-        $foo = $stmt->fetch();
-        $pdo->exec('delete from titi');
-
-        $render = [
-            'meta' => '',
-            'head' => $debugbarRenderer->renderHead(),
-            'footer' => $debugbarRenderer->render()
-        ];
-
-        $this->template->assign('render', $render);
+        $this->template->assign('app', $this->app);
         $this->template->display($this->base_tpl);
     }
 }

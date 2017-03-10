@@ -85,7 +85,8 @@ class templateRender extends Renderer
 
     private function xss($data)
     {
-        if (is_array($data)) {
+        if (is_array($data) || is_object($data))
+        {
             $escaped = [];
             foreach ($data as $key => $value) {
                 $escaped[$key] = $this->xss($value);

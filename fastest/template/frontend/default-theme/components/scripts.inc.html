@@ -1,4 +1,12 @@
 {% spaceless %}
-{{ render.footer }}
+{{ app.footer|raw }}
+
+{# 
+{% for file, content in app.scripts if app.scripts is iterable %}
+    <!-- <scripts content="{{ name }}" name="{{ content }}"> -->
+    <!-- <script src="{{ file }}"></script> -->
+{% endfor %}
+#}
+
 </body></html>
 {% endspaceless %}

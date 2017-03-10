@@ -1,12 +1,39 @@
 <?php
 
+session_start();
+
+// PHP environment normalization
+// -----------------------------------------------------------------------------
+
+// These have been deprecated in PHP 5.6 in favor of default_charset, which defaults to 'UTF-8'
+// http://php.net/manual/en/migration56.deprecated.php
+if (PHP_VERSION_ID < 50600)
+{
+    mb_internal_encoding('UTF-8');
+    mb_http_input('UTF-8');
+    mb_http_output('UTF-8');
+}
+
+mb_detect_order('auto');
+
+// Normalize how PHP's string methods (strtoupper, etc) behave.
+setlocale(LC_CTYPE,
+    'C.UTF-8',     // libc >= 2.13
+    'C.utf8',      // different spelling
+    'en_US.UTF-8', // fallback to lowest common denominator
+    'en_US.utf8'   // different spelling for fallback
+);
+// setlocale(LC_CTYPE, Tools::getLocale($_SERVER['REQUEST_URI']));
+// setlocale(LC_ALL, Tools::getLocale($_SERVER['REQUEST_URI']));
+
+// Set default timezone
 date_default_timezone_set(FASTEST_TIMEZONE);
 
-setlocale(LC_ALL, Tools::getLocale($_SERVER['REQUEST_URI']));
-
-Rollbar::init(['access_token' => getenv('ROLLBAR_TOKEN')], false, false);
+$_SESSION['sql'] = 0;
 
 $environment = (new josegonzalez\Dotenv\Loader(PATH_CONFIG.DS.'.env'))->parse()->putenv(true);
+
+Rollbar::init(['access_token' => getenv('ROLLBAR_TOKEN')], false, false);
 
 QF('mysqli://'.getenv('DB_USER').':'.getenv('DB_PASS').'@'.getenv('DB_HOST').':'.getenv('DB_PORT').'/'.getenv('DB_BASE').'?encoding='.getenv('DB_CHAR'))
     ->connect()

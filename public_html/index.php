@@ -1,11 +1,23 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| CELEBRO.CMS (http://cms.celebro.ru)
+| CELEBRO.CMS (https://cms.celebro.ru)
 |
-| @copyright Copyright (c) CELEBRO lab. (http://celebro.ru)
+| @copyright Copyright (c) CELEBRO lab. (https://celebro.ru)
 |
-| @license http://cms.celebro.ru/license.txt
+| @license https://cms.celebro.ru/license.txt
 |--------------------------------------------------------------------------
 */
-require __DIR__."/../fastest/bootstrap/app.php";
+$bootstrap = '../fastest/bootstrap/app.php';
+
+if (!is_file($bootstrap))
+{
+    if (function_exists('http_response_code'))
+    {
+        http_response_code(503);
+    }
+
+    exit('Could not find your fastest/ folder. Please ensure that <strong><code>$bootstrap</code></strong> is set correctly in '.__FILE__);
+}
+
+require_once $bootstrap;

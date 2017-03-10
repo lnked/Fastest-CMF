@@ -7,7 +7,9 @@ class Model extends Initialize
 
 	public $schema;
 
-    public function __construct() {}
+    public function __construct() {
+        parent::__construct();
+    }
 
     /**
      * Получение и установка свойств объекта через вызов магического метода вида:

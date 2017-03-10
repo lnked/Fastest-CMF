@@ -8,6 +8,14 @@ class Content extends templateEngine
 
     public function __construct() {}
 
+    public function addMetaTag($name = '', $content = '')
+    {
+        if ($name && $content)
+        {
+            $this->app->meta[$name] = $content;
+        }
+    }
+
     protected function getContent()
     {
         $route = $this->router->dispatch(static::$request);

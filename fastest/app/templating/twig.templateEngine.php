@@ -44,7 +44,7 @@ class templateRender extends Renderer
 
 	public function assign($key = '', $data = '', $cache = false)
     {
-		if (is_array($data))
+		if (is_array($data) || is_object($data))
 		{
 		    $this->data[$key] = $data;
 		}
