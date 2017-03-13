@@ -19,7 +19,6 @@ class Upload
 
     public function __construct()
     {
-
         // require '../Fastimage.php';
         // $uri = 'http://pcdn.500px.net/8123858/7051e2440a869a3fec74406a3aa200618452c390/4.jpg';
         // echo "\n\n";
@@ -74,6 +73,11 @@ class Upload
 
     protected function upload()
     {
+        if (is_uploaded_file($_FILES['attachment']['tmp_name'])) {
+            echo md5_file($_FILES['attachment']['tmp_name']);
+            exit;
+        }
+
         // Перезапишем переменные для удобства
         $filePath  = $_FILES['upload']['tmp_name'];
         $errorCode = $_FILES['upload']['error'];

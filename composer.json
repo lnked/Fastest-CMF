@@ -10,7 +10,7 @@
         }
     ],
     "config": {
-        "vendor-dir": "apps/vendor",
+        "vendor-dir": "fastest/vendor",
         "preferred-install": "dist"
     },
     "require": {
