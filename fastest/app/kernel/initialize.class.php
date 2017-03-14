@@ -16,6 +16,8 @@ class Initialize extends Content
 
     protected $app = null;
 
+    protected $request = null;
+
     protected $base_tpl = 'base';
 
     protected $template = null;
@@ -33,16 +35,19 @@ class Initialize extends Content
 
     protected $locale = null;
     protected static $domain = null;
-    protected static $request = null;
+    protected static $requestUri = null;
 
     public function __construct()
     {
         self::$domain   = $_SERVER['HTTP_HOST'];
-        self::$request  = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        self::$requestUri  = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
-        $this->path     = preg_split('/\/+/', self::$request, -1, PREG_SPLIT_NO_EMPTY);
-        $this->locale   = $this->getLocale(self::$request, $this->path);
+        $this->path     = preg_split('/\/+/', self::$requestUri, -1, PREG_SPLIT_NO_EMPTY);
+        $this->locale   = $this->getLocale(self::$requestUri, $this->path);
         $this->apath    = $this->path;
+
+        $factory = new Nette\Http\RequestFactory;
+        $this->request = $factory->createHttpRequest();
 
         $this->_storage();
 
@@ -54,7 +59,7 @@ class Initialize extends Content
 
         $this->initTemplate();
 
-        $this->csrfProtection();
+        $this->protect();
     }
 
     protected function initMVC()
@@ -290,9 +295,18 @@ class Initialize extends Content
         }
     }
 
-    private function csrfProtection()
+    private function protect()
     {
-        $this->csrf = new CSRF;
+        if (defined('CSRF_PROTECTION') && CSRF_PROTECTION)
+        {
+            $this->csrf = new CSRF;
+
+            if ($this->request->isMethod('GET'))
+            {
+                $this->csrf->generate();
+                $this->csrf->store();
+            }
+        }
     }
 
     private function checkAdmin()

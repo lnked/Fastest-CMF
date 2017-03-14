@@ -18,7 +18,7 @@ class Content extends templateEngine
 
     protected function getContent()
     {
-        $route = $this->router->dispatch(static::$request);
+        $route = $this->router->dispatch(static::$requestUri);
         
         if (isset($route[2]))
         {

@@ -57,7 +57,7 @@ trait Storage
 
     private static function hash()
     {
-        self::$cache_path = str_replace('/', '.', trim(self::$request, '/'));
+        self::$cache_path = str_replace('/', '.', trim(self::$requestUri, '/'));
     }
 
     private static function connect()

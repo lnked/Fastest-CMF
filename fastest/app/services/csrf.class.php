@@ -5,14 +5,7 @@ final class CSRF
     protected $csrf_token = null;
     protected $csrf_param = '_csrf';
 
-    public function __construct()
-    {
-        if (defined('CSRF_PROTECTION') && CSRF_PROTECTION)
-        {
-            $this->generate();
-            $this->store();
-        }
-    }
+    public function __construct() {}
 
     public function get()
     {
@@ -69,7 +62,7 @@ final class CSRF
     //     return false;
     // }
 
-    private function generate()
+    public function generate()
     {
         if (function_exists('random_bytes'))
         {
@@ -87,7 +80,7 @@ final class CSRF
         $this->csrf_token = base64_encode($token);
     }
 
-    private function store()
+    public function store()
     {
         if (!count($_POST))
         {
@@ -101,7 +94,7 @@ final class CSRF
         }
     }
 
-    private function clean()
+    public function clean()
     {
         unset($_SESSION['csrf_param']);
         unset($_SESSION[$this->csrf_param]);
