@@ -177,6 +177,92 @@ class Initialize extends Content
         }
     }
 
+    protected static function responseCode($code = 200)
+    {
+        $status = [
+            100 => [ 'text' => 'Continue' ], # продолжай
+            101 => [ 'text' => 'Switching Protocols' ], # переключение протоколов
+            102 => [ 'text' => 'Processing' ], # идёт обработка.
+            
+            # Success (успешно):
+            200 => [ 'text' => 'OK' ], # хорошо
+            201 => [ 'text' => 'Created' ], # создано
+            202 => [ 'text' => 'Accepted' ], # принято
+            203 => [ 'text' => 'Non-Authoritative Information' ], # информация не авторитетна
+            204 => [ 'text' => 'No Content' ], # нет содержимого
+            205 => [ 'text' => 'Reset Content' ], # сбросить содержимое
+            206 => [ 'text' => 'Partial Content' ], # частичное содержимое
+            207 => [ 'text' => 'Multi-Status' ], # многостатусный
+            226 => [ 'text' => 'IM Used' ], # использовано IM.
+            
+            # Redirection (перенаправление):
+            300 => [ 'text' => 'Multiple Choices' ], # множество выборов
+            301 => [ 'text' => 'Moved Permanently' ], # перемещено навсегда
+            302 => [ 'text' => 'Moved Temporarily' ], # перемещено временно
+            302 => [ 'text' => 'Found' ], # найдено
+            303 => [ 'text' => 'See Other' ], # смотреть другое
+            304 => [ 'text' => 'Not Modified' ], # не изменялось
+            305 => [ 'text' => 'Use Proxy' ], # использовать прокси
+            306 => [ 'text' => '— зарезервировано' ], # код использовался только в ранних спецификациях
+            307 => [ 'text' => 'Temporary Redirect' ], # временное перенаправление
+            
+            # Client Error (ошибка клиента):
+            400 => [ 'text' => 'Bad Request' ], # плохой, неверный запрос
+            401 => [ 'text' => 'Unauthorized' ], # не авторизован
+            402 => [ 'text' => 'Payment Required' ], # необходима оплата
+            403 => [ 'text' => 'Forbidden' ], # запрещено
+            404 => [ 'text' => 'Not Found' ], # не найдено
+            405 => [ 'text' => 'Method Not Allowed' ], # метод не поддерживается
+            406 => [ 'text' => 'Not Acceptable' ], # неприемлемо
+            407 => [ 'text' => 'Proxy Authentication Required' ], # необходима аутентификация прокси
+            408 => [ 'text' => 'Request Timeout' ], # истекло время ожидания
+            409 => [ 'text' => 'Conflict' ], # конфликт
+            410 => [ 'text' => 'Gone' ], # удалён
+            411 => [ 'text' => 'Length Required' ], # необходима длина
+            412 => [ 'text' => 'Precondition Failed' ], # условие ложно
+            413 => [ 'text' => 'Request Entity Too Large' ], # размер запроса слишком велик
+            414 => [ 'text' => 'Request-URI Too Large' ], # запрашиваемый URI слишком длинный
+            415 => [ 'text' => 'Unsupported Media Type' ], # неподдерживаемый тип данных
+            416 => [ 'text' => 'Requested Range Not Satisfiable' ], # запрашиваемый диапазон не достижим
+            417 => [ 'text' => 'Expectation Failed' ], # ожидаемое неприемлемо
+            422 => [ 'text' => 'Unprocessable Entity' ], # необрабатываемый экземпляр.
+            423 => [ 'text' => 'Locked' ], # заблокировано.
+            424 => [ 'text' => 'Failed Dependency' ], # невыполненная зависимость.
+            425 => [ 'text' => 'Unordered Collection' ], # неупорядоченный набор
+            426 => [ 'text' => 'Upgrade Required' ], # необходимо обновление.
+            428 => [ 'text' => 'Precondition Required' ], # необходимо предусловие
+            429 => [ 'text' => 'Too Many Requests' ], # слишком много запросов
+            431 => [ 'text' => 'Request Header Fields Too Large' ], # поля заголовка запроса слишком большие
+            434 => [ 'text' => 'Requested host unavailable.' ], # Запрашиваемый адрес недоступен
+            444 => [ 'text' => 'Закрывает соединение без передачи заголовка ответа. Нестандартный код' ],
+            449 => [ 'text' => 'Retry With' ], # повторить с
+            451 => [ 'text' => 'Unavailable For Legal Reasons' ], # недоступно по юридическим причинам
+            
+            # Server Error (ошибка сервера):
+            500 => [ 'text' => 'Internal Server Error' ], # внутренняя ошибка сервера
+            501 => [ 'text' => 'Not Implemented' ], # не реализовано
+            502 => [ 'text' => 'Bad Gateway' ], # плохой, ошибочный шлюз
+            503 => [ 'text' => 'Service Unavailable' ], # сервис недоступен
+            504 => [ 'text' => 'Gateway Timeout' ], # шлюз не отвечает
+            505 => [ 'text' => 'HTTP Version Not Supported' ], # версия HTTP не поддерживается
+            506 => [ 'text' => 'Variant Also Negotiates' ], # вариант тоже проводит согласование[12]
+            507 => [ 'text' => 'Insufficient Storage' ], # переполнение хранилища.
+            508 => [ 'text' => 'Loop Detected' ], # обнаружено бесконечное перенаправление[13]
+            509 => [ 'text' => 'Bandwidth Limit Exceeded' ], # исчерпана пропускная ширина канала.
+            510 => [ 'text' => 'Not Extended' ], # не расширено.
+            511 => [ 'text' => 'Network Authentication Required' ] # требуется сетевая аутентификация
+        ];
+
+        if (function_exists('http_response_code'))
+        {
+            http_response_code($code);
+        }
+        else
+        {
+            header('HTTP/1.1 '.$code.' '.$status[$code]['text']);
+        }
+    }
+
     protected static function headers($cache = false)
     {
         header('Content-Type: text/html; charset=utf-8');

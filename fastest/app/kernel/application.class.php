@@ -72,6 +72,8 @@ final class Application extends Initialize
         # Debugger
         $this->initDebugger(true);
 
+        $this->responseCode(200);
+
         $this->template->assign('app', $this->app);
         $this->template->display($this->base_tpl);
     }
