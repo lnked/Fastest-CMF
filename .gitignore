@@ -3,6 +3,7 @@
 /.idea
 /____
 /fastest/vendor
+/fastest/components
 /fastest/runtime
 /public_html/cp/frontend/vendors
 Homestead.json
