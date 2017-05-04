@@ -27,6 +27,12 @@
     "Template7": "template7#1.2.1",
     "tinymce": "tinymce-dist#4.6.0",
     "trix": "0.10.1",
-    "froala-wysiwyg-editor": "2.6.0"
+    "froala-wysiwyg-editor": "2.6.0",
+    "codemirror": "5.25.2",
+    "chosen": "1.7.0",
+    "summernote": "0.8.3",
+    "ckeditor": "4.6.2",
+    "cleditor": "1.4.2",
+    "fine-uploader": "5.13.0"
   }
 }
