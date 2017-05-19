@@ -21,7 +21,7 @@
   ],
   "timeout": 120000,
   "dependencies": {
-    "jquery": "3.1.1",
+    "jquery": "jquery#2.2.4",
     "cookie": "1.2.1",
     "svg4everybody": "2.1.4",
     "Template7": "template7#1.2.1",
