@@ -41,7 +41,8 @@
         "josegonzalez/dotenv": "^3.0",
         "lnked/q": "dev-master",
         "mobiledetect/mobiledetectlib": "^2.8",
-        "phpmd/phpmd": "^2.6"
+        "phpmd/phpmd": "^2.6",
+        "corneltek/pux": "^2.0"
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
