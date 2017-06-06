@@ -42,7 +42,8 @@
         "lnked/q": "dev-master",
         "mobiledetect/mobiledetectlib": "^2.8",
         "phpmd/phpmd": "^2.6",
-        "corneltek/pux": "^2.0"
+        "corneltek/pux": "^2.0",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
