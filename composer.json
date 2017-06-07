@@ -33,7 +33,7 @@
         "league/flysystem": "^1.0",
         "nette/http": "^2.4",
         "rollbar/rollbar": "^0.18.2",
-        "jenssegers/imagehash": "^0.4.1",
+        "jenssegers/imagehash": "^0.4.2",
         "ezyang/htmlpurifier": "^4.8",
         "symfony/http-foundation": "^3.2",
         "symfony/console": "^3.2",
@@ -43,7 +43,8 @@
         "mobiledetect/mobiledetectlib": "^2.8",
         "phpmd/phpmd": "^2.6",
         "corneltek/pux": "^2.0",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "intervention/image": "^2.3"
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
