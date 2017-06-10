@@ -43,7 +43,8 @@
         "phpmd/phpmd": "^2.6",
         "corneltek/pux": "^2.0",
         "guzzlehttp/guzzle": "^6.2",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "ps/image-optimizer": "^1.1"
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
